@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface GaleriaRepository extends JpaRepository<Cuadro, Long>{
 
 	Cuadro findByTitle(String nombre);
-	Autor findByAuthor(String autor);
+	Autor findByAuthor(Autor autor);
 	List<Cuadro> findByTitleAndAuthor(String nombre, Autor autor);
 }
