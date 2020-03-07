@@ -12,8 +12,8 @@ public class Cliente {
 	private String nif;
 	private String postal_address;
 	private String email;
-	private long phone;
-	public Cliente(String name, String surnames, String nif, String postal_address, String email, long phone) {
+	private String phone;
+	public Cliente(String name, String surnames, String nif, String postal_address, String email, String phone) {
 		this.name = name;
 		this.surnames = surnames;
 		this.nif = nif;
@@ -51,10 +51,10 @@ public class Cliente {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public long getPhone() {
+	public String getPhone() {
 		return phone;
 	}
-	public void setPhone(long phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	

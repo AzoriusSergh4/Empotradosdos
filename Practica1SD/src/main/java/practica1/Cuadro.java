@@ -14,6 +14,7 @@ public class Cuadro {
 	private double height;
 	private int price;
 	private Autor author;
+	
 	public Cuadro(String title, String description, int ending_year, double width, double height, int price,
 			Autor author) {
 		this.title = title;

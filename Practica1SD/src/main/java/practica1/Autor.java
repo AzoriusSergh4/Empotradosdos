@@ -14,9 +14,9 @@ public class Autor {
 	private String country_birth;
 	private String postal_address;
 	private String email;
-	private long phone;
+	private String phone;
 	public Autor(String name, String surnames, String nif, int year_birth, String country_birth, String postal_address,
-			String email, long phone) {
+			String email, String phone) {
 		this.name = name;
 		this.surnames = surnames;
 		this.nif = nif;
@@ -68,10 +68,10 @@ public class Autor {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public long getPhone() {
+	public String getPhone() {
 		return phone;
 	}
-	public void setPhone(long phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	

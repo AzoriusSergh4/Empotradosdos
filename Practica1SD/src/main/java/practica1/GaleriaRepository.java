@@ -1,5 +1,12 @@
 package practica1;
 
-public interface GaleriaRepository {
+import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface GaleriaRepository extends JpaRepository<Cuadro, Long>{
+
+	Cuadro findByTitle(String nombre);
+	Autor findByAuthor(String autor);
+	List<Cuadro> findByTitleAndAuthor(String nombre, Autor autor);
 }

@@ -17,7 +17,7 @@ public class ConsultController {
 	@RequestMapping("/consult")
 	public String mostrar(@RequestParam String title, @RequestParam Autor author, Model model) {
 
-		List<Cuadro> varioscuadros = repGaleria.//metodo de busqueda en GaleriaRepository
+		List<Cuadro> varioscuadros = repGaleria.findByTitleAndAuthor(title, author);
 
 		model.addAttribute("cuadros", varioscuadros);
 
