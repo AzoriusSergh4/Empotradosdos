@@ -1,9 +1,14 @@
 package practica1.author;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import practica1.picture.Picture;
 
 @Entity
 public class Author {
@@ -20,6 +25,9 @@ public class Author {
 	private String postalAddress;
 	private String email;
 	private String phone;
+	
+	@OneToMany(mappedBy = "author")
+	private List<Picture> pictures;
 	
 	public Author() {
 		
@@ -95,6 +103,14 @@ public class Author {
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public List<Picture> getPictures() {
+		return pictures;
+	}
+
+	public void setPictures(List<Picture> pictures) {
+		this.pictures = pictures;
 	}
 	
 	

@@ -44,6 +44,9 @@ public class GeneralController {
         Picture cuadro = new SoldPicture("Bacon", "Un cuadro de un crujiente bacon frito",
                 2017, 30.52, 26.88, 3000, author, buyer, new Date(12/01/2020));
         pictureRepository.save(cuadro);
+        
+        Picture cuadro2 = new Picture("Cerdo", "Cerdo sin bacon", 2016, 41.43, 23.45, 1000, author);
+        pictureRepository.save(cuadro2);
     }
 
     @GetMapping("/")
