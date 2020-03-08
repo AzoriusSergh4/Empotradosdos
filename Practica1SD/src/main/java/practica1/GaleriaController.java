@@ -19,7 +19,9 @@ public class GaleriaController {
 		   Autor author = new Autor("José", "Pérez", "22222222J", 1972, "Ecuador", "Av. 6 de Diciembre, Quito 170505, Ecuador", "pintorjoseperez@gmail.com", "5932498124");
 		   Cliente buyer = new Cliente("Fernado", "López", "11111111H", "Calle Tulipán, s/n, 28933 Móstoles, Madrid", "compradorfernandolopez@gmail.com", "678912354");
 		   Cuadro cuadro = new CuadroVendido("Bacon", "Un cuadro de un crujiente bacon frito", 2017, 30.52, 26.88, 3000, author, buyer, new Date(12/01/2020));
+		   Cuadro cuadro2 = new Cuadro("Bacon sin vender", "Cun cuadro del cerdo sin bacon", 2016,44.53,43.21,2500,author);
 		   repGaleria.save(cuadro);
+		   repGaleria.save(cuadro2);
 	   }
 	   @RequestMapping("/")
 	   public String tablon(Model model) {
