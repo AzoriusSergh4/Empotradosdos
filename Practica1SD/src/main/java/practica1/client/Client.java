@@ -41,6 +41,9 @@ public class Client {
 		this.phone = newClient.getPhone();
 	}
 
+	public long getId() {
+		return id;
+	}
 	public String getName() {
 		return name;
 	}

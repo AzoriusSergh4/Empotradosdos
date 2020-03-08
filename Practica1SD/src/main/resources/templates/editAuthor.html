@@ -11,7 +11,7 @@
 <div class="card" style="width: 18rem;">
     <div class="card-body">
         <h1 class="card-title">Nuevo autor</h1>
-        <form th:action="@{'/author/' + ${author.id}}" method="put">
+        <form th:action="@{'/author/' + ${author.id}}" method="get">
             <div class="form-group">
                 <label for="inputName">Nombre:</label>
                 <input th:value="${author.name}" class="form-control" type='text' id="inputName" name='name' placeholder="Nombre"/>

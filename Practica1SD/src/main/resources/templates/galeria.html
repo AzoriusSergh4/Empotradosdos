@@ -65,14 +65,14 @@
 		  	<div style="text-align: center">
 			    <h1>
 			        Clientes
-			        <a href="/addClient" type="button">
+			        <a href="/client/addClient" type="button">
 			            <i class="material-icons">add</i>
 			        </a>
 			    </h1>
 			    <span th:each="cliente : ${clientes}">
 			        <div>
 			            <span th:text="*{cliente.name}"></span>
-			            <a href="/" type="button">
+			            <a th:href="@{'/client/editClient/' + ${cliente.id}}" type="button">
 			                <i class="material-icons">edit</i>
 			            </a>
 			        </div>
