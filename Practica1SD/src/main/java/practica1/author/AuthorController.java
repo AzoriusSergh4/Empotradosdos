@@ -2,8 +2,10 @@ package practica1.author;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -13,14 +15,25 @@ public class AuthorController {
     private AuthorRepository authorRepository;
 
     @PostMapping("/")
-    public String addAuthor(@RequestBody Author author) {
+    public String addAuthor(Model model, @RequestParam Map<String, String> mappedAuthor) {
+        Author author = new Author();
+
+        author.setName(mappedAuthor.get("name"));
+        author.setSurnames(mappedAuthor.get("surnames"));
+        author.setNif(mappedAuthor.get("nif"));
+        author.setBirthYear(Integer.parseInt(mappedAuthor.get("birthYear")));
+        author.setBirthCountry(mappedAuthor.get("birthCountry"));
+        author.setEmail(mappedAuthor.get("email"));
+        author.setPhone(mappedAuthor.get("phone"));
+        author.setPostalAddress(mappedAuthor.get("postalAddress"));
+
         this.authorRepository.save(author);
 
         return "galeria";
     }
 
     @PutMapping("/{id}")
-    public void editAuthor(@PathVariable long id, @RequestBody Author author) {
+    public void editAuthor(Model model, @PathVariable long id, @RequestBody Author author) {
         Optional<Author> optional = this.authorRepository.findById(id);
         if(optional.isPresent()){
             Author previousAuthor = optional.get();
