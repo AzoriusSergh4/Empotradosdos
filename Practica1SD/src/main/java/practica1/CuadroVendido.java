@@ -2,16 +2,23 @@ package practica1;
 
 import java.sql.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 
 @Entity
 public class CuadroVendido extends Cuadro{
 	
-	@Id
+	@OneToOne(cascade = CascadeType.ALL)
 	private Cliente buyer;
 	private Date sale_date;
+	
+	public CuadroVendido(){
+		super();
+	}
+	
 	public CuadroVendido(String title, String description, int ending_year, double width, double height, int price,
 			Autor author, Cliente buyer, Date sale_date) {
 		super(title, description, ending_year, width, height, price, author);
