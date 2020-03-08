@@ -16,8 +16,6 @@ public class AuthorController {
 
     @RequestMapping("/addAuthor")
     public String addAuthor(Model model) {
-        model.addAttribute("author", new Author());
-
         return "author";
     }
 
@@ -28,11 +26,33 @@ public class AuthorController {
             model.addAttribute("author", optional.get());
         }
 
-        return "author";
+        return "editAuthor";
     }
 
     @PostMapping("/")
     public String addAuthor(Model model, @RequestParam Map<String, String> mappedAuthor) {
+        Author author = this.createAuthorFromMap(mappedAuthor);
+
+        this.authorRepository.save(author);
+
+        return "galeria";
+    }
+
+    @GetMapping("/{id}")
+    public String editAuthor(Model model, @PathVariable long id,  @RequestParam Map<String, String> mappedAuthor) {
+        Author author = this.createAuthorFromMap(mappedAuthor);
+
+        Optional<Author> optional = this.authorRepository.findById(id);
+        if(optional.isPresent()){
+            Author previousAuthor = optional.get();
+            previousAuthor.updateAuthor(author);
+            this.authorRepository.save(previousAuthor);
+        }
+
+        return "galeria";
+    }
+
+    private Author createAuthorFromMap(Map<String, String> mappedAuthor) {
         Author author = new Author();
 
         author.setName(mappedAuthor.get("name"));
@@ -44,18 +64,6 @@ public class AuthorController {
         author.setPhone(mappedAuthor.get("phone"));
         author.setPostalAddress(mappedAuthor.get("postalAddress"));
 
-        this.authorRepository.save(author);
-
-        return "galeria";
-    }
-
-    @PutMapping("/{id}")
-    public void editAuthor(Model model, @PathVariable long id, @RequestBody Author author) {
-        Optional<Author> optional = this.authorRepository.findById(id);
-        if(optional.isPresent()){
-            Author previousAuthor = optional.get();
-            previousAuthor.updateAuthor(author);
-            this.authorRepository.save(previousAuthor);
-        }
+        return author;
     }
 }

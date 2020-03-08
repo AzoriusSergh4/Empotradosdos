@@ -75,9 +75,4 @@ public class GeneralController {
     public String addPicture() {
         return "picture";
     }
-
-    @RequestMapping("/addClient")
-    public String addClient() {
-        return "client";
-    }
 }
