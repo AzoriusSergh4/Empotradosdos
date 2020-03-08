@@ -7,61 +7,80 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 </head>
 <body>
 
-<div style="text-align: center">
-    <h1>
-        Cuadros disponibles
-        <a href="/addPicture" type="button">
-            <i class="material-icons">add</i>
-        </a>
-    </h1>
-    <span th:each="cuadro : ${cuadros}">
-        <div>
-            <span th:text="*{cuadro.title}"></span>
-            <a href="/" type="button">
-                <i class="material-icons">edit</i>
-            </a>
-        </div>
-    </span>
-</div>
+	<ul class="nav nav-tabs" id="galeriaNavbar" role="tablist">
+	  <li class="nav-item">
+	    <a class="nav-link active" id="picture-tab" data-toggle="tab" href="#picture" role="tab" aria-controls="picture" aria-selected="true">Cuadros</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" id="author-tab" data-toggle="tab" href="#author" role="tab" aria-controls="author" aria-selected="false">Autores</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" id="client-tab" data-toggle="tab" href="#client" role="tab" aria-controls="client" aria-selected="false">Clientes</a>
+	  </li>
+	</ul>
+	
+	<div class="tab-content">
+		<div class="tab-pane active" id="picture" role="tabpanel" aria-labelledby="picture-tab">
+			<div style="text-align: center">
+			    <h1>
+			        Cuadros disponibles
+			        <a href="/addPicture" type="button">
+			            <i class="material-icons">add</i>
+			        </a>
+			    </h1>
+			    <span th:each="cuadro : ${cuadros}">
+			        <div>
+			            <span th:text="*{cuadro.title}"></span>
+			            <a href="/" type="button">
+			                <i class="material-icons">edit</i>
+			            </a>
+			        </div>
+			    </span>
+			</div>
+		</div>
+	 <div class="tab-pane" id="author" role="tabpanel" aria-labelledby="author-tab">
+	 	<div style="text-align: center">
+		    <h1>
+		        Autores
+		        <a href="/addAuthor" type="button">
+		            <i class="material-icons">add</i>
+		        </a>
+		    </h1>
+		    <span th:each="autor : ${autores}">
+		        <div>
+		            <span th:text="*{autor.name}"></span>
+		            <a href="/" type="button">
+		                <i class="material-icons">edit</i>
+		            </a>
+		        </div>
+		    </span>
+		</div>
+	</div>
+	 <div class="tab-pane" id="client" role="tabpanel" aria-labelledby="client-tab">
+		  	<div style="text-align: center">
+			    <h1>
+			        Clientes
+			        <a href="/addClient" type="button">
+			            <i class="material-icons">add</i>
+			        </a>
+			    </h1>
+			    <span th:each="cliente : ${clientes}">
+			        <div>
+			            <span th:text="*{cliente.name}"></span>
+			            <a href="/" type="button">
+			                <i class="material-icons">edit</i>
+			            </a>
+			        </div>
+			    </span>
+			</div>
+		</div>
+	</div>
 
-<div style="text-align: center">
-    <h1>
-        Autores
-        <a href="/addAuthor" type="button">
-            <i class="material-icons">add</i>
-        </a>
-    </h1>
-    <span th:each="autor : ${autores}">
-        <div>
-            <span th:text="*{autor.name}"></span>
-            <a href="/" type="button">
-                <i class="material-icons">edit</i>
-            </a>
-        </div>
-    </span>
-</div>
-
-<div style="text-align: center">
-    <h1>
-        Clientes
-        <a href="/addClient" type="button">
-            <i class="material-icons">add</i>
-        </a>
-    </h1>
-    <span th:each="cliente : ${clientes}">
-        <div>
-            <span th:text="*{cliente.name}"></span>
-            <a href="/" type="button">
-                <i class="material-icons">edit</i>
-            </a>
-        </div>
-    </span>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	
 </body>
 </html>

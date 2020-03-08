@@ -16,6 +16,8 @@ import practica1.picture.soldPicture.SoldPictureRepository;
 
 import javax.annotation.PostConstruct;
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 @Controller
 public class GeneralController {
@@ -34,20 +36,31 @@ public class GeneralController {
 
     @PostConstruct
     public void init() {
-        Author author = new Author("José", "Pérez", "22222222J", 1972, "Ecuador",
-                "Av. 6 de Diciembre, Quito 170505, Ecuador", "pintorjoseperez@gmail.com", "5932498124");
-        authorRepository.save(author);
-
-        Client buyer = new Client("Fernado", "López", "11111111H", "Calle Tulipán, s/n, 28933 Móstoles, Madrid",
-                "compradorfernandolopez@gmail.com", "678912354");
-        clientRepository.save(buyer);
-
-        Picture cuadro = new SoldPicture("Bacon", "Un cuadro de un crujiente bacon frito",
-                2017, 30.52, 26.88, 3000, author, buyer, new Date(12/01/2020));
-        pictureRepository.save(cuadro);
-        
-        Picture cuadro2 = new Picture("Cerdo", "Cerdo sin bacon", 2016, 41.43, 23.45, 1000, author);
-        pictureRepository.save(cuadro2);
+    	try {
+    	
+    		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    	
+	        Author author = new Author("José", "Pérez", "22222222J", 1972, "Ecuador",
+	                "Av. 6 de Diciembre, Quito 170505, Ecuador", "pintorjoseperez@gmail.com", "5932498124");
+	        authorRepository.save(author);
+	
+	        Client buyer = new Client("Fernado", "López", "11111111H", "Calle Tulipán, s/n, 28933 Móstoles, Madrid",
+	                "compradorfernandolopez@gmail.com", "678912354");
+	        clientRepository.save(buyer);
+	
+	       
+	        
+	        Picture cuadro = new SoldPicture("Bacon", "Un cuadro de un crujiente bacon frito",
+				        2017, 30.52, 26.88, 3000, author, buyer, new Date(dateFormat.parse("12/01/2020").getTime()));
+			
+	        pictureRepository.save(cuadro);
+	        
+	        Picture cuadro2 = new Picture("Cerdo", "Cerdo sin bacon", 2016, 41.43, 23.45, 1000, author);
+	        pictureRepository.save(cuadro2);
+    	} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     @GetMapping("/")
