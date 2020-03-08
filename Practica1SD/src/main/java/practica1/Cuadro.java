@@ -1,19 +1,30 @@
 package practica1;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Cuadro {
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+    private long id;
 	private String title;
 	private String description;
 	private int ending_year;
 	private double width;
 	private double height;
 	private int price;
+	@OneToOne(cascade = CascadeType.ALL)
 	private Autor author;
+	
+	public Cuadro() {
+		
+	}
 	
 	public Cuadro(String title, String description, int ending_year, double width, double height, int price,
 			Autor author) {
