@@ -31,6 +31,16 @@ public class Client {
 		this.email = email;
 		this.phone = phone;
 	}
+
+	public void updateClient(Client newClient){
+		this.name = newClient.getName();
+		this.surnames = newClient.getSurnames();
+		this.nif = newClient.getNif();
+		this.postalAddress = newClient.getPostalAddress();
+		this.email = newClient.getEmail();
+		this.phone = newClient.getPhone();
+	}
+
 	public String getName() {
 		return name;
 	}

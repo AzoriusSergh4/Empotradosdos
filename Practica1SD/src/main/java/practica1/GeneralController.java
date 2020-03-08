@@ -2,6 +2,8 @@ package practica1;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import practica1.author.Author;
 import practica1.author.AuthorRepository;
 import practica1.client.Client;
@@ -45,5 +47,15 @@ public class GeneralController {
         
         Picture cuadro2 = new Picture("Cerdo", "Cerdo sin bacon", 2016, 41.43, 23.45, 1000, author);
         pictureRepository.save(cuadro2);
+    }
+
+    @GetMapping("/")
+    public String getGalleryInfo(Model model) {
+
+        model.addAttribute("cuadros", pictureRepository.findAll());
+        model.addAttribute("autores", authorRepository.findAll());
+        model.addAttribute("clientes", clientRepository.findAll());
+
+        return "galeria";
     }
 }
