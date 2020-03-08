@@ -13,8 +13,10 @@ public class ClientController {
     private ClientRepository clientRepository;
 
     @PostMapping("/")
-    public void addClient(@RequestBody Client client) {
+    public String addClient(@RequestBody Client client) {
         this.clientRepository.save(client);
+
+        return "galeria.html";
     }
 
     @PutMapping("/{id}")

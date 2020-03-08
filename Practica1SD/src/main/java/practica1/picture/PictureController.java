@@ -13,7 +13,9 @@ public class PictureController {
     private PictureRepository pictureRepository;
 
     @PostMapping("/")
-    public void addPicture(@RequestBody Picture picture) {
+    public String addPicture(@RequestBody Picture picture) {
         this.pictureRepository.save(picture);
+
+        return "galeria.html";
     }
 }

@@ -13,8 +13,10 @@ public class AuthorController {
     private AuthorRepository authorRepository;
 
     @PostMapping("/")
-    public void addAuthor(@RequestBody Author author) {
+    public String addAuthor(@RequestBody Author author) {
         this.authorRepository.save(author);
+
+        return "galeria.html";
     }
 
     @PutMapping("/{id}")
