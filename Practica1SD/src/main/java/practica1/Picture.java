@@ -1,37 +1,33 @@
 package practica1;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
-public class Cuadro {
+public class Picture {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
+
 	private String title;
 	private String description;
-	private int ending_year;
+	private int endingYear;
 	private double width;
 	private double height;
 	private int price;
+
 	@ManyToOne(cascade = CascadeType.ALL)
-	private Autor author;
+	private Author author;
 	
-	public Cuadro() {
+	public Picture() {
 		
 	}
 	
-	public Cuadro(String title, String description, int ending_year, double width, double height, int price,
-			Autor author) {
+	public Picture(String title, String description, int endingYear, double width, double height, int price,
+			Author author) {
 		this.title = title;
 		this.description = description;
-		this.ending_year = ending_year;
+		this.endingYear = endingYear;
 		this.width = width;
 		this.height = height;
 		this.price = price;
@@ -49,11 +45,11 @@ public class Cuadro {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public int getEnding_year() {
-		return ending_year;
+	public int getEndingYear() {
+		return endingYear;
 	}
-	public void setEnding_year(int ending_year) {
-		this.ending_year = ending_year;
+	public void setEndingYear(int ending_year) {
+		this.endingYear = ending_year;
 	}
 	public double getWidth() {
 		return width;
@@ -73,10 +69,10 @@ public class Cuadro {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public Autor getAuthor() {
+	public Author getAuthor() {
 		return author;
 	}
-	public void setAuthor(Autor author) {
+	public void setAuthor(Author author) {
 		this.author = author;
 	}
 	
