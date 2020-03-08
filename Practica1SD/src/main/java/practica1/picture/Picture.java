@@ -18,7 +18,7 @@ public class Picture {
 	private double height;
 	private int price;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.MERGE)
 	private Author author;
 	
 	public Picture() {

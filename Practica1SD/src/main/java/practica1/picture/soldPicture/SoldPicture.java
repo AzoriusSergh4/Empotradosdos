@@ -14,7 +14,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class SoldPicture extends Picture {
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.MERGE)
 	private Client buyer;
 	private Date saleDate;
 	
