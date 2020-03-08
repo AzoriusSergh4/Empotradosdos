@@ -2,6 +2,8 @@ package practica1;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import practica1.author.Author;
 import practica1.author.AuthorRepository;
 import practica1.client.Client;
@@ -42,5 +44,15 @@ public class GeneralController {
         Picture cuadro = new SoldPicture("Bacon", "Un cuadro de un crujiente bacon frito",
                 2017, 30.52, 26.88, 3000, author, buyer, new Date(12/01/2020));
         pictureRepository.save(cuadro);
+    }
+
+    @GetMapping("/")
+    public String getGalleryInfo(Model model) {
+
+        model.addAttribute("cuadros", pictureRepository.findAll());
+        model.addAttribute("autores", authorRepository.findAll());
+        model.addAttribute("clientes", clientRepository.findAll());
+
+        return "galeria";
     }
 }

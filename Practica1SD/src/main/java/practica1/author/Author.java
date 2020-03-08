@@ -36,6 +36,18 @@ public class Author {
 		this.email = email;
 		this.phone = phone;
 	}
+
+	public void updateAuthor(Author newAuthor){
+		this.name = newAuthor.getName();
+		this.surnames = newAuthor.getSurnames();
+		this.nif = newAuthor.getNif();
+		this.birthYear = newAuthor.getBirthYear();
+		this.birthCountry = newAuthor.getBirthCountry();
+		this.postalAddress = newAuthor.getPostalAddress();
+		this.email = newAuthor.getEmail();
+		this.phone = newAuthor.getPhone();
+	}
+
 	public String getName() {
 		return name;
 	}
