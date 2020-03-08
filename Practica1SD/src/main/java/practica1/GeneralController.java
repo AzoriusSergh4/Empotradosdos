@@ -62,16 +62,16 @@ public class GeneralController {
 
     @RequestMapping("/addPicture")
     public String addPicture() {
-        return "newPicture";
+        return "newPicture.html";
     }
 
     @RequestMapping("/addAuthor")
     public String addAuthor() {
-        return "newAuthor";
+        return "newAuthor.html";
     }
 
     @RequestMapping("/addClient")
     public String addClient() {
-        return "newClient";
+        return "newClient.html";
     }
 }
