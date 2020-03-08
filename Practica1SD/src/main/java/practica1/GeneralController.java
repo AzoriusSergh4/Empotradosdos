@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import practica1.author.Author;
 import practica1.author.AuthorRepository;
 import practica1.client.Client;
@@ -57,5 +58,20 @@ public class GeneralController {
         model.addAttribute("clientes", clientRepository.findAll());
 
         return "galeria";
+    }
+
+    @RequestMapping("/addPicture")
+    public String addPicture() {
+        return "newPicture";
+    }
+
+    @RequestMapping("/addAuthor")
+    public String addAuthor() {
+        return "newAuthor";
+    }
+
+    @RequestMapping("/addClient")
+    public String addClient() {
+        return "newClient";
     }
 }
