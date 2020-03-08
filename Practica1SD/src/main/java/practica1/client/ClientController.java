@@ -16,7 +16,7 @@ public class ClientController {
     public String addClient(@RequestBody Client client) {
         this.clientRepository.save(client);
 
-        return "galeria.html";
+        return "galeria";
     }
 
     @PutMapping("/{id}")

@@ -16,7 +16,7 @@ public class AuthorController {
     public String addAuthor(@RequestBody Author author) {
         this.authorRepository.save(author);
 
-        return "galeria.html";
+        return "galeria";
     }
 
     @PutMapping("/{id}")

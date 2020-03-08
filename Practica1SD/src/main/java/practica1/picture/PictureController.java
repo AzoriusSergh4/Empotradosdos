@@ -16,6 +16,6 @@ public class PictureController {
     public String addPicture(@RequestBody Picture picture) {
         this.pictureRepository.save(picture);
 
-        return "galeria.html";
+        return "galeria";
     }
 }
