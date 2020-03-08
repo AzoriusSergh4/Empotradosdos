@@ -2,9 +2,29 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Galeria de cuadros</title>
 </head>
 <body>
+<div>
+    <h1>Cuadros disponibles</h1>
+    <span th:each="cuadro : ${cuadros}">
+        <div th:text="*{cuadro.title}"></div>
+    </span>
+</div>
+
+<div>
+    <h1>Autores</h1>
+    <span th:each="autor : ${autores}">
+        <div th:text="*{autor.name}"></div>
+    </span>
+</div>
+
+<div>
+    <h1>Clientes</h1>
+    <span th:each="cliente : ${clientes}">
+        <div th:text="*{cliente.name}"></div>
+    </span>
+</div>
 
 </body>
 </html>
