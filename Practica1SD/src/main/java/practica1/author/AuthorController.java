@@ -14,6 +14,23 @@ public class AuthorController {
     @Autowired
     private AuthorRepository authorRepository;
 
+    @RequestMapping("/addAuthor")
+    public String addAuthor(Model model) {
+        model.addAttribute("author", new Author());
+
+        return "author";
+    }
+
+    @RequestMapping("/editAuthor/{id}")
+    public String editAuthor(Model model, @PathVariable long id) {
+        Optional<Author> optional = this.authorRepository.findById(id);
+        if(optional.isPresent()){
+            model.addAttribute("author", optional.get());
+        }
+
+        return "author";
+    }
+
     @PostMapping("/")
     public String addAuthor(Model model, @RequestParam Map<String, String> mappedAuthor) {
         Author author = new Author();

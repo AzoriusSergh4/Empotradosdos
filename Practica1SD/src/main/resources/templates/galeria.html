@@ -47,14 +47,14 @@
 	 	<div style="text-align: center">
 		    <h1>
 		        Autores
-		        <a href="/addAuthor" type="button">
+		        <a href="/author/addAuthor" type="button">
 		            <i class="material-icons">add</i>
 		        </a>
 		    </h1>
 		    <span th:each="autor : ${autores}">
 		        <div>
 		            <span th:text="*{autor.name}"></span>
-		            <a href="/" type="button">
+		            <a th:href="@{'/author/editAuthor/' + ${autor.id}}" type="button">
 		                <i class="material-icons">edit</i>
 		            </a>
 		        </div>

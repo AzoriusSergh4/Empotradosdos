@@ -76,11 +76,6 @@ public class GeneralController {
         return "picture";
     }
 
-    @RequestMapping("/addAuthor")
-    public String addAuthor() {
-        return "author";
-    }
-
     @RequestMapping("/addClient")
     public String addClient() {
         return "client";

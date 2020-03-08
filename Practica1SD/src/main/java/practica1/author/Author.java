@@ -56,6 +56,9 @@ public class Author {
 		this.phone = newAuthor.getPhone();
 	}
 
+	public long getId() {
+		return id;
+	}
 	public String getName() {
 		return name;
 	}
