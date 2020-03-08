@@ -1,4 +1,4 @@
-package practica1;
+package practica1.client;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Author {
+public class Client {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -15,23 +15,18 @@ public class Author {
 	private String name;
 	private String surnames;
 	private String nif;
-	private int birthYear;
-	private String birthCountry;
 	private String postalAddress;
 	private String email;
 	private String phone;
 	
-	public Author() {
+	public Client() {
 		
 	}
 	
-	public Author(String name, String surnames, String nif, int birthYear, String birthCountry, String postalAddress,
-			String email, String phone) {
+	public Client(String name, String surnames, String nif, String postalAddress, String email, String phone) {
 		this.name = name;
 		this.surnames = surnames;
 		this.nif = nif;
-		this.birthYear = birthYear;
-		this.birthCountry = birthCountry;
 		this.postalAddress = postalAddress;
 		this.email = email;
 		this.phone = phone;
@@ -53,18 +48,6 @@ public class Author {
 	}
 	public void setNif(String nif) {
 		this.nif = nif;
-	}
-	public int getBirthYear() {
-		return birthYear;
-	}
-	public void setBirthYear(int birthYear) {
-		this.birthYear = birthYear;
-	}
-	public String getBirthCountry() {
-		return birthCountry;
-	}
-	public void setBirthCountry(String birthCountry) {
-		this.birthCountry = birthCountry;
 	}
 	public String getPostalAddress() {
 		return postalAddress;
