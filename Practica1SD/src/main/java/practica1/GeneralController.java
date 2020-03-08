@@ -47,8 +47,6 @@ public class GeneralController {
 	        Client buyer = new Client("Fernado", "López", "11111111H", "Calle Tulipán, s/n, 28933 Móstoles, Madrid",
 	                "compradorfernandolopez@gmail.com", "678912354");
 	        clientRepository.save(buyer);
-	
-	       
 	        
 	        Picture cuadro = new SoldPicture("Bacon", "Un cuadro de un crujiente bacon frito",
 				        2017, 30.52, 26.88, 3000, author, buyer, new Date(dateFormat.parse("12/01/2020").getTime()));
