@@ -18,12 +18,12 @@ public class AuthorController {
     }
 
     @PutMapping("/{id}")
-        public void editAuthor(@PathVariable long id, @RequestBody Author author) {
-            Optional<Author> optional = this.authorRepository.findById(id);
-            if(optional.isPresent()){
-                Author previousAuthor = optional.get();
-                previousAuthor.updateAuthor(author);
-                this.authorRepository.save(previousAuthor);
-            }
+    public void editAuthor(@PathVariable long id, @RequestBody Author author) {
+        Optional<Author> optional = this.authorRepository.findById(id);
+        if(optional.isPresent()){
+            Author previousAuthor = optional.get();
+            previousAuthor.updateAuthor(author);
+            this.authorRepository.save(previousAuthor);
+        }
     }
 }
