@@ -16,7 +16,7 @@ public class ClientController {
 
     @RequestMapping("/addClient")
     public String addClient(Model model) {
-        return "client";
+        return "newClient";
     }
 
     @RequestMapping("/editClient/{id}")

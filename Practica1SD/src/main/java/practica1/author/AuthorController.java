@@ -16,7 +16,7 @@ public class AuthorController {
 
     @RequestMapping("/addAuthor")
     public String addAuthor(Model model) {
-        return "author";
+        return "newAuthor";
     }
 
     @RequestMapping("/editAuthor/{id}")

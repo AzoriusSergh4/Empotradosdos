@@ -11,8 +11,6 @@ import practica1.client.Client;
 import practica1.client.ClientRepository;
 import practica1.picture.Picture;
 import practica1.picture.PictureRepository;
-import practica1.picture.soldPicture.SoldPicture;
-import practica1.picture.soldPicture.SoldPictureRepository;
 
 import javax.annotation.PostConstruct;
 import java.sql.Date;
@@ -21,9 +19,6 @@ import java.text.SimpleDateFormat;
 
 @Controller
 public class GeneralController {
-
-    @Autowired
-    private SoldPictureRepository soldPictureRepository;
 
     @Autowired
     private PictureRepository pictureRepository;
@@ -48,12 +43,12 @@ public class GeneralController {
 	                "compradorfernandolopez@gmail.com", "678912354");
 	        clientRepository.save(buyer);
 	        
-	        Picture cuadro = new SoldPicture("Bacon", "Un cuadro de un crujiente bacon frito",
+	        Picture cuadro = new Picture("Bacon", "Un cuadro de un crujiente bacon frito",
 				        2017, 30.52, 26.88, 3000, author, buyer, new Date(dateFormat.parse("12/01/2020").getTime()));
 			
 	        pictureRepository.save(cuadro);
 	        
-	        Picture cuadro2 = new Picture("Cerdo", "Cerdo sin bacon", 2016, 41.43, 23.45, 1000, author);
+	        Picture cuadro2 = new Picture("Cerdo", "Cerdo sin bacon", 2016, 41.43, 23.45, 1000, author, null, null);
 	        pictureRepository.save(cuadro2);
     	} catch (ParseException e) {
 			// TODO Auto-generated catch block
