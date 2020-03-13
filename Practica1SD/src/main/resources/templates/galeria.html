@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Galeria de cuadros</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>	
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -14,28 +15,28 @@
 
 	<ul class="nav nav-tabs" id="galeriaNavbar" role="tablist">
 	  <li class="nav-item">
-	    <a class="nav-link active" id="picture-tab" data-toggle="tab" href="#picture" role="tab" aria-controls="picture" aria-selected="true">Cuadros</a>
+	    <a class="nav-link active" id="cuadro-tab" data-toggle="tab" href="#cuadro" role="tab" aria-controls="cuadro" aria-selected="true">Cuadros</a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link" id="author-tab" data-toggle="tab" href="#author" role="tab" aria-controls="author" aria-selected="false">Autores</a>
+	    <a class="nav-link" id="autor-tab" data-toggle="tab" href="#autor" role="tab" aria-controls="autor" aria-selected="false">Autores</a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link" id="client-tab" data-toggle="tab" href="#client" role="tab" aria-controls="client" aria-selected="false">Clientes</a>
+	    <a class="nav-link" id="cliente-tab" data-toggle="tab" href="#cliente" role="tab" aria-controls="cliente" aria-selected="false">Clientes</a>
 	  </li>
 	</ul>
 	
 	<div class="tab-content">
-		<div class="tab-pane active" id="picture" role="tabpanel" aria-labelledby="picture-tab">
+		<div class="tab-pane active" id="cuadro" role="tabpanel" aria-labelledby="cuadro-tab">
 			<div style="text-align: center">
 			    <h1>
 			        Cuadros disponibles
-			        <a href="/addPicture" type="button">
+			        <a href="/addCuadro" type="button">
 			            <i class="material-icons">add</i>
 			        </a>
 			    </h1>
 			    <span th:each="cuadro : ${cuadros}">
 			        <div>
-			            <span th:text="*{cuadro.title}"></span>
+			            <span th:text="*{cuadro.titulo}"></span>
 			            <a href="/" type="button">
 			                <i class="material-icons">edit</i>
 			            </a>
@@ -43,36 +44,36 @@
 			    </span>
 			</div>
 		</div>
-	 <div class="tab-pane" id="author" role="tabpanel" aria-labelledby="author-tab">
+	 <div class="tab-pane" id="autor" role="tabpanel" aria-labelledby="autor-tab">
 	 	<div style="text-align: center">
 		    <h1>
 		        Autores
-		        <a href="/author/addAuthor" type="button">
+		        <a href="/autor/addAutor" type="button">
 		            <i class="material-icons">add</i>
 		        </a>
 		    </h1>
 		    <span th:each="autor : ${autores}">
 		        <div>
-		            <span th:text="*{autor.name}"></span>
-		            <a th:href="@{'/author/editAuthor/' + ${autor.id}}" type="button">
+		            <span th:text="*{autor.nombre}"></span>
+		            <a th:href="@{'/autor/editarAutor/' + ${autor.id}}" type="button">
 		                <i class="material-icons">edit</i>
 		            </a>
 		        </div>
 		    </span>
 		</div>
 	</div>
-	 <div class="tab-pane" id="client" role="tabpanel" aria-labelledby="client-tab">
+	 <div class="tab-pane" id="cliente" role="tabpanel" aria-labelledby="cliente-tab">
 		  	<div style="text-align: center">
 			    <h1>
 			        Clientes
-			        <a href="/client/addClient" type="button">
+			        <a href="/cliente/addCliente" type="button">
 			            <i class="material-icons">add</i>
 			        </a>
 			    </h1>
 			    <span th:each="cliente : ${clientes}">
 			        <div>
-			            <span th:text="*{cliente.name}"></span>
-			            <a th:href="@{'/client/editClient/' + ${cliente.id}}" type="button">
+			            <span th:text="*{cliente.nombre}"></span>
+			            <a th:href="@{'/cliente/editarCliente/' + ${cliente.id}}" type="button">
 			                <i class="material-icons">edit</i>
 			            </a>
 			        </div>

@@ -1,4 +1,4 @@
-package practica1.picture;
+package practica1.cuadro;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/picture")
-public class PictureController {
+@RequestMapping("/cuadro")
+public class CuadroController {
     @Autowired
-    private PictureRepository pictureRepository;
+    private CuadroRepository cuadroRepository;
 
     @PostMapping("/")
-    public String addPicture(@RequestBody Picture picture) {
-        this.pictureRepository.save(picture);
+    public String addCuadro(@RequestBody Cuadro cuadro) {
+        this.cuadroRepository.save(cuadro);
 
         return "galeria";
     }

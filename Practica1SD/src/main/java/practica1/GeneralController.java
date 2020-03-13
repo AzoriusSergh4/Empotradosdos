@@ -5,12 +5,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import practica1.author.Author;
-import practica1.author.AuthorRepository;
-import practica1.client.Client;
-import practica1.client.ClientRepository;
-import practica1.picture.Picture;
-import practica1.picture.PictureRepository;
+
+import practica1.autor.Autor;
+import practica1.autor.AutorRepository;
+import practica1.cliente.Cliente;
+import practica1.cliente.ClienteRepository;
+import practica1.cuadro.Cuadro;
+import practica1.cuadro.CuadroRepository;
 
 import javax.annotation.PostConstruct;
 import java.sql.Date;
@@ -21,35 +22,35 @@ import java.text.SimpleDateFormat;
 public class GeneralController {
 
     @Autowired
-    private PictureRepository pictureRepository;
+    private CuadroRepository cuadroRepository;
 
     @Autowired
-    private ClientRepository clientRepository;
+    private ClienteRepository clienteRepository;
 
     @Autowired
-    private AuthorRepository authorRepository;
+    private AutorRepository autorRepository;
 
     @PostConstruct
     public void init() {
     	try {
     	
-    		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    		SimpleDateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
     	
-	        Author author = new Author("José", "Pérez", "22222222J", 1972, "Ecuador",
+	        Autor autor = new Autor("José", "Pérez", "22222222J", 1972, "Ecuador",
 	                "Av. 6 de Diciembre, Quito 170505, Ecuador", "pintorjoseperez@gmail.com", "5932498124");
-	        authorRepository.save(author);
+	        autorRepository.save(autor);
 	
-	        Client buyer = new Client("Fernado", "López", "11111111H", "Calle Tulipán, s/n, 28933 Móstoles, Madrid",
+	        Cliente comprador = new Cliente("Fernado", "López", "11111111H", "Calle Tulipán, s/n, 28933 Móstoles, Madrid",
 	                "compradorfernandolopez@gmail.com", "678912354");
-	        clientRepository.save(buyer);
+	        clienteRepository.save(comprador);
 	        
-	        Picture cuadro = new Picture("Bacon", "Un cuadro de un crujiente bacon frito",
-				        2017, 30.52, 26.88, 3000, author, buyer, new Date(dateFormat.parse("12/01/2020").getTime()));
+	        Cuadro cuadro = new Cuadro("Bacon", "Un cuadro de un crujiente bacon frito",
+				        2017, 30.52, 26.88, 3000, autor, comprador, new Date(fecha.parse("12/01/2020").getTime()));
 			
-	        pictureRepository.save(cuadro);
+	        cuadroRepository.save(cuadro);
 	        
-	        Picture cuadro2 = new Picture("Cerdo", "Cerdo sin bacon", 2016, 41.43, 23.45, 1000, author, null, null);
-	        pictureRepository.save(cuadro2);
+	        Cuadro cuadro2 = new Cuadro("Cerdo", "Cerdo sin bacon", 2016, 41.43, 23.45, 1000, autor, null, null);
+	        cuadroRepository.save(cuadro2);
     	} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -59,15 +60,15 @@ public class GeneralController {
     @GetMapping("/")
     public String getGalleryInfo(Model model) {
 
-        model.addAttribute("cuadros", pictureRepository.findAll());
-        model.addAttribute("autores", authorRepository.findAll());
-        model.addAttribute("clientes", clientRepository.findAll());
+        model.addAttribute("cuadros", cuadroRepository.findAll());
+        model.addAttribute("autores", autorRepository.findAll());
+        model.addAttribute("clientes", clienteRepository.findAll());
 
         return "galeria";
     }
 
-    @RequestMapping("/addPicture")
-    public String addPicture() {
-        return "picture";
+    @RequestMapping("/addCuadro")
+    public String addCuadro() {
+        return "nuevoCuadro";
     }
 }

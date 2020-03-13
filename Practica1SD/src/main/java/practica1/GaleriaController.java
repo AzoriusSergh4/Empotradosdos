@@ -4,17 +4,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import practica1.picture.PictureRepository;
+
+import practica1.cuadro.CuadroRepository;
 
 @Controller
-public class GalleryController {
+public class GaleriaController {
 	 @Autowired
-	   private PictureRepository pictureRepository;
+	   private CuadroRepository cuadroRepository;
 
 	   @RequestMapping("/")
 	   public String tablon(Model model) {
 				
-	      model.addAttribute("cuadros", pictureRepository.findAll());
+	      model.addAttribute("cuadros", cuadroRepository.findAll());
 
 	      return "galeria";
 	   }
