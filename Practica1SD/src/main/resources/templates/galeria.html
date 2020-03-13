@@ -27,17 +27,19 @@
 	
 	<div class="tab-content">
 		<div class="tab-pane active" id="cuadro" role="tabpanel" aria-labelledby="cuadro-tab">
-			<div style="text-align: center">
+			<div style="text-align: center">			
 			    <h1>
 			        Cuadros disponibles
-			        <a href="/addCuadro" type="button">
+			        <a href="/cuadro/addCuadro" type="button">
 			            <i class="material-icons">add</i>
 			        </a>
 			    </h1>
 			    <span th:each="cuadro : ${cuadros}">
 			        <div>
 			            <span th:text="*{cuadro.titulo}"></span>
-			            <a href="/" type="button">
+			             <a th:href="@{'/cuadro/editarCuadro/' + ${cuadro.id}}" type="button">
+			            
+			            
 			                <i class="material-icons">edit</i>
 			            </a>
 			        </div>
@@ -46,7 +48,7 @@
 		</div>
 	 <div class="tab-pane" id="autor" role="tabpanel" aria-labelledby="autor-tab">
 	 	<div style="text-align: center">
-		    <h1>
+	     <h1>
 		        Autores
 		        <a href="/autor/addAutor" type="button">
 		            <i class="material-icons">add</i>
@@ -56,6 +58,8 @@
 		        <div>
 		            <span th:text="*{autor.nombre}"></span>
 		            <a th:href="@{'/autor/editarAutor/' + ${autor.id}}" type="button">
+		            
+		            
 		                <i class="material-icons">edit</i>
 		            </a>
 		        </div>

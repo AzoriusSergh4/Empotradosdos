@@ -67,8 +67,4 @@ public class GeneralController {
         return "galeria";
     }
 
-    @RequestMapping("/addCuadro")
-    public String addCuadro() {
-        return "nuevoCuadro";
-    }
 }

@@ -45,6 +45,19 @@ public class Cuadro {
 		this.comprador = comprador;
 		this.autor = autor;
 	}
+	
+	
+	public void actualizarCuadro(Cuadro nuevoCuadro){
+		this.titulo = nuevoCuadro.titulo;
+		this.descripcion = nuevoCuadro.descripcion;
+		this.anyoFinalizacion = nuevoCuadro.anyoFinalizacion;
+		this.anchura = nuevoCuadro.anchura;
+		this.altura = nuevoCuadro.altura;
+		this.precio = nuevoCuadro.precio;
+		this.fechaVenta = nuevoCuadro.fechaVenta;
+		this.comprador = nuevoCuadro.comprador;
+		this.autor = nuevoCuadro.autor;
+	}
 
 	public String getTitulo() {
 		return titulo;

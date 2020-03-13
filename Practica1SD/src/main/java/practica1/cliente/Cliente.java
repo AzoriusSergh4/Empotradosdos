@@ -5,8 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import practica1.autor.Autor;
-
 @Entity
 public class Cliente {
 	
@@ -28,7 +26,6 @@ public class Cliente {
 	public Cliente(String nombre, String apellidos, String nif, String direccionPostal, String email,
 			String telefono) {
 		super();
-		this.id = id;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.nif = nif;
