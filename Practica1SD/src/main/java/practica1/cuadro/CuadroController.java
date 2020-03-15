@@ -13,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -34,6 +33,14 @@ public class CuadroController extends GaleriaController{
     
     @Autowired
     private ClienteRepository clienteRepository;
+    
+    
+    @RequestMapping("/mostrarCuadros")
+    public String mostrarCuadros(Model model) {
+    	cargaGaleria(model);    	
+        return "cuadros";
+    }
+ 
     
     @RequestMapping("/addCuadro")
     public String addCuadro(Model model) {
@@ -65,7 +72,7 @@ public class CuadroController extends GaleriaController{
     	Cuadro cuadro = crearCuadroDesdeMap(mappedCuadro);
         this.cuadroRepository.save(cuadro);
         cargaGaleria(model);
-        return "galeria";
+        return "cuadros";
     }
     
     @GetMapping("/{id}")
@@ -79,7 +86,44 @@ public class CuadroController extends GaleriaController{
             this.cuadroRepository.save(cuadroAnterior);
         }
         cargaGaleria(model);
-        return "galeria";
+        return "cuadros";
+    }
+    
+    
+    @GetMapping("/buscarPorTitulo")
+    public String buscarCuadroPorTitulo(Model model, @RequestParam String titulo) {
+        if (titulo == null || titulo.equals("")) {
+            cargaGaleria(model);
+        } else {
+            cargaGaleria(model);
+            model.addAttribute("cuadros", cuadroRepository.findByTituloContainsIgnoreCase(titulo));
+        }
+
+        return "cuadros";
+    }
+    
+    @GetMapping("/buscarPorAutor")
+    public String buscarCuadroPorAutor(Model model, @RequestParam Autor autor) {
+        if (autor == null) {
+            cargaGaleria(model);
+        } else {
+            cargaGaleria(model);
+            model.addAttribute("cuadros", cuadroRepository.findByAutor(autor));
+        }
+
+        return "cuadros";
+    }
+    
+    @GetMapping("/buscarPorComprador")
+    public String buscarCuadroPorComprador(Model model, @RequestParam Cliente comprador) {
+        if (comprador == null) {
+            cargaGaleria(model);
+        } else {
+            cargaGaleria(model);
+            model.addAttribute("cuadros", cuadroRepository.findByComprador(comprador));
+        }
+
+        return "cuadros";
     }
 
     private Cuadro crearCuadroDesdeMap(Map<String, String> mappedCuadro) {

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Autores</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="/styles/styles.css" rel="stylesheet" />
+    	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>	
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<body>
+	
+	<div style="text-align: center">
+			<h1>
+		        Autores adscritos
+		        <a href="/autor/addAutor" type="button">
+		            <i class="material-icons">add</i>
+		        </a>
+		    </h1>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm">
+						<form action="/autor/buscarPorNombre" method="get">
+							<div class="form-group">
+								<input class="form-control" type='text' id="nombreAutor" name='nombre' placeholder="Nombre"/>
+							</div>
+						</form>
+					</div>
+					<div class="col-sm">
+						<form action="/autor/buscarPorApellidos" method="get">
+							<div class="form-group">
+								<input class="form-control" type='text' id="apellidosAutor" name='apellidos' placeholder="Apellidos"/>
+							</div>
+						</form>
+					</div>
+					<div class="col-sm">
+						<form action="/autor/buscarPorEmail" method="get">
+						<div class="form-group">
+							<input class="form-control" type='text' id="emailAutor" name='email' placeholder="Email"/>
+						</div>
+					</form>
+					</div>
+				</div>
+			</div>
+		    <span th:each="autor : ${autores}">
+		        <div>
+		            <span th:text="*{autor.nombre}"></span>
+		            <a th:href="@{'/autor/editarAutor/' + ${autor.id}}" type="button">		            
+		                <i class="material-icons">edit</i>
+		            </a>
+		        </div>
+		    </span>
+		    
+		    <a th:href="@{'/'}" type="button" class="cancel-button">Atrás</a>
+		</div>
+	</div>
+</body>
+</html>

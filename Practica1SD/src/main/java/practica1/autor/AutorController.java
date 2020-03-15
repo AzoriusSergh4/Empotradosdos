@@ -15,6 +15,14 @@ import java.util.Optional;
 public class AutorController extends GaleriaController{
     @Autowired
     private AutorRepository autorRepository;
+    
+    
+    
+    @RequestMapping("/mostrarAutores")
+    public String mostrarCuadros(Model model) {
+    	cargaGaleria(model);    	
+        return "autores";
+    }
 
     @RequestMapping("/addAutor")
     public String addAutor(Model model) {
@@ -37,7 +45,7 @@ public class AutorController extends GaleriaController{
 
         this.autorRepository.save(autor);
         cargaGaleria(model);
-        return "galeria";
+        return "autores";
     }
 
     @GetMapping("/{id}")
@@ -51,7 +59,7 @@ public class AutorController extends GaleriaController{
             this.autorRepository.save(autorAnterior);
         }
         cargaGaleria(model);
-        return "galeria";
+        return "autores";
     }
 
     @GetMapping("/buscarPorNombre")
@@ -63,7 +71,7 @@ public class AutorController extends GaleriaController{
             model.addAttribute("autores", autorRepository.findByNombreContainsIgnoreCase(nombre));
         }
 
-        return "galeria";
+        return "autores";
     }
 
     @GetMapping("/buscarPorApellidos")
@@ -75,7 +83,7 @@ public class AutorController extends GaleriaController{
             model.addAttribute("autores", autorRepository.findByApellidosContainsIgnoreCase(apellidos));
         }
 
-        return "galeria";
+        return "autores";
     }
 
     @GetMapping("/buscarPorEmail")
@@ -87,7 +95,7 @@ public class AutorController extends GaleriaController{
             model.addAttribute("autores", autorRepository.findByEmailContainsIgnoreCase(email));
         }
 
-        return "galeria";
+        return "autores";
     }
 
     private Autor crearAutorDesdeMap(Map<String, String> mappedAutor) {

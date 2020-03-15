@@ -2,141 +2,35 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Galeria de cuadros</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-   	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>	
+<title>Galería</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="/styles/styles.css" rel="stylesheet" />
+    	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>	
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>	
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </head>
 <body>
-
-	<ul class="nav nav-tabs" id="galeriaNavbar" role="tablist">
-	  <li class="nav-item">
-	    <a class="nav-link active" id="cuadro-tab" data-toggle="tab" href="#cuadro" role="tab" aria-controls="cuadro" aria-selected="true">Cuadros</a>
-	  </li>
-	  <li class="nav-item">
-	    <a class="nav-link" id="autor-tab" data-toggle="tab" href="#autor" role="tab" aria-controls="autor" aria-selected="false">Autores</a>
-	  </li>
-	  <li class="nav-item">
-	    <a class="nav-link" id="cliente-tab" data-toggle="tab" href="#cliente" role="tab" aria-controls="cliente" aria-selected="false">Clientes</a>
-	  </li>
-	</ul>
-	
-	<div class="tab-content">
-		<div class="tab-pane active" id="cuadro" role="tabpanel" aria-labelledby="cuadro-tab">
 			<div style="text-align: center">			
 			    <h1>
 			        Cuadros disponibles
-			        <a href="/cuadro/addCuadro" type="button">
-			            <i class="material-icons">add</i>
+			        <a href="/cuadro/mostrarCuadros" type="button">
+			            <i class="material-icons">photo_size_select_actual</i>
 			        </a>
 			    </h1>
-			    <span th:each="cuadro : ${cuadros}">
-			        <div>
-			            <span th:text="*{cuadro.titulo}"></span>
-			             <a th:href="@{'/cuadro/editarCuadro/' + ${cuadro.id}}" type="button">
-			            
-			            
-			                <i class="material-icons">edit</i>
-			            </a>
-			        </div>
-			    </span>
-			</div>
-		</div>
-	 <div class="tab-pane" id="autor" role="tabpanel" aria-labelledby="autor-tab">
-	 	<div style="text-align: center">
-			<h1>
-		        Autores
-		        <a href="/autor/addAutor" type="button">
-		            <i class="material-icons">add</i>
-		        </a>
-		    </h1>
-			<div class="container">
-				<div class="row">
-					<div class="col-sm">
-						<form action="/autor/buscarPorNombre" method="get">
-							<div class="form-group">
-								<input class="form-control" type='text' id="nombreAutor" name='nombre' placeholder="Nombre"/>
-							</div>
-						</form>
-					</div>
-					<div class="col-sm">
-						<form action="/autor/buscarPorApellidos" method="get">
-							<div class="form-group">
-								<input class="form-control" type='text' id="apellidosAutor" name='apellidos' placeholder="Apellidos"/>
-							</div>
-						</form>
-					</div>
-					<div class="col-sm">
-						<form action="/autor/buscarPorEmail" method="get">
-						<div class="form-group">
-							<input class="form-control" type='text' id="emailAutor" name='email' placeholder="Email"/>
-						</div>
-					</form>
-					</div>
-				</div>
-			</div>
-		    <span th:each="autor : ${autores}">
-		        <div>
-		            <span th:text="*{autor.nombre}"></span>
-		            <a th:href="@{'/autor/editarAutor/' + ${autor.id}}" type="button">
-		            
-		            
-		                <i class="material-icons">edit</i>
-		            </a>
-		        </div>
-		    </span>
-		</div>
-	</div>
-	 <div class="tab-pane" id="cliente" role="tabpanel" aria-labelledby="cliente-tab">
-		  	<div style="text-align: center">
-			    <h1>
-			        Clientes
-			        <a href="/cliente/addCliente" type="button">
-			            <i class="material-icons">add</i>
+			     <h1>
+			        Autores adscritos
+			        <a href="/autor/mostrarAutores" type="button">
+			            <i class="material-icons">brush</i>
 			        </a>
 			    </h1>
-				<div class="container">
-					<div class="row">
-						<div class="col-sm">
-							<form action="/cliente/buscarPorNombre" method="get">
-								<div class="form-group">
-									<input class="form-control" type='text' id="nombreCliente" name='nombre' placeholder="Nombre"/>
-								</div>
-							</form>
-						</div>
-						<div class="col-sm">
-							<form action="/cliente/buscarPorApellidos" method="get">
-								<div class="form-group">
-									<input class="form-control" type='text' id="apellidosCliente" name='apellidos' placeholder="Apellidos"/>
-								</div>
-							</form>
-						</div>
-						<div class="col-sm">
-							<form action="/cliente/buscarPorEmail" method="get">
-								<div class="form-group">
-									<input class="form-control" type='text' id="emailCliente" name='email' placeholder="Email"/>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-
-			    <span th:each="cliente : ${clientes}">
-			        <div>
-			            <span th:text="*{cliente.nombre}"></span>
-			            <a th:href="@{'/cliente/editarCliente/' + ${cliente.id}}" type="button">
-			                <i class="material-icons">edit</i>
-			            </a>
-			        </div>
-			    </span>
-			</div>
+			     <h1>
+			        Clientes afiliados
+			        <a href="/cliente/mostrarClientes" type="button">
+			            <i class="material-icons">person</i>
+			        </a>
+			    </h1>
 		</div>
-	</div>
-
 	
 </body>
 </html>

@@ -15,6 +15,13 @@ import java.util.Optional;
 public class ClienteController extends GaleriaController{
     @Autowired
     private ClienteRepository clienteRepository;
+    
+    
+    @RequestMapping("/mostrarClientes")
+    public String mostrarCuadros(Model model) {
+    	cargaGaleria(model);    	
+        return "clientes";
+    }
 
     @RequestMapping("/addCliente")
     public String addClient(Model model) {
@@ -37,7 +44,7 @@ public class ClienteController extends GaleriaController{
 
         this.clienteRepository.save(cliente);
         cargaGaleria(model);
-        return "galeria";
+        return "clientes";
     }
 
     @GetMapping("/{id}")
@@ -51,7 +58,7 @@ public class ClienteController extends GaleriaController{
             this.clienteRepository.save(clienteAnterior);
         }
         cargaGaleria(model);
-        return "galeria";
+        return "clientes";
     }
 
     @GetMapping("/buscarPorNombre")
@@ -63,7 +70,7 @@ public class ClienteController extends GaleriaController{
             model.addAttribute("clientes", clienteRepository.findByNombreContainsIgnoreCase(nombre));
         }
 
-        return "galeria";
+        return "clientes";
     }
 
     @GetMapping("/buscarPorApellidos")
@@ -75,7 +82,7 @@ public class ClienteController extends GaleriaController{
             model.addAttribute("clientes", clienteRepository.findByApellidosContainsIgnoreCase(apellidos));
         }
 
-        return "galeria";
+        return "clientes";
     }
 
     @GetMapping("/buscarPorEmail")
@@ -87,7 +94,7 @@ public class ClienteController extends GaleriaController{
             model.addAttribute("clientes", clienteRepository.findByEmailContainsIgnoreCase(email));
         }
 
-        return "galeria";
+        return "clientes";
     }
 
     private Cliente crearClienteDesdeMap(Map<String, String> mappedCliente) {

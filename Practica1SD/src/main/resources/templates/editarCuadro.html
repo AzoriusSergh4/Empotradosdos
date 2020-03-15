@@ -52,7 +52,7 @@
 
                 <div class="form-group">
                     <label for="entradaFechaVenta">Fecha de venta:</label>
-                    <input th:value="${cuadro.fechaVenta}" class="form-control" type='date' id="entradaFechaVenta" name='fechaVenta' placeholder="Fecha venta" required="required"/>
+                    <input th:value="${cuadro.fechaVenta}" class="form-control" type='date' id="entradaFechaVenta" name='fechaVenta' placeholder="Fecha venta"/>
                 </div>
 
                 <div class="form-group">
@@ -65,7 +65,7 @@
 
 
                 <button type="submit" class="btn btn-primary">Enviar</button>
-                <a th:href="@{'/'}" type="button" class="cancel-button">Cancelar</a>
+                <a th:href="@{'/cuadro/mostrarCuadros'}" type="button" class="cancel-button">Cancelar</a>
 
             </form>
         </div>
