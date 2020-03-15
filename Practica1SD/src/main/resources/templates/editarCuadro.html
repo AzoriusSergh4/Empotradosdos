@@ -58,7 +58,7 @@
                 <label for="entradaComprador">Comprador:</label>
                 <select class="form-control" id="entradaComprador" name='comprador'>
 	    			<option value="null">---</option>
-	    			<option th:each="cliente : ${clientes}" th:value="${cliente.nif}" th:text="${cliente.nombre + ' ' + cliente.apellidos}" th:selected="${cliente.nif == cuadro.comprador.nif}"></option>
+	    			<option th:each="cliente : ${clientes}" th:value="${cliente.nif}" th:text="${cliente.nombre + ' ' + cliente.apellidos}" th:selected="${cliente.nif == cuadro.comprador?.nif}"></option>
 	    		</select>
             </div>
                         
