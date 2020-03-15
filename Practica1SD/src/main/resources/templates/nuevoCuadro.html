@@ -16,7 +16,7 @@
 	    <form action="/cuadro/" method="post">
 	    	<div class="form-group">
 	    		<label for="entradaTitulo">Título:</label>
-	    		<input class="form-control" type='text' id="entradaTitulo" name='titulo' placeholder="Título"/>
+	    		<input class="form-control" type='text' id="entradaTitulo" name='titulo' placeholder="Título" required="required"/>
 	    	</div>
 	    	
 	    		<div class="form-group">
@@ -28,32 +28,32 @@
 	    	
 	    	<div class="form-group">
 	    		<label for="entradaDescripcion">Descripción</label>
-    			<textarea class="form-control" id="entradaDescripcion" name="descripcion" rows="5" placeholder="Descripción"></textarea>
+    			<textarea class="form-control" id="entradaDescripcion" name="descripcion" rows="5" placeholder="Descripción" required="required"></textarea>
 	    	</div>
 	    	
 	    	<div class="form-group">
 	    		<label for="entradaAnyoFinalizacion">Año de finalización:</label>
-	    		<input class="form-control" type='text' id="entradaAnyoFinalizacion" name='anyoFinalizacion' placeholder="Año de finalización"/>
+	    		<input class="form-control" type='number' id="entradaAnyoFinalizacion" name='anyoFinalizacion' placeholder="Año de finalización" required="required"/>
 	    	</div>
 	    	
 	    	<div class="form-group">
 	    		<label for="entradaAnchura">Anchura:</label>
-	    		<input class="form-control" type='text' id="entradaAnchura" name='anchura' placeholder="Anchura"/> cm
+	    		<input class="form-control" type='number' id="entradaAnchura" name='anchura' placeholder="Anchura" required="required"/> cm
 	    	</div>
 	    	
 	    	<div class="form-group">
 	    		<label for="entradaAltura">Altura:</label>
-	    		<input class="form-control" type='text' id="entradaAltura" name='altura' placeholder="Altura"/> cm
+	    		<input class="form-control" type='number' id="entradaAltura" name='altura' placeholder="Altura" required="required"/> cm
 	    	</div>
 	    	
 	    	<div class="form-group">
 	    		<label for="entradaPrecio">Precio:</label>
-	    		<input class="form-control" type='text' id="entradaPrecio" name='precio' placeholder="Precio"/> euros
+	    		<input class="form-control" type='number' id="entradaPrecio" name='precio' placeholder="Precio" required="required"/> euros
 	    	</div>
 	    	
 	    	<div class="form-group">
 	    		<label for="entradaFechaVenta">Fecha Venta:</label>
-	    		<input class="form-control" type="date" id="entradaFechaVenta" name='fechaVenta' placeholder="Fecha Venta"/>
+	    		<input class="form-control" type="date" id="entradaFechaVenta" name='fechaVenta' placeholder="Fecha Venta" required="required"/>
 	    	</div>
 	    	
 	    	

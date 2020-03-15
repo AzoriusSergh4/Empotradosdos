@@ -14,7 +14,7 @@
         <form th:action="@{'/cuadro/' + ${cuadro.id}}" method="get">
             <div class="form-group">
                 <label for="entradaTitulo">Titulo:</label>
-                <input th:value="${cuadro.titulo}" class="form-control" type='text' id="entradaTitulo" name='titulo' placeholder="titulo"/>
+                <input th:value="${cuadro.titulo}" class="form-control" type='text' id="entradaTitulo" name='titulo' placeholder="titulo" required="required"/>
             </div>
             
             <div class="form-group">
@@ -26,32 +26,32 @@
 
             <div class="form-group">
                 <label for="entradaDescripcion">Descripción:</label>
-                <textarea th:field="${cuadro.descripcion}" class="form-control" id="entradaDescripcion" name='descripcion' placeholder="Descripción"></textarea>
+                <textarea th:field="${cuadro.descripcion}" class="form-control" id="entradaDescripcion" name='descripcion' placeholder="Descripción" required="required"></textarea>
             </div>
 
             <div class="form-group">
                 <label for="entradaAnyoFinalizacion">Año Finalización:</label>
-                <input th:value="${cuadro.anyoFinalizacion}" class="form-control" type='text' id="entradaAnyoFinalizacion" name='anyoFinalizacion' placeholder="Año Finalización"/>
+                <input th:value="${cuadro.anyoFinalizacion}" class="form-control" type='number' id="entradaAnyoFinalizacion" name='anyoFinalizacion' placeholder="Año Finalización" required="required"/>
             </div>
 
             <div class="form-group">
                 <label for="entradaAnchura">Anchura:</label>
-                <input th:value="${cuadro.anchura}" class="form-control" type='text' id="entradaAnchura" name='anchura' placeholder="Anchura"/>
+                <input th:value="${cuadro.anchura}" class="form-control" type='number' id="entradaAnchura" name='anchura' placeholder="Anchura" required="required"/>
             </div>
 
            <div class="form-group">
                 <label for="entradaAltura">Altura:</label>
-                <input th:value="${cuadro.altura}" class="form-control" type='text' id="entradaAltura" name='altura' placeholder="Altura"/>
+                <input th:value="${cuadro.altura}" class="form-control" type='number' id="entradaAltura" name='altura' placeholder="Altura" required="required"/>
             </div>
 
             <div class="form-group">
                 <label for="entradaPrecio">Precio:</label>
-                <input th:value="${cuadro.precio}" class="form-control" type='text' id="entradaPrecio" name='precio' placeholder="Precio"/>
+                <input th:value="${cuadro.precio}" class="form-control" type='number' id="entradaPrecio" name='precio' placeholder="Precio" required="required"/>
             </div>
 
             <div class="form-group">
                 <label for="entradaFechaVenta">Fecha de venta:</label>
-                <input th:value="${cuadro.fechaVenta}" class="form-control" type='date' id="entradaFechaVenta" name='fechaVenta' placeholder="Fecha venta"/>
+                <input th:value="${cuadro.fechaVenta}" class="form-control" type='date' id="entradaFechaVenta" name='fechaVenta' placeholder="Fecha venta" required="required"/>
             </div>
 
             <div class="form-group">

@@ -14,42 +14,42 @@
         <form th:action="@{'/autor/' + ${autor.id}}" method="get">
             <div class="form-group">
                 <label for="entradaNombre">Nombre:</label>
-                <input th:value="${autor.nombre}" class="form-control" type='text' id="entradaNombre" name='nombre' placeholder="Nombre"/>
+                <input th:value="${autor.nombre}" class="form-control" type='text' id="entradaNombre" name='nombre' placeholder="Nombre" required="required"/>
             </div>
 
             <div class="form-group">
                 <label for="entradaApellidos">Apellidos:</label>
-                <input th:value="${autor.apellidos}" class="form-control" type='text' id="entradaApellidos" name='apellidos' placeholder="Apellidos"/>
+                <input th:value="${autor.apellidos}" class="form-control" type='text' id="entradaApellidos" name='apellidos' placeholder="Apellidos" required="required"/>
             </div>
 
             <div class="form-group">
                 <label for="entradaDNI">DNI:</label>
-                <input th:value="${autor.nif}" class="form-control" type='text' id="entradaDNI" name='nif' placeholder="DNI"/>
+                <input th:value="${autor.nif}" class="form-control" type='text' id="entradaDNI" name='nif' placeholder="DNI" required="required"/>
             </div>
 
             <div class="form-group">
                 <label for="entradaAnyoNacimiento">Año de nacimiento:</label>
-                <input th:value="${autor.anyoNacimiento}" class="form-control" type='text' id="entradaAnyoNacimiento" name='anyoNacimiento' placeholder="Año de nacimiento"/>
+                <input th:value="${autor.anyoNacimiento}" class="form-control" type='number' id="entradaAnyoNacimiento" name='anyoNacimiento' placeholder="Año de nacimiento" required="required"/>
             </div>
 
             <div class="form-group">
                 <label for="entradaPaisNacimiento">País de nacimiento:</label>
-                <input th:value="${autor.paisNacimiento}" class="form-control" type='text' id="entradaPaisNacimiento" name='paisNacimiento' placeholder="País de nacimiento"/>
+                <input th:value="${autor.paisNacimiento}" class="form-control" type='text' id="entradaPaisNacimiento" name='paisNacimiento' placeholder="País de nacimiento" required="required"/>
             </div>
 
             <div class="form-group">
                 <label for="entradaDireccionPostal">Dirección postal:</label>
-                <input th:value="${autor.direccionPostal}" class="form-control" type='text' id="entradaDireccionPostal" name='direccionPostal' placeholder="Dirección postal"/>
+                <input th:value="${autor.direccionPostal}" class="form-control" type='text' id="entradaDireccionPostal" name='direccionPostal' placeholder="Dirección postal" required="required"/>
             </div>
 
             <div class="form-group">
                 <label for="entradaEmail">Email:</label>
-                <input th:value="${autor.email}" class="form-control" type='email' id="entradaEmail" name='email' placeholder="Email"/>
+                <input th:value="${autor.email}" class="form-control" type='email' id="entradaEmail" name='email' placeholder="Email" required="required"/>
             </div>
 
             <div class="form-group">
                 <label for="entradaTelefono">Teléfono:</label>
-                <input th:value="${autor.telefono}" class="form-control" type='tel' id="entradaTelefono" name='telefono' placeholder="Teléfono"/>
+                <input th:value="${autor.telefono}" class="form-control" type='tel' id="entradaTelefono" name='telefono' placeholder="Teléfono" required="required"/>
             </div>
             
             
