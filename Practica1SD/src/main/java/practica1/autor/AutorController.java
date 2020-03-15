@@ -5,12 +5,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import practica1.GaleriaController;
+
 import java.util.Map;
 import java.util.Optional;
 
 @Controller
 @RequestMapping("/autor")
-public class AutorController {
+public class AutorController extends GaleriaController{
     @Autowired
     private AutorRepository autorRepository;
 
@@ -34,7 +36,7 @@ public class AutorController {
         Autor autor = this.crearAutorDesdeMap(mappedAutor);
 
         this.autorRepository.save(autor);
-
+        cargaGaleria(model);
         return "galeria";
     }
 
@@ -48,7 +50,7 @@ public class AutorController {
             autorAnterior.actualizarAutor(autor);
             this.autorRepository.save(autorAnterior);
         }
-
+        cargaGaleria(model);
         return "galeria";
     }
 

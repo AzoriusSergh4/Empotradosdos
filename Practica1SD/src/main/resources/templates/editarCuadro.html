@@ -19,12 +19,14 @@
             
             <div class="form-group">
                 <label for="entradaAutor">Autor:</label>
-                <input th:value="${cuadro.autor}" class="form-control" type='text' id="entradaAutor" name='autor' placeholder="Autor"/>
+               <select class="form-control" id="entradaAutor" name='autor'>
+	    			<option th:each="autor : ${autores}" th:value="${autor.nif}" th:text="${autor.nombre + ' ' + autor.apellidos}" th:selected="${autor.nif == cuadro.autor.nif}"></option>
+	    		</select>
             </div>
 
             <div class="form-group">
                 <label for="entradaDescripcion">Descripción:</label>
-                <input th:value="${cuadro.descripcion}" class="form-control" type='textarea' id="entradaDescripcion" name='descripcion' placeholder="Descripción"/>
+                <textarea th:field="${cuadro.descripcion}" class="form-control" id="entradaDescripcion" name='descripcion' placeholder="Descripción"></textarea>
             </div>
 
             <div class="form-group">
@@ -49,12 +51,15 @@
 
             <div class="form-group">
                 <label for="entradaFechaVenta">Fecha de venta:</label>
-                <input th:value="${cuadro.fechaVenta}" class="form-control" type='text' id="entradaFechaVenta" name='fechaVenta' placeholder="Fecha venta"/>
+                <input th:value="${cuadro.fechaVenta}" class="form-control" type='date' id="entradaFechaVenta" name='fechaVenta' placeholder="Fecha venta"/>
             </div>
 
             <div class="form-group">
                 <label for="entradaComprador">Comprador:</label>
-                <input th:value="${cuadro.comprador}" class="form-control" type='text' id="entradaComprador" name='comprador' placeholder="Comprador"/>
+                <select class="form-control" id="entradaComprador" name='comprador'>
+	    			<option value="null">---</option>
+	    			<option th:each="cliente : ${clientes}" th:value="${cliente.nif}" th:text="${cliente.nombre + ' ' + cliente.apellidos}" th:selected="${cliente.nif == cuadro.comprador.nif}"></option>
+	    		</select>
             </div>
                         
             

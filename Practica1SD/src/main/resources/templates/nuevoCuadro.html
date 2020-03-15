@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Nuevo Cuadro</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -12,7 +13,7 @@
 	<div class="card" style="width: 18rem;">
 	  <div class="card-body">
 	    <h1 class="card-title">Nuevo cuadro</h1>
-	    <form action="/picture/" method="post">
+	    <form action="/cuadro/" method="post">
 	    	<div class="form-group">
 	    		<label for="entradaTitulo">Título:</label>
 	    		<input class="form-control" type='text' id="entradaTitulo" name='titulo' placeholder="Título"/>
@@ -20,12 +21,14 @@
 	    	
 	    		<div class="form-group">
 	    		<label for="entradaAutor">Autor:</label>
-	    		<input class="form-control" type='text' id="entradaAutor" name='autor' placeholder="Autor"/>
+	    		<select class="form-control" id="entradaAutor" name='autor'>
+	    			<option th:each="autor : ${autores}" th:value="${autor.nif}" th:text="${autor.nombre + ' ' + autor.apellidos}"></option>
+	    		</select>
 	    	</div>
 	    	
 	    	<div class="form-group">
 	    		<label for="entradaDescripcion">Descripción</label>
-    			<textarea class="form-control" id="entradaDescripcion" rows="5"></textarea>
+    			<textarea class="form-control" id="entradaDescripcion" name="descripcion" rows="5" placeholder="Descripción"></textarea>
 	    	</div>
 	    	
 	    	<div class="form-group">
@@ -50,15 +53,21 @@
 	    	
 	    	<div class="form-group">
 	    		<label for="entradaFechaVenta">Fecha Venta:</label>
-	    		<input class="form-control" type='text' id="entradaFechaVenta" name='fechaVenta' placeholder="Fecha Venta"/>
+	    		<input class="form-control" type="date" id="entradaFechaVenta" name='fechaVenta' placeholder="Fecha Venta"/>
 	    	</div>
 	    	
 	    	
 	    	<div class="form-group">
 	    		<label for="entradaComprador">Comprador:</label>
-	    		<input class="form-control" type='text' id="entradaComprador" name='comprador' placeholder="Comprador"/>
+	    		<select class="form-control" id="entradaComprador" name='comprador'>
+	    			<option value="null">---</option>
+	    			<option th:each="cliente : ${clientes}" th:value="${cliente.nif}" th:text="${cliente.nombre + ' ' + cliente.apellidos}"></option>
+	    		</select>
 	    	</div>
 	    	
-	    	<button type="button" class="btn btn-primary">Enviar</button>
+	    	<button type="submit" class="btn btn-primary">Enviar</button>
+	   </form>
+	   </div>
+	   </div>
 </body>
 </html>

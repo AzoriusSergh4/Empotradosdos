@@ -19,7 +19,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 @Controller
-public class GeneralController {
+public class GeneralController extends GaleriaController{
 
     @Autowired
     private CuadroRepository cuadroRepository;
@@ -39,13 +39,22 @@ public class GeneralController {
 	        Autor autor = new Autor("José", "Pérez", "22222222J", 1972, "Ecuador",
 	                "Av. 6 de Diciembre, Quito 170505, Ecuador", "pintorjoseperez@gmail.com", "5932498124");
 	        autorRepository.save(autor);
+	        
+	        Autor autor2 = new Autor("Cristian", "Gálvez", "12345678F", 1945, "Panamá", "Calle Julieta 45, Ciudad de Panamá 23456, Panamá", "cgalvez@hotmail.com", "666777888");
+	        autorRepository.save(autor2);
+	        
+	        Autor autor3 = new Autor("Esteban", "Martinez", "43263954C", 1974, "España", "Calle Pintor Velázquez 32, Barcelona 34213, España", "estemart@gmail.com", "654812305");
+	        autorRepository.save(autor3);
 	
 	        Cliente comprador = new Cliente("Fernado", "López", "11111111H", "Calle Tulipán, s/n, 28933 Móstoles, Madrid",
 	                "compradorfernandolopez@gmail.com", "678912354");
 	        clienteRepository.save(comprador);
 	        
+	        Cliente cliente2 = new Cliente("Carmen", "Lozano", "22222222D", "Calle Flamenco, 34, 28609 Villamantilla, Madrid", "carmenarte@hotmail.com", "678888973");
+	        clienteRepository.save(cliente2);
+	        
 	        Cuadro cuadro = new Cuadro("Bacon", "Un cuadro de un crujiente bacon frito",
-				        2017, 30.52, 26.88, 3000, autor, comprador, new Date(fecha.parse("12/01/2020").getTime()));
+				        2017, 30.52, 26.88, 3000, autor2, comprador, new Date(fecha.parse("12/01/2020").getTime()));
 			
 	        cuadroRepository.save(cuadro);
 	        
@@ -60,9 +69,7 @@ public class GeneralController {
     @GetMapping("/")
     public String getGalleryInfo(Model model) {
 
-        model.addAttribute("cuadros", cuadroRepository.findAll());
-        model.addAttribute("autores", autorRepository.findAll());
-        model.addAttribute("clientes", clienteRepository.findAll());
+    	cargaGaleria(model);
 
         return "galeria";
     }

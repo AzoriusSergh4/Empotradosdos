@@ -5,12 +5,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import practica1.GaleriaController;
+
 import java.util.Map;
 import java.util.Optional;
 
 @Controller
 @RequestMapping("/cliente")
-public class ClienteController {
+public class ClienteController extends GaleriaController{
     @Autowired
     private ClienteRepository clienteRepository;
 
@@ -34,7 +36,7 @@ public class ClienteController {
         Cliente cliente = this.crearClienteDesdeMap(mappedCliente);
 
         this.clienteRepository.save(cliente);
-
+        cargaGaleria(model);
         return "galeria";
     }
 
@@ -48,7 +50,7 @@ public class ClienteController {
             clienteAnterior.actualizarCliente(cliente);
             this.clienteRepository.save(clienteAnterior);
         }
-
+        cargaGaleria(model);
         return "galeria";
     }
 
