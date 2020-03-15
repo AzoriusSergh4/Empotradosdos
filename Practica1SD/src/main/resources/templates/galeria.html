@@ -48,12 +48,37 @@
 		</div>
 	 <div class="tab-pane" id="autor" role="tabpanel" aria-labelledby="autor-tab">
 	 	<div style="text-align: center">
-	     <h1>
+			<h1>
 		        Autores
 		        <a href="/autor/addAutor" type="button">
 		            <i class="material-icons">add</i>
 		        </a>
 		    </h1>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm">
+						<form action="/autor/buscarPorNombre" method="get">
+							<div class="form-group">
+								<input class="form-control" type='text' id="nombreAutor" name='nombre' placeholder="Nombre"/>
+							</div>
+						</form>
+					</div>
+					<div class="col-sm">
+						<form action="/autor/buscarPorApellidos" method="get">
+							<div class="form-group">
+								<input class="form-control" type='text' id="apellidosAutor" name='apellidos' placeholder="Apellidos"/>
+							</div>
+						</form>
+					</div>
+					<div class="col-sm">
+						<form action="/autor/buscarPorEmail" method="get">
+						<div class="form-group">
+							<input class="form-control" type='text' id="emailAutor" name='email' placeholder="Email"/>
+						</div>
+					</form>
+					</div>
+				</div>
+			</div>
 		    <span th:each="autor : ${autores}">
 		        <div>
 		            <span th:text="*{autor.nombre}"></span>
@@ -74,6 +99,32 @@
 			            <i class="material-icons">add</i>
 			        </a>
 			    </h1>
+				<div class="container">
+					<div class="row">
+						<div class="col-sm">
+							<form action="/cliente/buscarPorNombre" method="get">
+								<div class="form-group">
+									<input class="form-control" type='text' id="nombreCliente" name='nombre' placeholder="Nombre"/>
+								</div>
+							</form>
+						</div>
+						<div class="col-sm">
+							<form action="/cliente/buscarPorApellidos" method="get">
+								<div class="form-group">
+									<input class="form-control" type='text' id="apellidosCliente" name='apellidos' placeholder="Apellidos"/>
+								</div>
+							</form>
+						</div>
+						<div class="col-sm">
+							<form action="/cliente/buscarPorEmail" method="get">
+								<div class="form-group">
+									<input class="form-control" type='text' id="emailCliente" name='email' placeholder="Email"/>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+
 			    <span th:each="cliente : ${clientes}">
 			        <div>
 			            <span th:text="*{cliente.nombre}"></span>

@@ -54,6 +54,42 @@ public class AutorController extends GaleriaController{
         return "galeria";
     }
 
+    @GetMapping("/buscarPorNombre")
+    public String buscarAutorPorNombre(Model model, @RequestParam String nombre) {
+        if (nombre == null || nombre.equals("")) {
+            cargaGaleria(model);
+        } else {
+            cargaGaleria(model);
+            model.addAttribute("autores", autorRepository.findByNombreContainsIgnoreCase(nombre));
+        }
+
+        return "galeria";
+    }
+
+    @GetMapping("/buscarPorApellidos")
+    public String buscarAutorPorApellidos(Model model, @RequestParam String apellidos) {
+        if (apellidos == null || apellidos.equals("")) {
+            cargaGaleria(model);
+        } else {
+            cargaGaleria(model);
+            model.addAttribute("autores", autorRepository.findByApellidosContainsIgnoreCase(apellidos));
+        }
+
+        return "galeria";
+    }
+
+    @GetMapping("/buscarPorEmail")
+    public String buscarAutorPorEmail(Model model, @RequestParam String email) {
+        if (email == null || email.equals("")) {
+            cargaGaleria(model);
+        } else {
+            cargaGaleria(model);
+            model.addAttribute("autores", autorRepository.findByEmailContainsIgnoreCase(email));
+        }
+
+        return "galeria";
+    }
+
     private Autor crearAutorDesdeMap(Map<String, String> mappedAutor) {
         Autor autor = new Autor();
 

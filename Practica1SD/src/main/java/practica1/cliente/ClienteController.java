@@ -54,6 +54,42 @@ public class ClienteController extends GaleriaController{
         return "galeria";
     }
 
+    @GetMapping("/buscarPorNombre")
+    public String buscarClientePorNombre(Model model, @RequestParam String nombre) {
+        if (nombre == null || nombre.equals("")) {
+            cargaGaleria(model);
+        } else {
+            cargaGaleria(model);
+            model.addAttribute("clientes", clienteRepository.findByNombreContainsIgnoreCase(nombre));
+        }
+
+        return "galeria";
+    }
+
+    @GetMapping("/buscarPorApellidos")
+    public String buscarClientePorApellidos(Model model, @RequestParam String apellidos) {
+        if (apellidos == null || apellidos.equals("")) {
+            cargaGaleria(model);
+        } else {
+            cargaGaleria(model);
+            model.addAttribute("clientes", clienteRepository.findByApellidosContainsIgnoreCase(apellidos));
+        }
+
+        return "galeria";
+    }
+
+    @GetMapping("/buscarPorEmail")
+    public String buscarClientePorEmail(Model model, @RequestParam String email) {
+        if (email == null || email.equals("")) {
+            cargaGaleria(model);
+        } else {
+            cargaGaleria(model);
+            model.addAttribute("clientes", clienteRepository.findByEmailContainsIgnoreCase(email));
+        }
+
+        return "galeria";
+    }
+
     private Cliente crearClienteDesdeMap(Map<String, String> mappedCliente) {
         Cliente cliente = new Cliente();
 

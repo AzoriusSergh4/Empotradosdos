@@ -9,12 +9,12 @@ import practica1.cliente.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CuadroRepository extends JpaRepository<Cuadro, Long> {
-	
-	Cuadro findByTituloContainsIgnoreCase(String titulo);
-	Cuadro findByAutor(Autor autor);
-	Cuadro findByAnyoFinalizacion(int anyoFinalizacion);
-	Cuadro findByFechaVenta(Date fechaVenta);
-	Cuadro findByComprador(Cliente comprador);
+
+	List<Cuadro> findByTituloContainsIgnoreCase(String titulo);
+	List<Cuadro> findByAutor(Autor autor);
+	List<Cuadro> findByAnyoFinalizacion(int anyoFinalizacion);
+	List<Cuadro> findByFechaVenta(Date fechaVenta);
+	List<Cuadro> findByComprador(Cliente comprador);
 
 	List<Cuadro> findAllOrderByTitulo(String titulo);
 	List<Cuadro> findAllOrderByAutor(Autor autor);

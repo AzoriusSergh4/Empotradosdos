@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
-	Cliente findByNombreContainsIgnoreCase(String nombre);
-	Cliente findByApellidosContainsIgnoreCase(String apellidos);
-	Cliente findByEmailContainsIgnoreCase(String email);
+	List<Cliente> findByNombreContainsIgnoreCase(String nombre);
+	List<Cliente> findByApellidosContainsIgnoreCase(String apellidos);
+	List<Cliente> findByEmailContainsIgnoreCase(String email);
 	Cliente findByNif(String nif);
 	
 	List<Cliente> findAllOrderByNombre(String nombre);

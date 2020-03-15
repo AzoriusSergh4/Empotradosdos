@@ -68,8 +68,6 @@ public class CuadroController extends GaleriaController{
         return "galeria";
     }
     
-    
-    
     @GetMapping("/{id}")
     public String editarCuadro(Model model, @PathVariable long id, @RequestParam Map<String, String> mappedCuadro) {
         Cuadro cuadro = this.crearCuadroDesdeMap(mappedCuadro);
