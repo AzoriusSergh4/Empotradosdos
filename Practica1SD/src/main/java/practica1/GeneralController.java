@@ -54,7 +54,7 @@ public class GeneralController extends GaleriaController{
 	        clienteRepository.save(cliente2);
 	        
 	        Cuadro cuadro = new Cuadro("Bacon", "Un cuadro de un crujiente bacon frito",
-				        2017, 30.52, 26.88, 3000, autor2, comprador, new Date(fecha.parse("12/01/2020").getTime()));
+				        2017, 30.52, 26.88, 3000, autor, comprador, new Date(fecha.parse("12/01/2020").getTime()));
 			
 	        cuadroRepository.save(cuadro);
 	        
