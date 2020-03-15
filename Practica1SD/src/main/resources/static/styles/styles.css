@@ -1,0 +1,22 @@
+.add-edit-body {
+    background-image: linear-gradient(to bottom right, rgb(222,184,135), rgba(255,0,0,0));
+}
+
+.add-edit-card {
+    align-content: center;
+    margin-top: 4rem;
+    display: flex;
+    margin-bottom: 4rem;
+}
+
+.center-title {
+    text-align: center
+}
+
+.card-width {
+    width: 40rem
+}
+
+.cancel-button {
+    margin-left: 2rem;
+}
