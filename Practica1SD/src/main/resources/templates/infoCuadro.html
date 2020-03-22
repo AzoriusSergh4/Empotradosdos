@@ -17,6 +17,10 @@
                 <span th:text="${cuadro.titulo}"></span>
             </div>
             <div>
+                <span>Autor: </span>
+                <span th:text="${cuadro.autor.nombre}"></span>
+            </div>
+            <div>
                 <span>Descripción: </span>
                 <span th:text="${cuadro.descripcion}"></span>
             </div>
@@ -39,6 +43,10 @@
             <div>
                 <span>Fecha de Venta: </span>
                 <span th:text="${cuadro.fechaVenta}"></span>
+            </div>
+            <div>
+                <span>Comprador: </span>
+                <span th:text="${cuadro.comprador} ? 'cuadro.comprador.nombre' : '--'"></span>
             </div>
 
             <a th:href="@{'/cuadro/mostrarCuadros'}" type="button" class="cancel-button">Volver</a>
