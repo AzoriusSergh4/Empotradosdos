@@ -45,7 +45,7 @@ public class GeneralController extends GaleriaController{
 	        Autor autor3 = new Autor("Esteban", "Martinez", "43263954C", 1974, "España", "Calle Pintor Velázquez 32, Barcelona 34213, España", "estemart@gmail.com", "654812305");
 	        autorRepository.save(autor3);
 	
-	        Cliente comprador = new Cliente("Fernado", "López", "11111111H", "Calle Tulipán, s/n, 28933 Móstoles, Madrid",
+	        Cliente comprador = new Cliente("Fernando", "López", "11111111H", "Calle Tulipán, s/n, 28933 Móstoles, Madrid",
 	                "compradorfernandolopez@gmail.com", "678912354");
 	        clienteRepository.save(comprador);
 	        

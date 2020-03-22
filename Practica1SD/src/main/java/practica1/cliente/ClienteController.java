@@ -67,7 +67,7 @@ public class ClienteController extends GaleriaController{
         if(opcional.isPresent()){
             model.addAttribute("cliente", opcional.get());
         }
-        return "cliente";
+        return "infoCliente";
     }
     
     @GetMapping("/buscarPorNombreOApellidos")
@@ -76,7 +76,7 @@ public class ClienteController extends GaleriaController{
             cargaGaleria(model);
         } else {
             cargaGaleria(model);
-            model.addAttribute("clientes", clienteRepository.findDistinctClienteByNombreOrApellidosContainsIgnoreCase(nombreApellidos, nombreApellidos));
+            model.addAttribute("clientes", clienteRepository.findDistinctClienteByNombreContainsIgnoreCaseOrApellidosContainsIgnoreCase(nombreApellidos, nombreApellidos));
         }
 
         return "clientes";

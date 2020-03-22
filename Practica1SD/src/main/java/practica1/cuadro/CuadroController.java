@@ -95,7 +95,7 @@ public class CuadroController extends GaleriaController{
         if(opcional.isPresent()){
             model.addAttribute("cuadro", opcional.get());
         }
-        return "cuadro";
+        return "infoCuadro";
     }
     
     
@@ -105,14 +105,14 @@ public class CuadroController extends GaleriaController{
             cargaGaleria(model);
         } else {
             cargaGaleria(model);
-            model.addAttribute("cuadros", cuadroRepository.findDistinctCuadroByTituloOrDescripcionContainsIgnoreCase(tituloDescripcion, tituloDescripcion));
+            model.addAttribute("cuadros", cuadroRepository.findDistinctCuadroByTituloContainsIgnoreCaseOrDescripcionContainsIgnoreCase(tituloDescripcion, tituloDescripcion));
         }
 
         return "cuadros";
     }
     
     @GetMapping("/buscarPorAutor")
-    public String buscarCuadroPorAutor(Model model, @RequestParam Autor autor) {
+    public String buscarCuadroPorAutor(Model model, @RequestParam(required = false) Autor autor) {
         if (autor == null) {
             cargaGaleria(model);
         } else {

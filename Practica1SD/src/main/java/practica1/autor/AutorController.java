@@ -68,7 +68,7 @@ public class AutorController extends GaleriaController{
         if(opcional.isPresent()){
             model.addAttribute("autor", opcional.get());
         }
-        return "autor";
+        return "infoAutor";
     }
     
     @GetMapping("/buscarPorNombreOApellidos")
@@ -77,7 +77,7 @@ public class AutorController extends GaleriaController{
             cargaGaleria(model);
         } else {
             cargaGaleria(model);
-            model.addAttribute("autores", autorRepository.findDistinctAutorByNombreOrApellidosContainsIgnoreCase(nombreApellidos, nombreApellidos));
+            model.addAttribute("autores", autorRepository.findDistinctAutorByNombreContainsIgnoreCaseOrApellidosContainsIgnoreCase(nombreApellidos, nombreApellidos));
         }
 
         return "autores";

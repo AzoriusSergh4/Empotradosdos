@@ -32,6 +32,7 @@
 									
 							  <div class="form-group">
 							 <select class="form-control" id="entradaAutor" name='autor'>
+								 <option value=" " disabled selected hidden>Autor</option>
                        			 <option th:each="autor : ${autores}" th:value="${autor.id}" th:text="${autor.nombre + ' ' + autor.apellidos}" ></option>
                    			 </select>
                    			 <button type="submit" class="material-icons">search</button>

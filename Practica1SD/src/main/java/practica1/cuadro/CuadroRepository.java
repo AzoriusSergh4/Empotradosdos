@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CuadroRepository extends JpaRepository<Cuadro, Long> {
 
-	List<Cuadro> findDistinctCuadroByTituloOrDescripcionContainsIgnoreCase(String titulo, String descripcion);
+	List<Cuadro> findDistinctCuadroByTituloContainsIgnoreCaseOrDescripcionContainsIgnoreCase(String titulo, String descripcion);
 	List<Cuadro> findByAutor(Autor autor);
 
 	List<Cuadro> findAllOrderByTitulo(String titulo);
