@@ -19,6 +19,7 @@
             <div>
                 <span>Autor: </span>
                 <span th:text="${cuadro.autor.nombre}"></span>
+                <span th:text="${cuadro.autor.apellidos}"></span>
             </div>
             <div>
                 <span>Descripción: </span>
@@ -42,11 +43,14 @@
             </div>
             <div>
                 <span>Fecha de Venta: </span>
-                <span th:text="${cuadro.fechaVenta}"></span>
+                <span th:if="${cuadro.fechaVenta != null}" th:text="${cuadro.fechaVenta}"></span>
+                <span th:if="${cuadro.fechaVenta == null}">--</span>
             </div>
             <div>
                 <span>Comprador: </span>
-                <span th:text="${cuadro.comprador} ? 'cuadro.comprador.nombre' : '--'"></span>
+                <span th:if="${cuadro.comprador != null}" th:text="${cuadro.comprador.nombre}"></span>
+                <span th:if="${cuadro.comprador != null}" th:text="${cuadro.comprador.apellidos}"></span>
+                <span th:if="${cuadro.comprador == null}">--</span>
             </div>
 
             <a th:href="@{'/cuadro/mostrarCuadros'}" type="button" class="cancel-button">Volver</a>
