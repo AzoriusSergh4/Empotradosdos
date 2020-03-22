@@ -21,23 +21,16 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-sm">
-							<form action="/cliente/buscarPorNombre" method="get">
+							<form action="/cliente/buscarPorNombreOApellidos" method="get">
 								<div class="form-group">
-									<input class="form-control" type='text' id="nombreCliente" name='nombre' placeholder="Nombre"/>
+									<input class="form-control" type='text' id="cliente" name='nombreApellidos' placeholder="Nombre y/o Apellidos"/>
 								</div>
 							</form>
-						</div>
-						<div class="col-sm">
-							<form action="/cliente/buscarPorApellidos" method="get">
+							</div>
+							<div class="col-sm">
+							<form action="/cliente/buscarPorDNI" method="get">
 								<div class="form-group">
-									<input class="form-control" type='text' id="apellidosCliente" name='apellidos' placeholder="Apellidos"/>
-								</div>
-							</form>
-						</div>
-						<div class="col-sm">
-							<form action="/cliente/buscarPorEmail" method="get">
-								<div class="form-group">
-									<input class="form-control" type='text' id="emailCliente" name='email' placeholder="Email"/>
+									<input class="form-control" type='text' id="dniCliente" name='dni' placeholder="DNI"/>
 								</div>
 							</form>
 						</div>

@@ -90,13 +90,13 @@ public class CuadroController extends GaleriaController{
     }
     
     
-    @GetMapping("/buscarPorTitulo")
-    public String buscarCuadroPorTitulo(Model model, @RequestParam String titulo) {
-        if (titulo == null || titulo.equals("")) {
+    @GetMapping("/buscarPorTituloODescripcion")
+    public String buscarCuadroPorTituloODescripcion(Model model, @RequestParam String tituloDescripcion) {
+        if (tituloDescripcion == null || tituloDescripcion.equals("")) {
             cargaGaleria(model);
         } else {
             cargaGaleria(model);
-            model.addAttribute("cuadros", cuadroRepository.findByTituloContainsIgnoreCase(titulo));
+            model.addAttribute("cuadros", cuadroRepository.findDistinctCuadroByTituloOrDescripcionContainsIgnoreCase(tituloDescripcion, tituloDescripcion));
         }
 
         return "cuadros";
@@ -114,18 +114,6 @@ public class CuadroController extends GaleriaController{
         return "cuadros";
     }
     
-    @GetMapping("/buscarPorComprador")
-    public String buscarCuadroPorComprador(Model model, @RequestParam Cliente comprador) {
-        if (comprador == null) {
-            cargaGaleria(model);
-        } else {
-            cargaGaleria(model);
-            model.addAttribute("cuadros", cuadroRepository.findByComprador(comprador));
-        }
-
-        return "cuadros";
-    }
-
     private Cuadro crearCuadroDesdeMap(Map<String, String> mappedCuadro) {
         Cuadro cuadro = new Cuadro();
         SimpleDateFormat fecha = new SimpleDateFormat("yyyy-MM-dd");
