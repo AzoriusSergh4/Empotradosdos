@@ -22,25 +22,18 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm">
-						<form action="/autor/buscarPorNombre" method="get">
+						<form action="/autor/buscarPorNombreOApellidos" method="get">
 							<div class="form-group">
-								<input class="form-control" type='text' id="nombreAutor" name='nombre' placeholder="Nombre"/>
+								<input class="form-control" type='text' id="autor" name='nombreApellidos' placeholder="Nombre y/o Apellidos"/>
 							</div>
 						</form>
-					</div>
-					<div class="col-sm">
-						<form action="/autor/buscarPorApellidos" method="get">
+					</div>				
+						<div class="col-sm">
+						<form action="/autor/buscarPorDNI" method="get">
 							<div class="form-group">
-								<input class="form-control" type='text' id="apellidosAutor" name='apellidos' placeholder="Apellidos"/>
+								<input class="form-control" type='text' id="dniAutor" name='dni' placeholder="DNI"/>
 							</div>
 						</form>
-					</div>
-					<div class="col-sm">
-						<form action="/autor/buscarPorEmail" method="get">
-						<div class="form-group">
-							<input class="form-control" type='text' id="emailAutor" name='email' placeholder="Email"/>
-						</div>
-					</form>
 					</div>
 				</div>
 			</div>

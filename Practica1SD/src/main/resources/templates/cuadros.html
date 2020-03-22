@@ -21,9 +21,9 @@
 			    <div class="container">
 				<div class="row">
 					<div class="col-sm">
-					<form action="/cuadro/buscarPorTitulo" method="get">
+					<form action="/cuadro/buscarPorTituloODescripcion" method="get">
 							<div class="form-group">
-								<input class="form-control" type='text' id="tituloCuadro" name='titulo' placeholder="Titulo"/>
+								<input class="form-control" type='text' id="tituloDescripcion" name='tituloDescripcion' placeholder="Título o descripción del cuadro"/>
 							</div>
 						</form>
 					</div>
@@ -35,18 +35,6 @@
                        			 <option th:each="autor : ${autores}" th:value="${autor.id}" th:text="${autor.nombre + ' ' + autor.apellidos}" ></option>
                    			 </select>
                    			 <button type="submit" class="material-icons">search</button>
-							</div>
-						</form>
-					</div>
-					<div class="col-sm">
-						<form action="/cuadro/buscarPorComprador" method="get">
-						  <div class="form-group">
-						  		 <select class="form-control" id="entradaComprador" name='comprador'>
-										<option value="null">Compradores</option>
-										<option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nombre + ' ' + cliente.apellidos}"></option>
-								</select> 
-						 <button type="submit" class="material-icons">search</button>
-								
 							</div>
 						</form>
 					</div>

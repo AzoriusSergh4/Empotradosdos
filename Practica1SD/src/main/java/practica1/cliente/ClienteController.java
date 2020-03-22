@@ -69,43 +69,31 @@ public class ClienteController extends GaleriaController{
         }
         return "cliente";
     }
-
-    @GetMapping("/buscarPorNombre")
-    public String buscarClientePorNombre(Model model, @RequestParam String nombre) {
-        if (nombre == null || nombre.equals("")) {
+    
+    @GetMapping("/buscarPorNombreOApellidos")
+    public String buscarClientePorNombre(Model model, @RequestParam String nombreApellidos) {
+        if (nombreApellidos == null || nombreApellidos.equals("")) {
             cargaGaleria(model);
         } else {
             cargaGaleria(model);
-            model.addAttribute("clientes", clienteRepository.findByNombreContainsIgnoreCase(nombre));
+            model.addAttribute("clientes", clienteRepository.findDistinctClienteByNombreOrApellidosContainsIgnoreCase(nombreApellidos, nombreApellidos));
         }
 
         return "clientes";
     }
-
-    @GetMapping("/buscarPorApellidos")
-    public String buscarClientePorApellidos(Model model, @RequestParam String apellidos) {
-        if (apellidos == null || apellidos.equals("")) {
+    
+    @GetMapping("/buscarPorDNI")
+    public String buscarClienteporNif(Model model, @RequestParam String dni) {
+        if (dni == null || dni.equals("")) {
             cargaGaleria(model);
         } else {
             cargaGaleria(model);
-            model.addAttribute("clientes", clienteRepository.findByApellidosContainsIgnoreCase(apellidos));
+            model.addAttribute("clientes", clienteRepository.findByNif(dni));
         }
 
         return "clientes";
     }
-
-    @GetMapping("/buscarPorEmail")
-    public String buscarClientePorEmail(Model model, @RequestParam String email) {
-        if (email == null || email.equals("")) {
-            cargaGaleria(model);
-        } else {
-            cargaGaleria(model);
-            model.addAttribute("clientes", clienteRepository.findByEmailContainsIgnoreCase(email));
-        }
-
-        return "clientes";
-    }
-
+    
     private Cliente crearClienteDesdeMap(Map<String, String> mappedCliente) {
         Cliente cliente = new Cliente();
 

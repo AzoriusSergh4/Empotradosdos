@@ -70,38 +70,26 @@ public class AutorController extends GaleriaController{
         }
         return "autor";
     }
-
-    @GetMapping("/buscarPorNombre")
-    public String buscarAutorPorNombre(Model model, @RequestParam String nombre) {
-        if (nombre == null || nombre.equals("")) {
+    
+    @GetMapping("/buscarPorNombreOApellidos")
+    public String buscarAutorPorNombre(Model model, @RequestParam String nombreApellidos) {
+        if (nombreApellidos == null || nombreApellidos.equals("")) {
             cargaGaleria(model);
         } else {
             cargaGaleria(model);
-            model.addAttribute("autores", autorRepository.findByNombreContainsIgnoreCase(nombre));
+            model.addAttribute("autores", autorRepository.findDistinctAutorByNombreOrApellidosContainsIgnoreCase(nombreApellidos, nombreApellidos));
         }
 
         return "autores";
     }
-
-    @GetMapping("/buscarPorApellidos")
-    public String buscarAutorPorApellidos(Model model, @RequestParam String apellidos) {
-        if (apellidos == null || apellidos.equals("")) {
+    
+    @GetMapping("/buscarPorDNI")
+    public String buscarAutorPorNif(Model model, @RequestParam String dni) {
+        if (dni == null || dni.equals("")) {
             cargaGaleria(model);
         } else {
             cargaGaleria(model);
-            model.addAttribute("autores", autorRepository.findByApellidosContainsIgnoreCase(apellidos));
-        }
-
-        return "autores";
-    }
-
-    @GetMapping("/buscarPorEmail")
-    public String buscarAutorPorEmail(Model model, @RequestParam String email) {
-        if (email == null || email.equals("")) {
-            cargaGaleria(model);
-        } else {
-            cargaGaleria(model);
-            model.addAttribute("autores", autorRepository.findByEmailContainsIgnoreCase(email));
+            model.addAttribute("autores", autorRepository.findByNif(dni));
         }
 
         return "autores";

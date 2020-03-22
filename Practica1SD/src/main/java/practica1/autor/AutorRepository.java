@@ -5,9 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AutorRepository extends JpaRepository<Autor, Long> {
-	List<Autor> findByNombreContainsIgnoreCase(String nombre);
-	List<Autor> findByApellidosContainsIgnoreCase(String apellidos);
-	List<Autor> findByEmailContainsIgnoreCase(String email);
+	List<Autor> findDistinctAutorByNombreOrApellidosContainsIgnoreCase(String nombre, String apellidos);
 	Autor findByNif(String nif);
 	
 	List<Autor> findAllOrderByNombre(String nombre);
