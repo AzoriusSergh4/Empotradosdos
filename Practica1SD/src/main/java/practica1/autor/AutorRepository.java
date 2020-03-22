@@ -11,7 +11,7 @@ public interface AutorRepository extends JpaRepository<Autor, Long> {
 	Autor findByNif(String nif);
 	
 	List<Autor> findAllOrderByNombre(String nombre);
-	List<Autor> findAllOrderByApellidos(String apellidos);
-	List<Autor> findAllOrderByEmail(String email);
+	List<Autor> findAllOrderByApellidos();
+	List<Autor> findAllOrderByEmail();
 	
 }

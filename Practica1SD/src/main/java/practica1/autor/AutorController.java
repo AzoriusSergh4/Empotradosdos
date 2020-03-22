@@ -1,6 +1,7 @@
 package practica1.autor;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -86,6 +87,14 @@ public class AutorController extends GaleriaController{
             cargaGaleria(model);
             model.addAttribute("autores", autorRepository.findByEmailContainsIgnoreCase(email));
         }
+
+        return "galeria";
+    }
+
+    @GetMapping("/ordenar")
+    public String buscarOrdenado(Model model, @RequestParam Pageable page) {
+        cargaGaleria(model);
+        model.addAttribute("autores", autorRepository.findAll(page.getSort()));
 
         return "galeria";
     }
