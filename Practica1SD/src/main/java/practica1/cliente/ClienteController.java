@@ -47,7 +47,7 @@ public class ClienteController extends GaleriaController{
         return "clientes";
     }
 
-    @GetMapping("/{id}")
+    @PostMapping("/{id}")
     public String editarCliente(Model model, @PathVariable long id, @RequestParam Map<String, String> mappedCliente) {
         Cliente cliente = this.crearClienteDesdeMap(mappedCliente);
 
@@ -59,6 +59,15 @@ public class ClienteController extends GaleriaController{
         }
         cargaGaleria(model);
         return "clientes";
+    }
+
+    @GetMapping("/{id}")
+    public String consultaCliente(Model model, @PathVariable long id) {
+        Optional<Cliente> opcional = this.clienteRepository.findById(id);
+        if(opcional.isPresent()){
+            model.addAttribute("cliente", opcional.get());
+        }
+        return "cliente";
     }
 
     @GetMapping("/buscarPorNombre")

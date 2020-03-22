@@ -48,7 +48,7 @@ public class AutorController extends GaleriaController{
         return "autores";
     }
 
-    @GetMapping("/{id}")
+    @PostMapping("/{id}")
     public String editarAutor(Model model, @PathVariable long id,  @RequestParam Map<String, String> mappedAutor) {
         Autor autor = this.crearAutorDesdeMap(mappedAutor);
 
@@ -60,6 +60,15 @@ public class AutorController extends GaleriaController{
         }
         cargaGaleria(model);
         return "autores";
+    }
+
+    @GetMapping("/{id}")
+    public String consultaAutor(Model model, @PathVariable long id) {
+        Optional<Autor> opcional = this.autorRepository.findById(id);
+        if(opcional.isPresent()){
+            model.addAttribute("autor", opcional.get());
+        }
+        return "autor";
     }
 
     @GetMapping("/buscarPorNombre")

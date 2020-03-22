@@ -1,8 +1,8 @@
-.add-edit-body {
+.color-background {
     background-image: linear-gradient(to bottom right, rgb(222,184,135), rgba(255,0,0,0));
 }
 
-.add-edit-card {
+.center-info-card {
     align-content: center;
     margin-top: 4rem;
     display: flex;

@@ -7,12 +7,12 @@
     <link href="/styles/styles.css" rel="stylesheet" />
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </head>
-<body class="add-edit-body">
-<div class="add-edit-card">
+<body class="color-background">
+<div class="center-info-card">
     <div class="card mx-auto card-width">
         <div class="card-body">
             <h1 class="card-title center-title">Editar autor</h1>
-            <form th:action="@{'/autor/' + ${autor.id}}" method="get">
+            <form th:action="@{'/autor/' + ${autor.id}}" method="post">
                 <div class="form-group">
                     <label for="entradaNombre">Nombre:</label>
                     <input th:value="${autor.nombre}" class="form-control" type='text' id="entradaNombre" name='nombre' placeholder="Nombre" required="required"/>

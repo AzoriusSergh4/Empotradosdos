@@ -75,7 +75,7 @@ public class CuadroController extends GaleriaController{
         return "cuadros";
     }
     
-    @GetMapping("/{id}")
+    @PostMapping("/{id}")
     public String editarCuadro(Model model, @PathVariable long id, @RequestParam Map<String, String> mappedCuadro) {
         Cuadro cuadro = this.crearCuadroDesdeMap(mappedCuadro);
 
@@ -87,6 +87,15 @@ public class CuadroController extends GaleriaController{
         }
         cargaGaleria(model);
         return "cuadros";
+    }
+
+    @GetMapping("/{id}")
+    public String consultaCuadro(Model model, @PathVariable long id) {
+        Optional<Cuadro> opcional = this.cuadroRepository.findById(id);
+        if(opcional.isPresent()){
+            model.addAttribute("cuadro", opcional.get());
+        }
+        return "cuadro";
     }
     
     

@@ -47,7 +47,10 @@
 		    <span th:each="autor : ${autores}">
 		        <div>
 		            <span th:text="*{autor.nombre}"></span>
-		            <a th:href="@{'/autor/editarAutor/' + ${autor.id}}" type="button">		            
+					<a th:href="@{'/autor/' + ${autor.id}}" type="button">
+		                <i class="material-icons">visibility</i>
+		            </a>
+					<a th:href="@{'/autor/editarAutor/' + ${autor.id}}" type="button">
 		                <i class="material-icons">edit</i>
 		            </a>
 		        </div>

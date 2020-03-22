@@ -32,7 +32,6 @@
 									
 							  <div class="form-group">
 							 <select class="form-control" id="entradaAutor" name='autor'>
-							 	 <option value="null">Autores</option>
                        			 <option th:each="autor : ${autores}" th:value="${autor.id}" th:text="${autor.nombre + ' ' + autor.apellidos}" ></option>
                    			 </select>
                    			 <button type="submit" class="material-icons">search</button>
@@ -56,9 +55,10 @@
 			    <span th:each="cuadro : ${cuadros}">
 			        <div>
 			            <span th:text="*{cuadro.titulo}"></span>
+						<a th:href="@{'/cuadro/' + ${cuadro.id}}" type="button">
+							<i class="material-icons">visibility</i>
+		            	</a>
 			             <a th:href="@{'/cuadro/editarCuadro/' + ${cuadro.id}}" type="button">
-			            
-			            
 			                <i class="material-icons">edit</i>
 			            </a>
 			        </div>

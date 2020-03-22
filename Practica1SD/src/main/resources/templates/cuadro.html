@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cuadro</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="/styles/styles.css" rel="stylesheet" />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<body class="color-background">
+<div class="center-info-card">
+    <div class="card mx-auto card-width">
+        <div class="card-body">
+            <h1 class="card-title center-title">Ficha de Cuadro</h1>
+            <div>
+                <span>Título: </span>
+                <span th:text="${cuadro.titulo}"></span>
+            </div>
+            <div>
+                <span>Descripción: </span>
+                <span th:text="${cuadro.descripcion}"></span>
+            </div>
+            <div>
+                <span>Año de finalización: </span>
+                <span th:text="${cuadro.anyoFinalizacion}"></span>
+            </div>
+            <div>
+                <span>Anchura: </span>
+                <span th:text="${cuadro.anchura}"></span>
+            </div>
+            <div>
+                <span>Altura: </span>
+                <span th:text="${cuadro.altura}"></span>
+            </div>
+            <div>
+                <span>Precio: </span>
+                <span th:text="${cuadro.precio}"></span>
+            </div>
+            <div>
+                <span>Fecha de Venta: </span>
+                <span th:text="${cuadro.fechaVenta}"></span>
+            </div>
+
+            <a th:href="@{'/cuadro/mostrarCuadros'}" type="button" class="cancel-button">Volver</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

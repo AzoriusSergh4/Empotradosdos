@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Autor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="/styles/styles.css" rel="stylesheet" />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<body class="color-background">
+<div class="center-info-card">
+    <div class="card mx-auto card-width">
+        <div class="card-body">
+            <h1 class="card-title center-title">Ficha de Autor</h1>
+            <div>
+                <span>Nombre: </span>
+                <span th:text="${autor.nombre}"></span>
+            </div>
+            <div>
+                <span>Apellidos: </span>
+                <span th:text="${autor.apellidos}"></span>
+            </div>
+            <div>
+                <span>NIF: </span>
+                <span th:text="${autor.nif}"></span>
+            </div>
+            <div>
+                <span>Año de Nacimiento: </span>
+                <span th:text="${autor.anyoNacimiento}"></span>
+            </div>
+            <div>
+                <span>País de Nacimiento: </span>
+                <span th:text="${autor.paisNacimiento}"></span>
+            </div>
+            <div>
+                <span>Dirección Postal: </span>
+                <span th:text="${autor.direccionPostal}"></span>
+            </div>
+            <div>
+                <span>Email: </span>
+                <span th:text="${autor.email}"></span>
+            </div>
+            <div>
+                <span>Teléfono: </span>
+                <span th:text="${autor.telefono}"></span>
+            </div>
+
+            <a th:href="@{'/autor/mostrarAutores'}" type="button" class="cancel-button">Volver</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
