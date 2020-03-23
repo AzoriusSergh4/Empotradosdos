@@ -28,12 +28,24 @@
 							</div>
 						</form>
 					</div>				
-						<div class="col-sm">
+					<div class="col-sm">
 						<form action="/autor/buscarPorDNI" method="get">
 							<div class="form-group">
 								<input class="form-control" type='text' id="dniAutor" name='dni' placeholder="DNI"/>
 							</div>
 						</form>
+					</div>
+					<div class="col-sm">
+						<form action="/autor/ordenar">
+							<label for="sort">Choose a car:</label>
+							<select id="sort" name="sort">
+								<option value="nif">DNI</option>
+								<option value="nombre">Nombre</option>
+								<option value="apellidos">Apellidos</option>
+							</select>
+							<input type="submit">
+						</form>
+
 					</div>
 				</div>
 			</div>
