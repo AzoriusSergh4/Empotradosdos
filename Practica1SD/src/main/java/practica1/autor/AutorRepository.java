@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AutorRepository extends JpaRepository<Autor, Long> {
+
 	List<Autor> findDistinctAutorByNombreContainsIgnoreCaseOrApellidosContainsIgnoreCase(String nombre, String apellidos);
 	Autor findByNif(String nif);
 }

@@ -28,13 +28,12 @@ public class Cuadro {
 	@ManyToOne(cascade = CascadeType.MERGE)
 	private Autor autor;
 	
-	public Cuadro() {
-		
-	}
+	public Cuadro() {}
 
 
 	public Cuadro(String titulo, String descripcion, int anyoFinalizacion, double anchura, double altura,
 			int precio, Autor autor, Cliente comprador, Date fechaVenta) {
+
 		this.titulo = titulo;
 		this.descripcion = descripcion;
 		this.anyoFinalizacion = anyoFinalizacion;
@@ -134,8 +133,8 @@ public class Cuadro {
 	public long getId() {
 		return id;
 	}
-	
 
-	
-	
+
+
+
 }

@@ -26,6 +26,7 @@ import practica1.cliente.ClienteRepository;
 @Controller
 @RequestMapping("/cuadro")
 public class CuadroController extends GaleriaController{
+
     @Autowired
     private CuadroRepository cuadroRepository;
     
@@ -34,15 +35,13 @@ public class CuadroController extends GaleriaController{
     
     @Autowired
     private ClienteRepository clienteRepository;
-    
-    
+
     @RequestMapping("/mostrarCuadros")
     public String mostrarCuadros(Model model) {
     	cargaGaleria(model);    	
         return "cuadros";
     }
- 
-    
+
     @RequestMapping("/addCuadro")
     public String addCuadro(Model model) {
     	List<Autor> autores = autorRepository.findAll();
@@ -53,27 +52,26 @@ public class CuadroController extends GaleriaController{
         return "nuevoCuadro";
     }
 
+    @PostMapping("/")
+    public String addCuadro(Model model, @RequestParam Map<String, String> mappedCuadro) {
+        Cuadro cuadro = crearCuadroDesdeMap(mappedCuadro);
+        this.cuadroRepository.save(cuadro);
+        cargaGaleria(model);
+
+        return "cuadros";
+    }
+
     @RequestMapping("/editarCuadro/{id}")
     public String editarCuadro(Model model, @PathVariable long id) {
         Optional<Cuadro> opcional = this.cuadroRepository.findById(id);
-        if(opcional.isPresent()){
-            model.addAttribute("cuadro", opcional.get());
-        }
+        opcional.ifPresent(cuadro -> model.addAttribute("cuadro", cuadro));
+
         List<Autor> autores = autorRepository.findAll();
     	List<Cliente> clientes = clienteRepository.findAll();
     	model.addAttribute("autores", autores);
     	model.addAttribute("clientes", clientes);
 
         return "editarCuadro";
-    }
-    
-
-    @PostMapping("/")
-    public String addCuadro(Model model, @RequestParam Map<String, String> mappedCuadro) {
-    	Cuadro cuadro = crearCuadroDesdeMap(mappedCuadro);
-        this.cuadroRepository.save(cuadro);
-        cargaGaleria(model);
-        return "cuadros";
     }
     
     @PostMapping("/{id}")
@@ -87,18 +85,17 @@ public class CuadroController extends GaleriaController{
             this.cuadroRepository.save(cuadroAnterior);
         }
         cargaGaleria(model);
+
         return "cuadros";
     }
 
     @GetMapping("/{id}")
     public String consultaCuadro(Model model, @PathVariable long id) {
         Optional<Cuadro> opcional = this.cuadroRepository.findById(id);
-        if(opcional.isPresent()){
-            model.addAttribute("cuadro", opcional.get());
-        }
+        opcional.ifPresent(cuadro -> model.addAttribute("cuadro", cuadro));
+
         return "infoCuadro";
     }
-    
     
     @GetMapping("/buscarPorTituloODescripcion")
     public String buscarCuadroPorTituloODescripcion(Model model, @RequestParam String tituloDescripcion) {
@@ -128,7 +125,6 @@ public class CuadroController extends GaleriaController{
     public String buscarOrdenado(Model model, @RequestParam String sort) {
         cargaGaleria(model);
         model.addAttribute("cuadros", cuadroRepository.findAll(Sort.by(sort)));
-
         return "cuadros";
     }
     
@@ -141,17 +137,18 @@ public class CuadroController extends GaleriaController{
         cuadro.setAnchura(Double.parseDouble(mappedCuadro.get("anchura")));
         cuadro.setAnyoFinalizacion(Integer.parseInt(mappedCuadro.get("anyoFinalizacion")));
     	cuadro.setPrecio(Integer.parseInt(mappedCuadro.get("precio"))); 	
+
     	try {
 			cuadro.setFechaVenta(new Date(fecha.parse(mappedCuadro.get("fechaVenta")).getTime()));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
     	Cliente comprador = (mappedCuadro.get("comprador").equals("null") ? null : clienteRepository.findByNif(mappedCuadro.get("comprador")));
     	cuadro.setComprador(comprador);
     	Autor autor = autorRepository.findByNif(mappedCuadro.get("autor"));
-    	cuadro.setAutor((Autor)autor);
-    	
+    	cuadro.setAutor(autor);
 
         return cuadro;
     }

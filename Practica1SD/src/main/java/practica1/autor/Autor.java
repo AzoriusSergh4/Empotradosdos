@@ -29,12 +29,11 @@ public class Autor {
 	@OneToMany(mappedBy = "autor")
 	private List<Cuadro> cuadros;
 	
-	public Autor() {
-		
-	}
+	public Autor() {}
 	
 	public Autor(String nombre, String apellidos, String nif, int anyoNacimiento, String paisNacimiento, String direccionPostal,
 			String email, String telefono) {
+
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.nif = nif;

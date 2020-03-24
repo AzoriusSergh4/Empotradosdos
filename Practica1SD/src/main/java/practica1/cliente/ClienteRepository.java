@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
+
 	List<Cliente> findDistinctClienteByNombreContainsIgnoreCaseOrApellidosContainsIgnoreCase(String nombre, String apellidos);
 	Cliente findByNif(String nif);
 }

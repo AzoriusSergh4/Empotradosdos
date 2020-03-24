@@ -14,13 +14,13 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/cliente")
 public class ClienteController extends GaleriaController{
+
     @Autowired
     private ClienteRepository clienteRepository;
     
-    
     @RequestMapping("/mostrarClientes")
     public String mostrarCuadros(Model model) {
-    	cargaGaleria(model);    	
+        model.addAttribute("clientes", clienteRepository.findAll());
         return "clientes";
     }
 
@@ -29,23 +29,21 @@ public class ClienteController extends GaleriaController{
         return "nuevoCliente";
     }
 
-    @RequestMapping("/editarCliente/{id}")
-    public String editarCliente(Model model, @PathVariable long id) {
-        Optional<Cliente> opcional = this.clienteRepository.findById(id);
-        if(opcional.isPresent()){
-            model.addAttribute("cliente", opcional.get());
-        }
-
-        return "editarCliente";
-    }
-
     @PostMapping("/")
     public String addCliente(Model model, @RequestParam Map<String, String> mappedCliente) {
         Cliente cliente = this.crearClienteDesdeMap(mappedCliente);
-
         this.clienteRepository.save(cliente);
-        cargaGaleria(model);
+        model.addAttribute("clientes", clienteRepository.findAll());
+
         return "clientes";
+    }
+
+    @RequestMapping("/editarCliente/{id}")
+    public String editarCliente(Model model, @PathVariable long id) {
+        Optional<Cliente> opcional = this.clienteRepository.findById(id);
+        opcional.ifPresent(cliente -> model.addAttribute("cliente", cliente));
+
+        return "editarCliente";
     }
 
     @PostMapping("/{id}")
@@ -58,25 +56,24 @@ public class ClienteController extends GaleriaController{
             clienteAnterior.actualizarCliente(cliente);
             this.clienteRepository.save(clienteAnterior);
         }
-        cargaGaleria(model);
+        model.addAttribute("clientes", clienteRepository.findAll());
+
         return "clientes";
     }
 
     @GetMapping("/{id}")
     public String consultaCliente(Model model, @PathVariable long id) {
         Optional<Cliente> opcional = this.clienteRepository.findById(id);
-        if(opcional.isPresent()){
-            model.addAttribute("cliente", opcional.get());
-        }
+        opcional.ifPresent(cliente -> model.addAttribute("cliente", cliente));
+
         return "infoCliente";
     }
     
     @GetMapping("/buscarPorNombreOApellidos")
     public String buscarClientePorNombre(Model model, @RequestParam String nombreApellidos) {
         if (nombreApellidos == null || nombreApellidos.equals("")) {
-            cargaGaleria(model);
+            model.addAttribute("clientes", clienteRepository.findAll());
         } else {
-            cargaGaleria(model);
             model.addAttribute("clientes", clienteRepository.findDistinctClienteByNombreContainsIgnoreCaseOrApellidosContainsIgnoreCase(nombreApellidos, nombreApellidos));
         }
 
@@ -86,9 +83,8 @@ public class ClienteController extends GaleriaController{
     @GetMapping("/buscarPorDNI")
     public String buscarClienteporNif(Model model, @RequestParam String dni) {
         if (dni == null || dni.equals("")) {
-            cargaGaleria(model);
+            model.addAttribute("clientes", clienteRepository.findAll());
         } else {
-            cargaGaleria(model);
             model.addAttribute("clientes", clienteRepository.findByNif(dni));
         }
 
@@ -97,9 +93,7 @@ public class ClienteController extends GaleriaController{
 
     @GetMapping("/ordenar")
     public String buscarOrdenado(Model model, @RequestParam String sort) {
-        cargaGaleria(model);
         model.addAttribute("clientes", clienteRepository.findAll(Sort.by(sort)));
-
         return "clientes";
     }
     

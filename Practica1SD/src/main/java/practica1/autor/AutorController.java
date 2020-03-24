@@ -15,14 +15,13 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/autor")
 public class AutorController extends GaleriaController{
+
     @Autowired
     private AutorRepository autorRepository;
     
-    
-    
     @RequestMapping("/mostrarAutores")
     public String mostrarCuadros(Model model) {
-    	cargaGaleria(model);    	
+        model.addAttribute("autores", autorRepository.findAll());
         return "autores";
     }
 
@@ -31,23 +30,21 @@ public class AutorController extends GaleriaController{
         return "nuevoAutor";
     }
 
-    @RequestMapping("/editarAutor/{id}")
-    public String editarAutor(Model model, @PathVariable long id) {
-        Optional<Autor> opcional = this.autorRepository.findById(id);
-        if(opcional.isPresent()){
-            model.addAttribute("autor", opcional.get());
-        }
-
-        return "editarAutor";
-    }
-
     @PostMapping("/")
     public String addAutor(Model model, @RequestParam Map<String, String> mappedAutor) {
         Autor autor = this.crearAutorDesdeMap(mappedAutor);
-
         this.autorRepository.save(autor);
-        cargaGaleria(model);
+        model.addAttribute("autores", autorRepository.findAll());
+
         return "autores";
+    }
+
+    @RequestMapping("/editarAutor/{id}")
+    public String editarAutor(Model model, @PathVariable long id) {
+        Optional<Autor> opcional = this.autorRepository.findById(id);
+        opcional.ifPresent(autor -> model.addAttribute("autor", autor));
+
+        return "editarAutor";
     }
 
     @PostMapping("/{id}")
@@ -60,25 +57,24 @@ public class AutorController extends GaleriaController{
             autorAnterior.actualizarAutor(autor);
             this.autorRepository.save(autorAnterior);
         }
-        cargaGaleria(model);
+        model.addAttribute("autores", autorRepository.findAll());
+
         return "autores";
     }
 
     @GetMapping("/{id}")
     public String consultaAutor(Model model, @PathVariable long id) {
         Optional<Autor> opcional = this.autorRepository.findById(id);
-        if(opcional.isPresent()){
-            model.addAttribute("autor", opcional.get());
-        }
+        opcional.ifPresent(autor -> model.addAttribute("autor", autor));
+
         return "infoAutor";
     }
     
     @GetMapping("/buscarPorNombreOApellidos")
     public String buscarAutorPorNombre(Model model, @RequestParam String nombreApellidos) {
         if (nombreApellidos == null || nombreApellidos.equals("")) {
-            cargaGaleria(model);
+            model.addAttribute("autores", autorRepository.findAll());
         } else {
-            cargaGaleria(model);
             model.addAttribute("autores", autorRepository.findDistinctAutorByNombreContainsIgnoreCaseOrApellidosContainsIgnoreCase(nombreApellidos, nombreApellidos));
         }
 
@@ -88,9 +84,8 @@ public class AutorController extends GaleriaController{
     @GetMapping("/buscarPorDNI")
     public String buscarAutorPorNif(Model model, @RequestParam String dni) {
         if (dni == null || dni.equals("")) {
-            cargaGaleria(model);
+            model.addAttribute("autores", autorRepository.findAll());
         } else {
-            cargaGaleria(model);
             model.addAttribute("autores", autorRepository.findByNif(dni));
         }
 
@@ -99,9 +94,7 @@ public class AutorController extends GaleriaController{
 
     @GetMapping("/ordenar")
     public String buscarOrdenado(Model model, @RequestParam String sort) {
-        cargaGaleria(model);
         model.addAttribute("autores", autorRepository.findAll(Sort.by(sort)));
-
         return "autores";
     }
 
