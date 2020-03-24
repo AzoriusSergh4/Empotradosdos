@@ -1,56 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Nuevo cliente</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-	<link href="/styles/styles.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <title>Nuevo cliente</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+    <link href="/styles/styles.css" rel="stylesheet"/>
 </head>
 <body class="color-background">
 
-	<div class="center-info-card">
-		<div class="card mx-auto card-width">
-		  <div class="card-body">
-			<h1 class="card-title center-title">Nuevo cliente</h1>
-			<form action="/cliente/" method="post">
-					<div class="form-group">
-					<label for="entradaNombre">Nombre:</label>
-					<input class="form-control" type='text' id="entradaNombre" name='nombre' placeholder="Nombre" required="required"/>
-				</div>
+<div class="center-info-card">
+    <div class="card mx-auto card-width">
+        <div class="card-body">
+            <h1 class="card-title center-title">Nuevo cliente</h1>
+            <form action="/cliente/" method="post">
+                <div class="form-group">
+                    <label for="entradaNombre">Nombre:</label>
+                    <input class="form-control" type='text' id="entradaNombre" name='nombre' placeholder="Nombre"
+                           required="required"/>
+                </div>
 
-				<div class="form-group">
-					<label for="entradaApellidos">Apellidos:</label>
-					<input class="form-control" type='text' id="entradaApellidos" name='apellidos' placeholder="Apellidos" required="required"/>
-				</div>
+                <div class="form-group">
+                    <label for="entradaApellidos">Apellidos:</label>
+                    <input class="form-control" type='text' id="entradaApellidos" name='apellidos'
+                           placeholder="Apellidos" required="required"/>
+                </div>
 
-				<div class="form-group">
-					<label for="entradaDNI">DNI:</label>
-					<input class="form-control" type='text' id="entradaDNI" name='nif' placeholder="DNI" required="required"/>
-				</div>
+                <div class="form-group">
+                    <label for="entradaDNI">DNI:</label>
+                    <input class="form-control" type='text' id="entradaDNI" name='nif' placeholder="DNI"
+                           required="required"/>
+                </div>
 
-				<div class="form-group">
-					<label for="entradaDireccionPostal">Dirección postal:</label>
-					<input class="form-control" type='text' id="entradaDireccionPostal" name='direccionPostal' placeholder="Dirección postal" required="required"/>
-				</div>
+                <div class="form-group">
+                    <label for="entradaDireccionPostal">Dirección postal:</label>
+                    <input class="form-control" type='text' id="entradaDireccionPostal" name='direccionPostal'
+                           placeholder="Dirección postal" required="required"/>
+                </div>
 
-				<div class="form-group">
-					<label for="entradaEmail">Email:</label>
-					<input class="form-control" type="email" id="entradaEmail" name='email' placeholder="Email" required="required"/>
-				</div>
+                <div class="form-group">
+                    <label for="entradaEmail">Email:</label>
+                    <input class="form-control" type="email" id="entradaEmail" name='email' placeholder="Email"
+                           required="required"/>
+                </div>
 
-				<div class="form-group">
-					<label for="entradaTelefono">Teléfono:</label>
-					<input class="form-control" type='tel' id="entradaTelefono" name='telefono' placeholder="Teléfono" required="required"/>
-				</div>
+                <div class="form-group">
+                    <label for="entradaTelefono">Teléfono:</label>
+                    <input class="form-control" type='tel' id="entradaTelefono" name='telefono' placeholder="Teléfono"
+                           required="required"/>
+                </div>
 
-				<button type="submit" class="btn btn-primary">Enviar</button>
-				<a th:href="@{'/cliente/mostrarClientes'}" type="button" class="cancel-button">Cancelar</a>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+                <a th:href="@{'/cliente/mostrarClientes'}" type="button" class="cancel-button">Cancelar</a>
 
-			</form>
-		  </div>
-		</div>
-	</div>
+            </form>
+        </div>
+    </div>
+</div>
 
 
 </body>

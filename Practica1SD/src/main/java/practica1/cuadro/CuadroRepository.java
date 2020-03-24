@@ -14,10 +14,4 @@ public interface CuadroRepository extends JpaRepository<Cuadro, Long> {
 	List<Cuadro> findDistinctCuadroByTituloContainsIgnoreCaseOrDescripcionContainsIgnoreCase(String titulo, String descripcion);
 	List<Cuadro> findByAutor(Autor autor);
 
-	List<Cuadro> findAllOrderByTitulo(String titulo);
-	List<Cuadro> findAllOrderByAutor(Autor autor);
-	List<Cuadro> findAllOrderByComprador(Cliente comprador);
-	List<Cuadro> findAllOrderByPrecio(int precio);
-	
-	
 }

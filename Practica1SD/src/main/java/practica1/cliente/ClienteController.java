@@ -1,6 +1,7 @@
 package practica1.cliente;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -90,6 +91,14 @@ public class ClienteController extends GaleriaController{
             cargaGaleria(model);
             model.addAttribute("clientes", clienteRepository.findByNif(dni));
         }
+
+        return "clientes";
+    }
+
+    @GetMapping("/ordenar")
+    public String buscarOrdenado(Model model, @RequestParam String sort) {
+        cargaGaleria(model);
+        model.addAttribute("clientes", clienteRepository.findAll(Sort.by(sort)));
 
         return "clientes";
     }

@@ -1,47 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Cuadros</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="/styles/styles.css" rel="stylesheet" />
-    	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>	
+    <meta charset="UTF-8">
+    <title>Cuadros</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="/styles/styles.css" rel="stylesheet"/>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
 </head>
 <body>
-			<div style="text-align: center">			
-			    <h1>
-			        Cuadros disponibles
-			        <a href="/cuadro/addCuadro" type="button">
-			            <i class="material-icons">add</i>
-			        </a>
-			    </h1>
-			    <div class="container">
-				<div class="row">
-					<div class="col-sm">
-					<form action="/cuadro/buscarPorTituloODescripcion" method="get">
-							<div class="form-group">
-								<input class="form-control" type='text' id="tituloDescripcion" name='tituloDescripcion' placeholder="Título o descripción del cuadro"/>
-							</div>
-						</form>
-					</div>
-					<div class="col-sm">				
-						<form action="/cuadro/buscarPorAutor" method="get">
-									
-							  <div class="form-group">
-							 <select class="form-control" id="entradaAutor" name='autor'>
-								 <option value=" " disabled selected hidden>Autor</option>
-                       			 <option th:each="autor : ${autores}" th:value="${autor.id}" th:text="${autor.nombre + ' ' + autor.apellidos}" ></option>
-                   			 </select>
-                   			 <button type="submit" class="material-icons">search</button>
-							</div>
-						</form>
-					</div>
-				</div>
+<div style="text-align: center">
+    <h1>
+        Cuadros disponibles
+        <a href="/cuadro/addCuadro" type="button">
+            <i class="material-icons">add</i>
+        </a>
+    </h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <form action="/cuadro/buscarPorTituloODescripcion" method="get">
+                    <div class="form-group">
+                        <input class="form-control" type='text' id="tituloDescripcion" name='tituloDescripcion'
+                               placeholder="Título o descripción del cuadro"/>
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm">
+                <form action="/cuadro/buscarPorAutor" method="get">
+
+                    <div class="form-group">
+                        <select class="form-control" id="entradaAutor" name='autor'>
+                            <option value=" " disabled selected hidden>Autor</option>
+                            <option th:each="autor : ${autores}" th:value="${autor.id}"
+                                    th:text="${autor.nombre + ' ' + autor.apellidos}"></option>
+                        </select>
+                        <button type="submit" class="material-icons">search</button>
+                    </div>
+                </form>
+            </div>
+			<div class="col-sm form-group">
+				<form action="/cuadro/ordenar">
+					<label for="sort">Ordenar por: </label>
+					<select class="form-control" id="sort" name="sort">
+						<option value="titulo">Titulo</option>
+						<option value="precio">Precio</option>
+						<option value="autor.nombre">Autor</option>
+						<option value="comprador.nombre">Comprador</option>
+					</select>
+					<button class="btn btn-primary" type="submit">Ordenar</button>
+				</form>
 			</div>
-			    <span th:each="cuadro : ${cuadros}">
+        </div>
+    </div>
+    <span th:each="cuadro : ${cuadros}">
 			        <div>
 			            <span th:text="*{cuadro.titulo}"></span>
 						<a th:href="@{'/cuadro/' + ${cuadro.id}}" type="button">
@@ -52,10 +71,10 @@
 			            </a>
 			        </div>
 			    </span>
-			    <a th:href="@{'/'}" type="button" class="cancel-button">Atrás</a>
-			</div>
-			
-		</div>
-	
+    <a th:href="@{'/'}" type="button" class="cancel-button">Atrás</a>
+</div>
+
+</div>
+
 </body>
 </html>

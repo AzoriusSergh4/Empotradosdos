@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -119,6 +120,14 @@ public class CuadroController extends GaleriaController{
             cargaGaleria(model);
             model.addAttribute("cuadros", cuadroRepository.findByAutor(autor));
         }
+
+        return "cuadros";
+    }
+
+    @GetMapping("/ordenar")
+    public String buscarOrdenado(Model model, @RequestParam String sort) {
+        cargaGaleria(model);
+        model.addAttribute("cuadros", cuadroRepository.findAll(Sort.by(sort)));
 
         return "cuadros";
     }
