@@ -15,40 +15,40 @@
     <div class="card mx-auto card-width">
         <div class="card-body">
             <h1 class="card-title center-title">Ficha de Autor</h1>
-            <div>
-                <span>Nombre: </span>
+            <div class="sd-margin">
+                <span class="font-weight-bold">Nombre: </span>
                 <span th:text="${autor.nombre}"></span>
             </div>
-            <div>
-                <span>Apellidos: </span>
+            <div class="sd-margin">
+                <span class="font-weight-bold">Apellidos: </span>
                 <span th:text="${autor.apellidos}"></span>
             </div>
-            <div>
-                <span>NIF: </span>
+            <div class="sd-margin">
+                <span class="font-weight-bold">NIF: </span>
                 <span th:text="${autor.nif}"></span>
             </div>
-            <div>
-                <span>Año de Nacimiento: </span>
+            <div class="sd-margin">
+                <span class="font-weight-bold">Año de Nacimiento: </span>
                 <span th:text="${autor.anyoNacimiento}"></span>
             </div>
-            <div>
-                <span>País de Nacimiento: </span>
+            <div class="sd-margin">
+                <span class="font-weight-bold">País de Nacimiento: </span>
                 <span th:text="${autor.paisNacimiento}"></span>
             </div>
-            <div>
-                <span>Dirección Postal: </span>
+            <div class="sd-margin">
+                <span class="font-weight-bold">Dirección Postal: </span>
                 <span th:text="${autor.direccionPostal}"></span>
             </div>
-            <div>
-                <span>Email: </span>
+            <div class="sd-margin">
+                <span class="font-weight-bold">Email: </span>
                 <span th:text="${autor.email}"></span>
             </div>
-            <div>
-                <span>Teléfono: </span>
+            <div class="sd-margin">
+                <span class="font-weight-bold">Teléfono: </span>
                 <span th:text="${autor.telefono}"></span>
             </div>
 
-            <a th:href="@{'/autor/mostrarAutores'}" type="button" class="cancel-button">Volver</a>
+            <a th:href="@{'/autor/mostrarAutores'}" type="button" class="btn btn-primary sd-margin">Volver</a>
         </div>
     </div>
 </div>

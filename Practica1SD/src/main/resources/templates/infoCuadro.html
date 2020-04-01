@@ -15,48 +15,48 @@
     <div class="card mx-auto card-width">
         <div class="card-body">
             <h1 class="card-title center-title">Ficha de Cuadro</h1>
-            <div>
-                <span>Título: </span>
+            <div class="sd-margin">
+                <span class="font-weight-bold">Título: </span>
                 <span th:text="${cuadro.titulo}"></span>
             </div>
-            <div>
-                <span>Autor: </span>
+            <div class="sd-margin">
+                <span class="font-weight-bold">Autor: </span>
                 <span th:text="${cuadro.autor.nombre}"></span>
                 <span th:text="${cuadro.autor.apellidos}"></span>
             </div>
-            <div>
-                <span>Descripción: </span>
+            <div class="sd-margin">
+                <span class="font-weight-bold">Descripción: </span>
                 <span th:text="${cuadro.descripcion}"></span>
             </div>
-            <div>
-                <span>Año de finalización: </span>
+            <div class="sd-margin">
+                <span class="font-weight-bold">Año de finalización: </span>
                 <span th:text="${cuadro.anyoFinalizacion}"></span>
             </div>
-            <div>
-                <span>Anchura: </span>
+            <div class="sd-margin">
+                <span class="font-weight-bold">Anchura: </span>
                 <span th:text="${cuadro.anchura}"></span>
             </div>
-            <div>
-                <span>Altura: </span>
+            <div class="sd-margin">
+                <span class="font-weight-bold">Altura: </span>
                 <span th:text="${cuadro.altura}"></span>
             </div>
-            <div>
-                <span>Precio: </span>
+            <div class="sd-margin">
+                <span class="font-weight-bold">Precio: </span>
                 <span th:text="${cuadro.precio}"></span>
             </div>
-            <div>
-                <span>Fecha de Venta: </span>
+            <div class="sd-margin">
+                <span class="font-weight-bold">Fecha de Venta: </span>
                 <span th:if="${cuadro.fechaVenta != null}" th:text="${cuadro.fechaVenta}"></span>
                 <span th:if="${cuadro.fechaVenta == null}">--</span>
             </div>
-            <div>
-                <span>Comprador: </span>
+            <div class="sd-margin">
+                <span class="font-weight-bold">Comprador: </span>
                 <span th:if="${cuadro.comprador != null}" th:text="${cuadro.comprador.nombre}"></span>
                 <span th:if="${cuadro.comprador != null}" th:text="${cuadro.comprador.apellidos}"></span>
                 <span th:if="${cuadro.comprador == null}">--</span>
             </div>
 
-            <a th:href="@{'/cuadro/mostrarCuadros'}" type="button" class="cancel-button">Volver</a>
+            <a th:href="@{'/cuadro/mostrarCuadros'}" type="button" class="btn btn-primary sd-margin">Volver</a>
         </div>
     </div>
 </div>

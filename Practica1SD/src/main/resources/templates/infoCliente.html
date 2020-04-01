@@ -15,32 +15,32 @@
     <div class="card mx-auto card-width">
         <div class="card-body">
             <h1 class="card-title center-title">Ficha de Cliente</h1>
-            <div>
-                <span>Nombre: </span>
+            <div class="sd-margin">
+                <span class="font-weight-bold">Nombre: </span>
                 <span th:text="${cliente.nombre}"></span>
             </div>
-            <div>
-                <span>Apellidos: </span>
+            <div class="sd-margin">
+                <span class="font-weight-bold">Apellidos: </span>
                 <span th:text="${cliente.apellidos}"></span>
             </div>
-            <div>
-                <span>NIF: </span>
+            <div class="sd-margin">
+                <span class="font-weight-bold">NIF: </span>
                 <span th:text="${cliente.nif}"></span>
             </div>
-            <div>
-                <span>Dirección Postal: </span>
+            <div class="sd-margin">
+                <span class="font-weight-bold">Dirección Postal: </span>
                 <span th:text="${cliente.direccionPostal}"></span>
             </div>
-            <div>
-                <span>Email: </span>
+            <div class="sd-margin">
+                <span class="font-weight-bold">Email: </span>
                 <span th:text="${cliente.email}"></span>
             </div>
-            <div>
-                <span>Teléfono: </span>
+            <div class="sd-margin">
+                <span class="font-weight-bold">Teléfono: </span>
                 <span th:text="${cliente.telefono}"></span>
             </div>
 
-            <a th:href="@{'/cliente/mostrarClientes'}" type="button" class="cancel-button">Volver</a>
+            <a th:href="@{'/cliente/mostrarClientes'}" type="button" class="btn btn-primary sd-margin">Volver</a>
         </div>
     </div>
 </div>

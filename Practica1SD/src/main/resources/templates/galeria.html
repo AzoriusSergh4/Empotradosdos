@@ -11,26 +11,34 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </head>
 <body>
-			<div style="text-align: center">			
-			    <h1>
-			        Cuadros disponibles
-			        <a href="/cuadro/mostrarCuadros" type="button">
-			            <i class="material-icons">photo_size_select_actual</i>
-			        </a>
-			    </h1>
-			     <h1>
-			        Autores adscritos
-			        <a href="/autor/mostrarAutores" type="button">
-			            <i class="material-icons">brush</i>
-			        </a>
-			    </h1>
-			     <h1>
-			        Clientes afiliados
-			        <a href="/cliente/mostrarClientes" type="button">
-			            <i class="material-icons">person</i>
-			        </a>
-			    </h1>
+
+	<div class="row h-100">
+		<div class="card text-center my-auto sd-card border border-dark">
+		<div class="card-header">
+			 <h1 class="card-title">Galería de Cuadros</h1>
 		</div>
-	
+		  <div class="card-body">
+		   
+		    <div class="row h-100">
+		    <div class="mx-auto my-auto">
+				<a class="btn btn-primary btn-lg" href="/cuadro/mostrarCuadros" type="button"><span class="align-middle">Cuadros disponibles</span>
+				<i class="material-icons align-middle">photo_size_select_actual</i>
+			    </a>
+				        
+		        <a class="btn btn-primary btn-lg" href="/autor/mostrarAutores" type="button">
+		        <span class="align-middle">Autores adscritos</span>
+		            <i class="material-icons align-middle">brush</i>
+		        </a>
+
+				        
+		        <a class="btn btn-primary btn-lg" href="/cliente/mostrarClientes" type="button">
+		        <span class="align-middle">Clientes afiliados</span>
+		            <i class="material-icons align-middle">person</i>
+		        </a>
+			</div>	 
+			</div>   
+		  </div>
+		</div>
+	</div>
 </body>
 </html>
