@@ -136,14 +136,16 @@ public class CuadroController extends GaleriaController{
         cuadro.setAltura(Double.parseDouble(mappedCuadro.get("altura")));
         cuadro.setAnchura(Double.parseDouble(mappedCuadro.get("anchura")));
         cuadro.setAnyoFinalizacion(Integer.parseInt(mappedCuadro.get("anyoFinalizacion")));
-    	cuadro.setPrecio(Integer.parseInt(mappedCuadro.get("precio"))); 	
-
-    	try {
-			cuadro.setFechaVenta(new Date(fecha.parse(mappedCuadro.get("fechaVenta")).getTime()));
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    	cuadro.setPrecio(Integer.parseInt(mappedCuadro.get("precio")));
+    	if(mappedCuadro.get("fechaVenta").equals("")){
+    	    cuadro.setFechaVenta(null);
+        } else {
+            try {
+                cuadro.setFechaVenta(new Date(fecha.parse(mappedCuadro.get("fechaVenta")).getTime()));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
 
     	Cliente comprador = (mappedCuadro.get("comprador").equals("null") ? null : clienteRepository.findByNif(mappedCuadro.get("comprador")));
     	cuadro.setComprador(comprador);
