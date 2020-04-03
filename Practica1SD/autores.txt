@@ -1,9 +1,9 @@
 Autores de la práctica y su participación:
 
 - Sergio Lira Díaz, DNI: 02286404C. Participación con la entidad de Cuadros y las operaciones de ordenación y búsqueda sobre los mismos.
-  Además, ha sido responsable del apartado visual y la cohesión de las plantillas.
+  Además, ha sido responsable del apartado visual y la cohesión de las plantillas y corrección de bugs en el Backend.
 - Jesús Borrero Gómez, DNI: 02777290V. Participación con la entidad de Autores y todas las plantillas y operaciones sobre los mismos.
-- Sara Rodriguez Alarcón, DNI: 47585526K. Participación con la entidad de Cuadros y las operaciones de consulta, edición y creación sobre los mismos.
+- Sara Rodríguez Alarcón, DNI: 47585526K. Participación con la entidad de Cuadros y las operaciones de consulta, edición y creación sobre los mismos.
 - Alejandro Quesada Soto, DNI: 53955723T. Participación con la entidad de Clientes y todas las plantillas y operaciones sobre los mismos.
 
 El equipo considera que el trabajo ha sido igualitario y todos los integrantes han trabajado lo mismo.
