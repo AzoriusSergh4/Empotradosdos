@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Aeropuerto {
@@ -12,7 +13,7 @@ public class Aeropuerto {
 	@GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
 	
-	
+	@OneToMany(mappedBy = "origen")
 	private String codigo;
 	private String nombre;
 	
