@@ -14,6 +14,11 @@ public class AeropuertoRestController {
 	@Autowired
 	AeropuertoRepository aeropuertoRepository;
 
+	/**
+	 * Lista todos los aeropuertos 
+	 * 
+	 * @return la lista de aeropuertos
+	 */
 	@CrossOrigin
 	@RequestMapping("/")
 	public List<Aeropuerto> listAeropuertos() {
