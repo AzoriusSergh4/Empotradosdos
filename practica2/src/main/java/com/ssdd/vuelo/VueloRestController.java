@@ -1,5 +1,8 @@
 package com.ssdd.vuelo;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +23,16 @@ public class VueloRestController {
 	}
 	
 	@RequestMapping("/find")
-	public List<Vuelo> findVuelos(@RequestParam String nombre){
-		return vueloRepository.findByOrigenNombreContainingIgnoreCase(nombre);
+	public List<Vuelo> findVuelos(@RequestParam String origen, @RequestParam String destino, @RequestParam String fechaSalida){
+		SimpleDateFormat parser = new SimpleDateFormat("dd/MM/yyyy");
+		Date fecha;
+		try {
+			fecha = new Date(parser.parse(fechaSalida).getTime());
+			return vueloRepository.findByOrigenNombreContainingIgnoreCaseAndDestinoNombreContainingIgnoreCaseAndFechaSalida(origen, destino, fecha);
+		} catch (ParseException e) {
+			return vueloRepository.findByOrigenNombreContainingIgnoreCaseAndDestinoNombreContainingIgnoreCase(origen, destino);
+		}
+		
 	}
 	
 }

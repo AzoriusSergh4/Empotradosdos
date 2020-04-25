@@ -1,6 +1,7 @@
 package com.ssdd.vuelo;
 
 import java.sql.Date;
+import java.sql.Time;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -22,6 +23,8 @@ public class Vuelo {
 	
 	private Date fechaSalida;
 	
+	private Time horaSalida;
+	
 	private int duracion;
 	
 	private int precio;
@@ -36,10 +39,11 @@ public class Vuelo {
 		
 	}
 
-	public Vuelo(String codigo, Date fechaSalida, int duracion, int precio, Aeropuerto origen, Aeropuerto destino) {
+	public Vuelo(String codigo, Date fechaSalida, Time horaSalida, int duracion, int precio, Aeropuerto origen, Aeropuerto destino) {
 		super();
 		this.codigo = codigo;
 		this.fechaSalida = fechaSalida;
+		this.horaSalida = horaSalida;
 		this.duracion = duracion;
 		this.precio = precio;
 		this.origen = origen;
@@ -96,6 +100,14 @@ public class Vuelo {
 
 	public void setDestino(Aeropuerto destino) {
 		this.destino = destino;
+	}
+
+	public Time getHoraSalida() {
+		return horaSalida;
+	}
+
+	public void setHoraSalida(Time horaSalida) {
+		this.horaSalida = horaSalida;
 	}
 	
 	

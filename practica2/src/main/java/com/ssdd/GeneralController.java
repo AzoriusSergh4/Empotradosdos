@@ -1,6 +1,7 @@
 package com.ssdd;
 
 import java.sql.Date;
+import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -38,6 +39,7 @@ public class GeneralController {
 		  try {
 		    	
 	    	SimpleDateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
+	    
 	    	//Creación de aeropuertos
 	    	Aeropuerto a1 = new Aeropuerto("AAAA", "Madrid Barajas Adolfo Suárez");
 	    	Aeropuerto a2 = new Aeropuerto("BBBB", "Barcelona Josep Tarradellas");
@@ -51,7 +53,7 @@ public class GeneralController {
 	    	companiaRepository.save(c1);
 	    	
 	    	//Creación de vuelos
-	    	Vuelo v1 = new Vuelo("EW1234", new Date(fecha.parse("12/01/2020").getTime()), 240, 345, a1, a2);
+	    	Vuelo v1 = new Vuelo("IB1234", new Date(fecha.parse("12/01/2020").getTime()), Time.valueOf("10:00:00"), 240, 345, a1, a2);
 	    	vueloRepository.save(v1);
 		  } catch (ParseException e) {
 				// TODO Auto-generated catch block
