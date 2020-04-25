@@ -1,5 +1,9 @@
 package com.ssdd.aeropuerto;
 
-public class AeropuertoRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+
+public interface AeropuertoRepository extends JpaRepository<Aeropuerto, Long> { 
+
 
 }
