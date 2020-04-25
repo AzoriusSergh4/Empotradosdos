@@ -1,0 +1,63 @@
+body, html {
+    background-image: linear-gradient(to bottom right, rgb(121, 148, 187), rgba(255,0,0,0));
+    height: 100%;
+    background-position: center;
+ 	background-repeat: no-repeat;
+  	background-size: cover;
+	background-attachment: fixed;
+}
+
+.sd-card {
+	 width: 100rem;
+	 top: 5rem;
+	 margin: auto;
+	 min-height: 50rem;
+}
+
+.btn-lg{
+	font-size: 2rem;
+}
+
+.center-info-card {
+    align-content: center;
+    margin-top: 4rem;
+    display: flex;
+    margin-bottom: 4rem;
+}
+
+.center-title {
+    text-align: center
+}
+
+.card-width {
+    width: 40rem
+}
+
+.cancel-button {
+    margin-left: 2rem;
+}
+
+.btn-primary {
+	background-color: #C15800;
+	border-color: #C15800;
+}
+
+.btn-primary:active, .btn-primary:checked, .btn-primary:focus, .btn-primary:hover {
+	background-color: #D86200 !important;
+	border-color: #D86200 !important;  
+}
+
+
+.sd-margin {
+	margin-top: 15px;
+}
+
+.sd-table {
+	width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.sd-table-container {
+	margin-top: 30px;
+}
