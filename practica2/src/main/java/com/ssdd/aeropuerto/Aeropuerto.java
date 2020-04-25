@@ -13,7 +13,6 @@ public class Aeropuerto {
 	@GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
 	
-	@OneToMany(mappedBy = "origen")
 	private String codigo;
 	private String nombre;
 	

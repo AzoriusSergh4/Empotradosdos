@@ -7,15 +7,16 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@RequestMapping("/aeropuertos")
 @RestController
 public class AeropuertoRestController {
 	
 	@Autowired
-	
+	AeropuertoRepository aeropuertoRepository;
 
 	@CrossOrigin
-	@RequestMapping
+	@RequestMapping("/")
 	public List<Aeropuerto> listAeropuertos() {
-		
+		return aeropuertoRepository.findAll();
 	}
 }
