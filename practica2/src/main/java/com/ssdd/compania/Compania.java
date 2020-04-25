@@ -17,13 +17,13 @@ public class Compania {
 	private String codigo;
 	private String web;
 	private String telefono;
-	private int valoracion;
+	private double valoracion;
 	
 	public Compania() {
 		
 	}
 	
-	public Compania(String nombre, String codigo, String web, String telefono, int valoracion) {
+	public Compania(String nombre, String codigo, String web, String telefono, double valoracion) {
 		super();
 		this.nombre = nombre;
 		this.codigo = codigo;
@@ -68,11 +68,11 @@ public class Compania {
 		this.telefono = telefono;
 	}
 
-	public int getValoracion() {
+	public double getValoracion() {
 		return valoracion;
 	}
 
-	public void setValoracion(int valoracion) {
+	public void setValoracion(double valoracion) {
 		this.valoracion = valoracion;
 	}
 	
