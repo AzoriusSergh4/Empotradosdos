@@ -115,11 +115,11 @@ public class Vuelo {
 		this.horaSalida = horaSalida;
 	}
 
-	public Compania getCompaniaId() {
+	public Compania getCompania() {
 		return compania;
 	}
 
-	public void setCompaniaId(Compania compania) {
+	public void setCompania(Compania compania) {
 		this.compania = compania;
 	}
 	

@@ -27,7 +27,7 @@ public class VueloRestController {
 	@CrossOrigin
 	@RequestMapping("/find")
 	public List<Vuelo> findVuelos(@RequestParam String origen, @RequestParam String destino, @RequestParam String fechaSalida){
-		SimpleDateFormat parser = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
 		Date fecha;
 		try {
 			fecha = new Date(parser.parse(fechaSalida).getTime());

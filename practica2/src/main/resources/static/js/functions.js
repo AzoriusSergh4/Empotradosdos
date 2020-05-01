@@ -1,13 +1,17 @@
 $("#submitButton").click(function(){
 	var origenIda = $("#origenIda").val();
 	var destinoIda = $("#destinoIda").val();
+	var fechaSalida = $("#fechaSalida").val();
+	console.log(fechaSalida);
 	var url = "http://localhost:8080/vuelos/find";
 	$.ajax({
 		dataType: "json",
 		url: url,
-		data: {origen: origenIda, destino: destinoIda, fechaSalida: ""}
+		data: {origen: origenIda, destino: destinoIda, fechaSalida: fechaSalida}
 	}).done(function(data){
 		console.log(data);
+		//Vaciamos contenido de resultados antes de añadir nuevos resultados
+		$("#vuelosDisponibles").empty();
 		//Si no hay resultados, se muestra un mensaje notificandolo
 		if(data.length == 0){
 			$("#vuelosDisponibles").append("<p>No se han encontrado vuelos con esos criterios</p>");
