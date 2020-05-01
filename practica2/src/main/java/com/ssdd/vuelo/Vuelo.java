@@ -29,6 +29,8 @@ public class Vuelo {
 	
 	private int precio;
 	
+	private String companiaId;
+	
 	@ManyToOne(cascade = CascadeType.MERGE)
 	private Aeropuerto origen;
 	
@@ -39,7 +41,7 @@ public class Vuelo {
 		
 	}
 
-	public Vuelo(String codigo, Date fechaSalida, Time horaSalida, int duracion, int precio, Aeropuerto origen, Aeropuerto destino) {
+	public Vuelo(String codigo, Date fechaSalida, Time horaSalida, int duracion, int precio, String companiaId, Aeropuerto origen, Aeropuerto destino) {
 		super();
 		this.codigo = codigo;
 		this.fechaSalida = fechaSalida;
@@ -48,6 +50,7 @@ public class Vuelo {
 		this.precio = precio;
 		this.origen = origen;
 		this.destino = destino;
+		this.companiaId = companiaId;
 	}
 
 	public long getId() {
@@ -109,6 +112,15 @@ public class Vuelo {
 	public void setHoraSalida(Time horaSalida) {
 		this.horaSalida = horaSalida;
 	}
+
+	public String getCompaniaId() {
+		return companiaId;
+	}
+
+	public void setCompaniaId(String companiaId) {
+		this.companiaId = companiaId;
+	}
+	
 	
 	
 	

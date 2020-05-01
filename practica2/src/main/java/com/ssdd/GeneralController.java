@@ -53,7 +53,7 @@ public class GeneralController {
 	    	companiaRepository.save(c1);
 	    	
 	    	//Creación de vuelos
-	    	Vuelo v1 = new Vuelo("IB1234", new Date(fecha.parse("12/01/2020").getTime()), Time.valueOf("10:00:00"), 240, 345, a1, a2);
+	    	Vuelo v1 = new Vuelo("IB1234", new Date(fecha.parse("12/01/2020").getTime()), Time.valueOf("10:00:00"), 240, 345,"IB", a1, a2);
 	    	vueloRepository.save(v1);
 		  } catch (ParseException e) {
 				// TODO Auto-generated catch block
