@@ -28,6 +28,7 @@ $( function() {
     	
     });
     $( "#aeropuertoDestino" ).autocomplete({
+    	minLength: 0,
     	source: aeropuertos
     });
 });
