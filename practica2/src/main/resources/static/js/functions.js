@@ -2,7 +2,6 @@ $("#submitButton").click(function(){
 	var origenIda = $("#origenIda").val();
 	var destinoIda = $("#destinoIda").val();
 	var fechaSalida = $("#fechaSalida").val();
-	console.log(fechaSalida);
 	var url = "http://localhost:8080/vuelos/find";
 	$.ajax({
 		dataType: "json",
@@ -37,24 +36,20 @@ $("#submitButton").click(function(){
 
 
 $( function() {
-	var aeropuertos = [];
-	
-	function callback(response){
-		aeropuertos = response;
-	}
-	
-	$.ajax({
-		dataType: "json",
-		url: "http://localhost:8080/aeropuertos/nombres",
-		success: function(data){
-			console.log(data);
-			callback(data);
-		}
-	});
-	
+		
     $( ".aeropuertosInput" ).autocomplete({
     	minLength: 0,
-    	source: aeropuertos
+    	source: function( request, response ) {
+    		var nombre = this.element.val();
+	    	$.ajax({
+	    		dataType: "json",
+	    		url: "http://localhost:8080/aeropuertos/nombres",
+	    		data: {nombre: nombre},
+	    		success: function(data){
+	    			response(data);
+	    		}
+	    	});
+    	}
     });
 });
 
