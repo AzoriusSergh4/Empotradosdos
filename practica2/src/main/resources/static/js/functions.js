@@ -37,11 +37,11 @@ $( function() {
 		"Barcelona Josep Tarradellas",
 		"Valencia Manises"
     ];
-    $( "#aeropuertoSalida" ).autocomplete({
+    $( "#origenIda" ).autocomplete({
     	minLength: 0,
     	source: aeropuertos
     });
-    $( "#aeropuertoDestino" ).autocomplete({
+    $( "#destinoIda" ).autocomplete({
     	minLength: 0,
     	source: aeropuertos
     });
