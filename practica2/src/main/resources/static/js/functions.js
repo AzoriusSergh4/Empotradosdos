@@ -37,17 +37,24 @@ $("#submitButton").click(function(){
 
 
 $( function() {
+	var aeropuertos = [];
+	
+	function callback(response){
+		aeropuertos = response;
+	}
+	
+	$.ajax({
+		dataType: "json",
+		url: "http://localhost:8080/aeropuertos/nombres",
+		success: function(data){
+			console.log(data);
+			callback(data);
+		}
+	});
+	
     $( ".aeropuertosInput" ).autocomplete({
     	minLength: 0,
-    	source: function(request,response){
-    		$.ajax({
-    			dataType: "json",
-    			url: "http://localhost:8080/aeropuertos/nombres",
-    			success: function(data){
-    				response(data);
-    			}
-    		});
-    	}
+    	source: aeropuertos
     });
 });
 
