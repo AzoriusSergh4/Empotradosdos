@@ -16,17 +16,16 @@ $("#submitButton").click(function(){
 
 
 
- $( function() {
-    var availableTags = [
-     "Madrid Barajas Adolfo Suárez"
-     "Barcelona Josep Tarradellas"
-     "Valencia Manises"
+$( function() {
+	var availableTags = [
+		"Madrid Barajas Adolfo Suárez",
+		"Barcelona Josep Tarradellas",
+		"Valencia Manises"
     ];
     $( "#aeropuertoSalida" ).autocomplete({
-      source: availableTags
+    	source: availableTags
     });
-  } );
-      $( "#aeropuertoDestino" ).autocomplete({
-      source: availableTags
+    $( "#aeropuertoDestino" ).autocomplete({
+    	source: availableTags
     });
-  } );
+});
