@@ -18,10 +18,6 @@
 	crossorigin="anonymous"></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-	crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -30,24 +26,31 @@
 			<div class="card-header">
 				<h1 class="card-title">Buscador de vuelos</h1>
 			</div>
-			<div class="card-body row h-100">
-				<div class="mx-auto">
-					<div class="ui-widget">
-						<input class="form-control" type='text' id="aeropuertoSalida" name='aeropuertoSalida' placeholder="Aeropuerto de salida" />
+			<div class="card-body">
+				<div class="row h-100">
+					<div class="mx-auto">
+						<div class="ui-widget">
+							<input class="form-control" type='text' id="origenIda" name='aeropuertoSalida' placeholder="Aeropuerto de salida" />
+						</div>
+						<div class="ui-widget">
+							<input class="form-control" type="text" id="destinoIda" name='aeropuertoDestino' placeholder="Aeropuerto de destino" />
+						</div>
+	
+						<div class="form-group">
+							<label for="fechaSalida">Fecha de salida:</label>
+							<input class="form-control" type='date' id="fechaSalida" name='fechaSalida' placeholder="Fecha salida" />
+						</div>
+						<input type="checkbox" id="idaVuelta" name="idaVuelta" value="True">
+						<label for="idaVuelta"> Deseo contratar un vuelo de ida y vuelta</label>
+						<button id="submitButton" type="button" class="btn btn-primary material-icons">search</button>
 					</div>
-					<div class="ui-widget">
-						<input class="form-control" type='text' id="aeropuertoDestino" name='aeropuertoDestino' placeholder="Aeropuerto de destino" />
+				</div>
+				<div class="row h-100">
+					<div id="vuelosDisponibles" class="mx-auto w-100">
 					</div>
-
-					<div class="form-group">
-						<label for="fechaSalida">Fecha de salida:</label>
-						<input class="form-control" type='date' id="fechaSalida" name='fechaSalida' placeholder="Fecha salida" />
-					</div>
-					<input type="checkbox" id="idaVuelta" name="idaVuelta" value="True">
-					<label for="idaVuelta"> Deseo contratar un vuelo de ida y vuelta</label><br>
-					<button type="submit" class="btn btn-primary material-icons">search</button>
 				</div>
 			</div>
+
 		</div>
 	</div>
 	<script src="/js/functions.js"></script>

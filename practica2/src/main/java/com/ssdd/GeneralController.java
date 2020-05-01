@@ -41,19 +41,19 @@ public class GeneralController {
 	    	SimpleDateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
 	    
 	    	//Creación de aeropuertos
-	    	Aeropuerto a1 = new Aeropuerto("AAAA", "Madrid Barajas Adolfo Suárez");
-	    	Aeropuerto a2 = new Aeropuerto("BBBB", "Barcelona Josep Tarradellas");
-	    	Aeropuerto a3 = new Aeropuerto("CCCC", "Valencia Manises");
-	    	aeropuertoRepository.save(a1);
-	    	aeropuertoRepository.save(a2);
-	    	aeropuertoRepository.save(a3);
+	    	Aeropuerto barajas = new Aeropuerto("AAAA", "Madrid Barajas Adolfo Suárez");
+	    	Aeropuerto josep = new Aeropuerto("BBBB", "Barcelona Josep Tarradellas");
+	    	Aeropuerto manises = new Aeropuerto("CCCC", "Valencia Manises");
+	    	aeropuertoRepository.save(barajas);
+	    	aeropuertoRepository.save(josep);
+	    	aeropuertoRepository.save(manises);
 	    	
 	    	//Creación de companias
-	    	Compania c1 = new Compania("Iberia", "IB", "https://www.iberia.com/es/", "901111500", 4.5);
-	    	companiaRepository.save(c1);
+	    	Compania iberia = new Compania("Iberia", "IB", "https://www.iberia.com/es/", "901111500", 4.5);
+	    	companiaRepository.save(iberia);
 	    	
 	    	//Creación de vuelos
-	    	Vuelo v1 = new Vuelo("IB1234", new Date(fecha.parse("12/01/2020").getTime()), Time.valueOf("10:00:00"), 240, 345,"IB", a1, a2);
+	    	Vuelo v1 = new Vuelo("IB1234", new Date(fecha.parse("12/01/2020").getTime()), Time.valueOf("10:00:00"), 240, 345, iberia, barajas, josep);
 	    	vueloRepository.save(v1);
 		  } catch (ParseException e) {
 				// TODO Auto-generated catch block
