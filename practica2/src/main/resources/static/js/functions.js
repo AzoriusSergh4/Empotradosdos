@@ -18,6 +18,7 @@ $("#submitButton").click(function(){
 			$.each(data, function(index, vuelo){
 				$("#tablaVuelos").append("<tr>" +
 						"<td>" + vuelo.codigo + "</td>" +
+						"<td>" + vuelo.compania.nombre + "</td>" +
 						"<td>" + vuelo.fechaSalida + "</td>" +
 						"<td>" + vuelo.horaSalida + "</td>" +
 						"<td>" + vuelo.precio + "€</td>" +
