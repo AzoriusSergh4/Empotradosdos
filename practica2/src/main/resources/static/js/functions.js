@@ -17,15 +17,17 @@ $("#submitButton").click(function(){
 
 
 $( function() {
-	var availableTags = [
+	var aeropuertos = [
 		"Madrid Barajas Adolfo Suárez",
 		"Barcelona Josep Tarradellas",
 		"Valencia Manises"
     ];
     $( "#aeropuertoSalida" ).autocomplete({
-    	source: availableTags
+    	minLength: 0,
+    	source: aeropuertos
+    	
     });
     $( "#aeropuertoDestino" ).autocomplete({
-    	source: availableTags
+    	source: aeropuertos
     });
 });
