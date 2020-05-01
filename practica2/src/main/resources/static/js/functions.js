@@ -46,3 +46,12 @@ $( function() {
     	source: aeropuertos
     });
 });
+
+
+$("#idaVuelta").change(function() {
+    if(this.checked) {
+        $('#content').show();
+    }else{
+    	$('#content').hide();
+    }
+});
