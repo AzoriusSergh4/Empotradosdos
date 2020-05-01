@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Consultor de vuelos</title>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="/styles/styles.css" rel="stylesheet" />
     	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>	
@@ -11,7 +11,7 @@
           rel="stylesheet">
           
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-	
+
 </head>
 <body>
   <div class="row h-100">
@@ -20,23 +20,39 @@
 			 <h1 class="card-title">Buscador de vuelos</h1>
 		</div>
 		  <div class="card-body row h-100">
-		    <div class="mx-auto">
-			    <div class="form-group">
-					<input class="form-control" type='text' id="origenIda" name='aeropuertoSalida' placeholder="Aeropuerto de salida" />
-				</div>
-				  <div class="form-group">
-					<input class="form-control" type='text' id="destinoIda" name='aeropuertoDestino' placeholder="Aeropuerto de destino" />
-				</div>
-				  <input type="checkbox" id="idaVuelta" name="idaVuelta" value="True">
-	 					 <label for="idaVuelta"> Deseo contratar un vuelo de ida y vuelta</label><br>
-					
-				<button type="button" class="btn btn-primary material-icons" id="submitButton">search</button>				
-			</div> 
-			<div id="vuelos">
-			</div>  
+		    <div class="mx-auto my-auto">
+		    
+		    
+		    
+		    
+		    <div class="ui-widget">
+  				<input class="form-control" type='text' id="aeropuertoSalida"
+										name='aeropuertoSalida' placeholder="Aeropuerto de salida" />
+			</div>
+				
+			  <div class="ui-widget">
+				<input class="form-control" type='text' id="aeropuertoDestino"
+										name='aeropuertoDestino' placeholder="Aeropuerto de destino" />
+			</div>
+ 					 
+ 			   <div class="form-group">
+                    <label for="fechaSalida">Fecha de salida:</label>
+                    <input class="form-control" type='date' id="fechaSalida"
+                           name='fechaSalida' placeholder="Fecha salida"/>
+                </div>
+ 			   
+ 			   
+ 			   
+			  <input type="checkbox" id="idaVuelta" name="idaVuelta" value="True">
+ 					 <label for="idaVuelta"> Deseo contratar un vuelo de ida y vuelta</label><br>
+				
+			<button type="submit" class="btn btn-primary material-icons">search</button>	
+			
+		    
+				
+			</div>   
 		  </div>
 		</div>
 	</div>
-	<script src="/js/functions.js"></script>
 </body>
 </html>
