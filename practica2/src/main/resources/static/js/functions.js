@@ -33,18 +33,17 @@ $("#submitButton").click(function(){
 
 
 $( function() {
-	var aeropuertos = [
-		"Madrid Barajas Adolfo Suárez",
-		"Barcelona Josep Tarradellas",
-		"Valencia Manises"
-    ];
-    $( "#origenIda" ).autocomplete({
+    $( ".aeropuertosInput" ).autocomplete({
     	minLength: 0,
-    	source: aeropuertos
-    });
-    $( "#destinoIda" ).autocomplete({
-    	minLength: 0,
-    	source: aeropuertos
+    	source: function(request,response){
+    		$.ajax({
+    			dataType: "json",
+    			url: "http://localhost:8080/aeropuertos/nombres",
+    			success: function(data){
+    				response(data);
+    			}
+    		});
+    	}
     });
 });
 
