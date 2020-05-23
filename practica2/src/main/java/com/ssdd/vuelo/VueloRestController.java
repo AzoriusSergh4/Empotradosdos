@@ -3,6 +3,7 @@ package com.ssdd.vuelo;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,15 +27,24 @@ public class VueloRestController {
 	
 	@CrossOrigin
 	@RequestMapping("/find")
-	public List<Vuelo> findVuelos(@RequestParam String origen, @RequestParam String destino, @RequestParam String fechaSalida){
+	public List<VueloResult> findVuelos(@RequestParam String origen, @RequestParam String destino, @RequestParam String fechaSalida){
 		SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
-		Date fecha;
+		Date fechaIda;
+		List<Vuelo> vuelos = new ArrayList<>();
 		try {
-			fecha = new Date(parser.parse(fechaSalida).getTime());
-			return vueloRepository.findByOrigenNombreContainingIgnoreCaseAndDestinoNombreContainingIgnoreCaseAndFechaSalida(origen, destino, fecha);
+			fechaIda = new Date(parser.parse(fechaSalida).getTime());
+			vuelos =  vueloRepository.findByOrigenNombreContainingIgnoreCaseAndDestinoNombreContainingIgnoreCaseAndFechaSalida(origen, destino, fechaIda);
+			
 		} catch (ParseException e) {
-			return vueloRepository.findByOrigenNombreContainingIgnoreCaseAndDestinoNombreContainingIgnoreCase(origen, destino);
+			vuelos =  vueloRepository.findByOrigenNombreContainingIgnoreCaseAndDestinoNombreContainingIgnoreCase(origen, destino);
 		}
+		List<VueloResult> lista = new ArrayList<VueloResult>();
+		for(Vuelo v : vuelos) {
+			//TODO vuelos de vuelta
+			lista.add(new VueloResult(v, null));
+			
+		}
+		return lista;
 		
 	}
 	

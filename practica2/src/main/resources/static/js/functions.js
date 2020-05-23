@@ -20,12 +20,13 @@ $("#submitButton").click(function(){
 			$("#vuelosDisponibles").append("<table id='tablaVuelos' class='table table-striped table-bordered table-sm sd-table'><tbody>");
 			$.each(data, function(index, vuelo){
 				$("#tablaVuelos").append("<tr>" +
-						"<td>" + vuelo.codigo + "</td>" +
-						"<td>" + vuelo.compania.nombre + "</td>" +
-						"<td>" + vuelo.fechaSalida + "</td>" +
-						"<td>" + vuelo.horaSalida + "</td>" +
-						"<td>" + vuelo.precio + "€</td>" +
-						"<td>" + vuelo.duracion + " min</td>" +
+						"<td>" + vuelo.vueloIda.codigo + "</td>" +
+						"<td><a class='sd-row'>" + vuelo.vueloIda.compania.nombre + "</a></td>" +
+						"<td><a class='sd-row'>" + vuelo.vueloIda.compania.codigo + "</a></td>" +
+						"<td>" + vuelo.vueloIda.fechaSalida + "</td>" +
+						"<td>" + vuelo.vueloIda.horaSalida + "</td>" +
+						"<td>" + vuelo.vueloIda.precio + "€</td>" +
+						"<td>" + vuelo.vueloIda.duracion + " min</td>" +
 				"</tr>");
 			});		
 		}
@@ -33,6 +34,12 @@ $("#submitButton").click(function(){
 	});
 });
 
+$(document.body).on("click",".sd-row", function(event){
+	//Devuelve el codigo o nombre de la comañía aérea
+	var codigoONombre = event.target.text;
+	//TODO Llamada ajax al backend para conseguir los datos de la compañía http://localhost:8080/companias/compania
+	//TODO Cargar el Jquery UI Dialog con los datos de la compania
+});
 
 
 $( function() {
