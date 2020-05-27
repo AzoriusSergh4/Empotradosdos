@@ -36,6 +36,14 @@ $("#submitButton").click(function(){
 
 
 
+$( function() {
+    $( "#dialog" ).dialog({
+    	autoOpen: false,
+    	modal: true
+    });
+ });
+
+
 $(document.body).on("click",".sd-row", function(event){	
 	var codigoONombre = event.target.text; //Devuelve el código o nombre de la compañía aérea
 	var url = "http://localhost:8080/companias/compania";
@@ -45,22 +53,24 @@ $(document.body).on("click",".sd-row", function(event){
 		url: url,
 		data: {codigoONombre: codigoONombre}
 	}).done(function(data){
-		$("#dialog").dialog({
-		 	open: function(event, ui) {
-     			$("#dialog").load(data, function(index, compania){
-      				$("#dialog").append("<tr>" +
-						"<td>" + compania.nombre + "</td>" +
-						"<td>" + compania.codigo + "</td>" +
-						"<td>" + compania.web + "</td>" +
-						"<td>" + compania.telefono + "</td>" +
-						"<td>" + compania.valoracion + "</td>" +
-					"</tr>");
-				});
-			}
-		});
+		/*$(data, function(index, compania){*/
+		$("#texto-dialogo").append(
+				"<p>" + "Nombre: " /*+ compania.nombre*/ + "</p>" +
+				"<p>" + "Código: " /*+ compania.codigo*/ + "</p>" +
+				"<p>" + "Web: " /*+ compania.web*/ + "</p>" +
+				"<p>" + "Teléfono: " /*+ compania.telefono*/ + "</p>" +
+				"<p>" + "Valoración: " /*+ compania.valoracion*/ + "</p>"
+				);
+				
+				//});
+				
+		$("#dialog").dialog("open");		
 		
 	});
 });
+
+
+
 
 $( function() {
 		
