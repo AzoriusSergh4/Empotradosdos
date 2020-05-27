@@ -64,7 +64,9 @@ $(document.body).on("click",".sd-row", function(event){
 				"<p>" + "Valoración: " + "<div id=" + "\"" + "rateYo" + "\"" + "></div>" + "</p>"
 				);
 		 $("#rateYo").rateYo({
-    		rating: data.valoracion
+		 	numStars: 5,
+		 	readOnly: true,
+    		rating: data.valoracion    		
   		});		
 		$("#dialog").dialog("open");	
 		
