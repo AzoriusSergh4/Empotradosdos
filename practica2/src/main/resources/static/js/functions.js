@@ -34,13 +34,33 @@ $("#submitButton").click(function(){
 	});
 });
 
-$(document.body).on("click",".sd-row", function(event){
-	//Devuelve el codigo o nombre de la comañía aérea
-	var codigoONombre = event.target.text;
-	//TODO Llamada ajax al backend para conseguir los datos de la compañía http://localhost:8080/companias/compania
-	//TODO Cargar el Jquery UI Dialog con los datos de la compania
-});
 
+
+$(document.body).on("click",".sd-row", function(event){	
+	var codigoONombre = event.target.text; //Devuelve el código o nombre de la compañía aérea
+	var url = "http://localhost:8080/companias/compania";
+	//Llamada ajax al backend para conseguir los datos de la compañía 
+	$.ajax({
+		dataType: "json",
+		url: url,
+		data: {codigoONombre: codigoONombre}
+	}).done(function(data){
+		$("#dialog").dialog({
+		 	open: function(event, ui) {
+     			$("#dialog").load(data, function(index, compania){
+      				$("#dialog").append("<tr>" +
+						"<td>" + compania.nombre + "</td>" +
+						"<td>" + compania.codigo + "</td>" +
+						"<td>" + compania.web + "</td>" +
+						"<td>" + compania.telefono + "</td>" +
+						"<td>" + compania.valoracion + "</td>" +
+					"</tr>");
+				});
+			}
+		});
+		
+	});
+});
 
 $( function() {
 		

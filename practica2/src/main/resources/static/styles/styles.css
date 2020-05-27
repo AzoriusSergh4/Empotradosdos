@@ -56,6 +56,24 @@ body, html {
 	width: 75%;
 	margin-left: auto;
 	margin-right: auto;
+	cursor: default;
+}
+
+.sd-row {
+	text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size .3s;
+    text-color: #080EC8;
+    cursor: pointer;
+}
+
+.sd-row:hover, sd-row:focus {
+    background-size: 100% 2px;
+    cursor: pointer;
+    
 }
 
 .sd-table-container {
