@@ -53,12 +53,14 @@ $(document.body).on("click",".sd-row", function(event){
 		url: url,
 		data: {codigoONombre: codigoONombre}
 	}).done(function(data){
-	//Una vez terminada la función ajax, carga los datos en el dialog
+	//Vaciamos contenido de resultados antes de añadir nuevos resultados
+		$("#texto-dialogo").empty();
+	//Carga los datos en el dialog
 		$("#texto-dialogo").append(
 				"<p>" + "Nombre: " + data.nombre + "</p>" +
 				"<p>" + "Código: " + data.codigo + "</p>" +
-				"<p>" + "Teléfono: " + data.telefono + "</p>" +
-				"<p>" + "Web: " + data.web + "</p>" +
+				"<p>" + "Teléfono: " + data.telefono + "</p>" +		
+				"<p>" + "Web: " + "<a href=" + "\"" + data.web + "\"" + ">" + data.web + "</a>" +"</p>" +
 				"<p>" + "Valoración: " + data.valoracion + "</p>"
 				);
 				
