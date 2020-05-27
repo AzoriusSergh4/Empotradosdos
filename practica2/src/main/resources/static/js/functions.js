@@ -60,7 +60,7 @@ $(document.body).on("click",".sd-row", function(event){
 				"<p>" + "Nombre: " + data.nombre + "</p>" +
 				"<p>" + "Código: " + data.codigo + "</p>" +
 				"<p>" + "Teléfono: " + data.telefono + "</p>" +		
-				"<p>" + "Web: " + "<a href=" + "\"" + data.web + "\"" + ">" + data.web + "</a>" +"</p>" +
+				"<p>" + "Web: " + "<a href=" + "\"" + data.web + "\"" + "target=" + "\"" + "_blank" + "\""  + ">" + data.web + "</a>" +"</p>" +
 				"<p>" + "Valoración: " + "<div id=" + "\"" + "rateYo" + "\"" + "></div>" + "</p>"
 				);
 		 $("#rateYo").rateYo({
