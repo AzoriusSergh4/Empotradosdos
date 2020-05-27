@@ -53,18 +53,16 @@ $(document.body).on("click",".sd-row", function(event){
 		url: url,
 		data: {codigoONombre: codigoONombre}
 	}).done(function(data){
-		/*$(data, function(index, compania){*/
+	//Una vez terminada la función ajax, carga los datos en el dialog
 		$("#texto-dialogo").append(
-				"<p>" + "Nombre: " /*+ compania.nombre*/ + "</p>" +
-				"<p>" + "Código: " /*+ compania.codigo*/ + "</p>" +
-				"<p>" + "Web: " /*+ compania.web*/ + "</p>" +
-				"<p>" + "Teléfono: " /*+ compania.telefono*/ + "</p>" +
-				"<p>" + "Valoración: " /*+ compania.valoracion*/ + "</p>"
+				"<p>" + "Nombre: " + data.nombre + "</p>" +
+				"<p>" + "Código: " + data.codigo + "</p>" +
+				"<p>" + "Teléfono: " + data.telefono + "</p>" +
+				"<p>" + "Web: " + data.web + "</p>" +
+				"<p>" + "Valoración: " + data.valoracion + "</p>"
 				);
 				
-				//});
-				
-		$("#dialog").dialog("open");		
+		$("#dialog").dialog("open");	
 		
 	});
 });
