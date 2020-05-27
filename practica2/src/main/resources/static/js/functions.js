@@ -61,9 +61,11 @@ $(document.body).on("click",".sd-row", function(event){
 				"<p>" + "Código: " + data.codigo + "</p>" +
 				"<p>" + "Teléfono: " + data.telefono + "</p>" +		
 				"<p>" + "Web: " + "<a href=" + "\"" + data.web + "\"" + ">" + data.web + "</a>" +"</p>" +
-				"<p>" + "Valoración: " + data.valoracion + "</p>"
+				"<p>" + "Valoración: " + "<div id=" + "\"" + "rateYo" + "\"" + "></div>" + "</p>"
 				);
-				
+		 $("#rateYo").rateYo({
+    		rating: data.valoracion
+  		});		
 		$("#dialog").dialog("open");	
 		
 	});
