@@ -36,17 +36,14 @@ $("#submitButton").click(function(){
 				$.each(data, function(index, vuelo){
 				if(vuelo.vueloVuelta != null){
 					$("#tablaVuelos").append("<tr>" +
-							"<td>" + vuelo.vueloIda.codigo  + vuelo.vueloVuelta.codigo + "</td>" +
-							"<td><a class='sd-row'>" + vuelo.vueloVuelta.compania.nombre + "</a></td>" +
-							"<td><a class='sd-row'>" + vuelo.vueloVuelta.compania.codigo + "</a></td>" +
-							"<td>" + vuelo.vueloVuelta.fechaSalida + "</td>" +
-							"<td>" + vuelo.vueloVuelta.horaSalida + "</td>" +
+							"<td>" + "<p>" + vuelo.vueloIda.codigo + "</p>" + "<p>" + vuelo.vueloVuelta.codigo + "</p>" + "</td>" +
+							"<td><a class='sd-row'>" + "<p>" + vuelo.vueloIda.compania.nombre + "</p>" + "<p>" + vuelo.vueloVuelta.compania.nombre + "</p>" + "</a></td>" +
+							"<td><a class='sd-row'>" + "<p>" + vuelo.vueloIda.compania.codigo + "</p>" + "<p>" + vuelo.vueloVuelta.compania.codigo + "</p>" + "</a></td>" +
+							"<td>" + "<p>" + vuelo.vueloIda.fechaSalida + "</p>" + "<p>" + vuelo.vueloVuelta.fechaSalida + "</p>" + "</td>" +
+							"<td>" + "<p>" + vuelo.vueloIda.horaSalida + "</p>" + "<p>" + vuelo.vueloVuelta.horaSalida + "</p>" + "</td>" +
 							"<td>" + vuelo.precioTotal + "€</td>" +
-							"<td>" + vuelo.vueloVuelta.duracion + " min</td>" +
+							"<td>" + "<p>" + vuelo.vueloIda.duracion +  " min" + "</p>" + "<p>" + vuelo.vueloVuelta.duracion + "</p>" + " min" + "</td>" +
 					"</tr>");
-					}
-					else {
-						$("#vuelosDisponibles").append("<p>No se han encontrado vuelos de vuelta con esos criterios</p>");
 					}
 				});
 							
