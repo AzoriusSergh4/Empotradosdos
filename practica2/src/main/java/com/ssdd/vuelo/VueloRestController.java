@@ -49,11 +49,13 @@ public class VueloRestController {
 		}
 		List<VueloResult> lista = new ArrayList<VueloResult>();
 		for(Vuelo v : vuelosIda) {
-				lista.add(new VueloResult(v, null));				
-		}
-		if (vuelosVuelta != null) {
-			for(int i = 0; i < vuelosVuelta.size(); i++) {
-				lista.get(i).setVueloVuelta(vuelosVuelta.get(i));			
+			if (vuelosVuelta != null) {
+				for(Vuelo v2 : vuelosVuelta) {
+					lista.add(new VueloResult(v, v2));
+				}
+			} 
+			else {
+				lista.add(new VueloResult(v, null));
 			}
 		}
 		

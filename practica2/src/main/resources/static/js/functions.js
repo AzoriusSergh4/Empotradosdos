@@ -36,7 +36,7 @@ $("#submitButton").click(function(){
 				$.each(data, function(index, vuelo){
 				if(vuelo.vueloVuelta != null){
 					$("#tablaVuelos").append("<tr>" +
-							"<td>" + vuelo.vueloVuelta.codigo + "</td>" +
+							"<td>" + vuelo.vueloIda.codigo  + vuelo.vueloVuelta.codigo + "</td>" +
 							"<td><a class='sd-row'>" + vuelo.vueloVuelta.compania.nombre + "</a></td>" +
 							"<td><a class='sd-row'>" + vuelo.vueloVuelta.compania.codigo + "</a></td>" +
 							"<td>" + vuelo.vueloVuelta.fechaSalida + "</td>" +
@@ -44,6 +44,9 @@ $("#submitButton").click(function(){
 							"<td>" + vuelo.precioTotal + "€</td>" +
 							"<td>" + vuelo.vueloVuelta.duracion + " min</td>" +
 					"</tr>");
+					}
+					else {
+						$("#vuelosDisponibles").append("<p>No se han encontrado vuelos de vuelta con esos criterios</p>");
 					}
 				});
 							
