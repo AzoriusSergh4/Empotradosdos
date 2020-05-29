@@ -18,36 +18,42 @@ $("#submitButton").click(function(){
 		}
 		//Si hay resultados, se genera una tabla con los vuelos y su información
 		else{
-			$("#vuelosDisponibles").append("<table id='tablaVuelos' class='table table-striped table-bordered table-sm sd-table'><tbody>");
-			$.each(data, function(index, vuelo){
-				$("#tablaVuelos").append("<tr>" +
-						"<td>" + vuelo.vueloIda.codigo + "</td>" +
-						"<td><a class='sd-row'>" + vuelo.vueloIda.compania.nombre + "</a></td>" +
-						"<td><a class='sd-row'>" + vuelo.vueloIda.compania.codigo + "</a></td>" +
-						"<td>" + vuelo.vueloIda.fechaSalida + "</td>" +
-						"<td>" + vuelo.vueloIda.horaSalida + "</td>" +
-						"<td>" + vuelo.vueloIda.precio + "€</td>" +
-						"<td>" + vuelo.vueloIda.duracion + " min</td>" +
-				"</tr>");
-			});
-			
-			
 			if ($("#idaVuelta").prop('checked')){
+				$("#vuelosDisponibles").append("<table id='tablaVuelos' class='table table-striped table-bordered table-sm sd-table'><tbody>");
 				$.each(data, function(index, vuelo){
-				if(vuelo.vueloVuelta != null){
-					$("#tablaVuelos").append("<tr>" +
-							"<td>" + "<p>" + vuelo.vueloIda.codigo + "</p>" + "<p>" + vuelo.vueloVuelta.codigo + "</p>" + "</td>" +
-							"<td><a class='sd-row'>" + "<p>" + vuelo.vueloIda.compania.nombre + "</p>" + "<p>" + vuelo.vueloVuelta.compania.nombre + "</p>" + "</a></td>" +
-							"<td><a class='sd-row'>" + "<p>" + vuelo.vueloIda.compania.codigo + "</p>" + "<p>" + vuelo.vueloVuelta.compania.codigo + "</p>" + "</a></td>" +
-							"<td>" + "<p>" + vuelo.vueloIda.fechaSalida + "</p>" + "<p>" + vuelo.vueloVuelta.fechaSalida + "</p>" + "</td>" +
-							"<td>" + "<p>" + vuelo.vueloIda.horaSalida + "</p>" + "<p>" + vuelo.vueloVuelta.horaSalida + "</p>" + "</td>" +
-							"<td>" + vuelo.precioTotal + "€</td>" +
-							"<td>" + "<p>" + vuelo.vueloIda.duracion +  " min" + "</p>" + "<p>" + vuelo.vueloVuelta.duracion + "</p>" + " min" + "</td>" +
-					"</tr>");
-					}
+					if(vuelo.vueloVuelta != null){
+						$("#tablaVuelos").append("<tr>" +
+								"<td>" + "<p>" + vuelo.vueloIda.codigo + "</p>" + "<p>" + vuelo.vueloVuelta.codigo + "</p>" + "</td>" +
+								"<td><a class='sd-row'>" + "<p>" + vuelo.vueloIda.compania.nombre + "</p>" + "<p>" + vuelo.vueloVuelta.compania.nombre + "</p>" + "</a></td>" +
+								"<td><a class='sd-row'>" + "<p>" + vuelo.vueloIda.compania.codigo + "</p>" + "<p>" + vuelo.vueloVuelta.compania.codigo + "</p>" + "</a></td>" +
+								"<td>" + "<p>" + vuelo.vueloIda.fechaSalida + "</p>" + "<p>" + vuelo.vueloVuelta.fechaSalida + "</p>" + "</td>" +
+								"<td>" + "<p>" + vuelo.vueloIda.horaSalida + "</p>" + "<p>" + vuelo.vueloVuelta.horaSalida + "</p>" + "</td>" +
+								"<td>" + vuelo.precioTotal + "€</td>" +
+								"<td>" + "<p>" + vuelo.vueloIda.duracion +  " min" + "</p>" + "<p>" + vuelo.vueloVuelta.duracion + "</p>" + " min" + "</td>" +
+						"</tr>");
+						}
+						else {
+							$("#vuelosDisponibles").append("<p>No se han encontrado vuelos con esos criterios</p>");
+						}
 				});
 							
 			}
+			else {
+				$("#vuelosDisponibles").append("<table id='tablaVuelos' class='table table-striped table-bordered table-sm sd-table'><tbody>");
+				$.each(data, function(index, vuelo){
+					$("#tablaVuelos").append("<tr>" +
+							"<td>" + vuelo.vueloIda.codigo + "</td>" +
+							"<td><a class='sd-row'>" + vuelo.vueloIda.compania.nombre + "</a></td>" +
+							"<td><a class='sd-row'>" + vuelo.vueloIda.compania.codigo + "</a></td>" +
+							"<td>" + vuelo.vueloIda.fechaSalida + "</td>" +
+							"<td>" + vuelo.vueloIda.horaSalida + "</td>" +
+							"<td>" + vuelo.vueloIda.precio + "€</td>" +
+							"<td>" + vuelo.vueloIda.duracion + " min</td>" +
+					"</tr>");
+				});
+			
+			}
+		
 					
 		}
 		
