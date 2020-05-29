@@ -27,23 +27,36 @@ public class VueloRestController {
 	
 	@CrossOrigin
 	@RequestMapping("/find")
-	public List<VueloResult> findVuelos(@RequestParam String origen, @RequestParam String destino, @RequestParam String fechaSalida){
+	public List<VueloResult> findVuelos(@RequestParam String origen, @RequestParam String destino, @RequestParam String fechaSalida, @RequestParam String fechaSalidaVuelta){
 		SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
 		Date fechaIda;
-		List<Vuelo> vuelos = new ArrayList<>();
+		Date fechaVuelta;
+		List<Vuelo> vuelosIda = new ArrayList<>();
+		List<Vuelo> vuelosVuelta = new ArrayList<>();
 		try {
 			fechaIda = new Date(parser.parse(fechaSalida).getTime());
-			vuelos =  vueloRepository.findByOrigenNombreContainingIgnoreCaseAndDestinoNombreContainingIgnoreCaseAndFechaSalida(origen, destino, fechaIda);
+			vuelosIda =  vueloRepository.findByOrigenNombreContainingIgnoreCaseAndDestinoNombreContainingIgnoreCaseAndFechaSalida(origen, destino, fechaIda);
 			
 		} catch (ParseException e) {
-			vuelos =  vueloRepository.findByOrigenNombreContainingIgnoreCaseAndDestinoNombreContainingIgnoreCase(origen, destino);
+			vuelosIda =  vueloRepository.findByOrigenNombreContainingIgnoreCaseAndDestinoNombreContainingIgnoreCase(origen, destino);
+		}
+		try {
+			fechaVuelta = new Date(parser.parse(fechaSalidaVuelta).getTime());
+			vuelosVuelta =  vueloRepository.findByOrigenNombreContainingIgnoreCaseAndDestinoNombreContainingIgnoreCaseAndFechaSalida(destino, origen, fechaVuelta);
+			
+		} catch (ParseException e) {
+			vuelosVuelta =  null;
 		}
 		List<VueloResult> lista = new ArrayList<VueloResult>();
-		for(Vuelo v : vuelos) {
-			//TODO vuelos de vuelta
-			lista.add(new VueloResult(v, null));
-			
+		for(Vuelo v : vuelosIda) {
+				lista.add(new VueloResult(v, null));				
 		}
+		if (vuelosVuelta != null) {
+			for(int i = 0; i < vuelosVuelta.size(); i++) {
+				lista.get(i).setVueloVuelta(vuelosVuelta.get(i));			
+			}
+		}
+		
 		return lista;
 		
 	}

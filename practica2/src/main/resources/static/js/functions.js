@@ -2,11 +2,12 @@ $("#submitButton").click(function(){
 	var origenIda = $("#origenIda").val();
 	var destinoIda = $("#destinoIda").val();
 	var fechaSalida = $("#fechaSalida").val();
+	var fechaSalidaVuelta = $("#fechaSalidaVuelta").val();
 	var url = "http://localhost:8080/vuelos/find";
 	$.ajax({
 		dataType: "json",
 		url: url,
-		data: {origen: origenIda, destino: destinoIda, fechaSalida: fechaSalida}
+		data: {origen: origenIda, destino: destinoIda, fechaSalida: fechaSalida, fechaSalidaVuelta: fechaSalidaVuelta}
 	}).done(function(data){
 		console.log(data);
 		//Vaciamos contenido de resultados antes de añadir nuevos resultados
@@ -28,7 +29,26 @@ $("#submitButton").click(function(){
 						"<td>" + vuelo.vueloIda.precio + "€</td>" +
 						"<td>" + vuelo.vueloIda.duracion + " min</td>" +
 				"</tr>");
-			});		
+			});
+			
+			
+			if ($("#idaVuelta").prop('checked')){
+				$.each(data, function(index, vuelo){
+				if(vuelo.vueloVuelta != null){
+					$("#tablaVuelos").append("<tr>" +
+							"<td>" + vuelo.vueloVuelta.codigo + "</td>" +
+							"<td><a class='sd-row'>" + vuelo.vueloVuelta.compania.nombre + "</a></td>" +
+							"<td><a class='sd-row'>" + vuelo.vueloVuelta.compania.codigo + "</a></td>" +
+							"<td>" + vuelo.vueloVuelta.fechaSalida + "</td>" +
+							"<td>" + vuelo.vueloVuelta.horaSalida + "</td>" +
+							"<td>" + vuelo.precioTotal + "€</td>" +
+							"<td>" + vuelo.vueloVuelta.duracion + " min</td>" +
+					"</tr>");
+					}
+				});
+							
+			}
+					
 		}
 		
 	});
