@@ -4,60 +4,70 @@ $("#submitButton").click(function(){
 	var fechaSalida = $("#fechaSalida").val();
 	var fechaSalidaVuelta = $("#fechaSalidaVuelta").val();
 	var url = "http://localhost:8080/vuelos/find";
-	$.ajax({
-		dataType: "json",
-		url: url,
-		data: {origen: origenIda, destino: destinoIda, fechaSalida: fechaSalida, fechaSalidaVuelta: fechaSalidaVuelta}
-	}).done(function(data){
-		console.log(data);
-		//Vaciamos contenido de resultados antes de añadir nuevos resultados
+	console.log(fechaSalidaVuelta);
+	
+	//Si el usuario ha marcado la casilla de ida y vuelta pero no ha puesto una fecha de vuelta, dará error
+	if (($("#idaVuelta").prop('checked')) && (fechaSalidaVuelta == "")){
+		//Vaciamos contenido de resultados antes de escribir
 		$("#vuelosDisponibles").empty();
-		//Si no hay resultados, se muestra un mensaje notificandolo
-		if(data.length == 0){
-			$("#vuelosDisponibles").append("<p>No se han encontrado vuelos con esos criterios</p>");
-		}
-		//Si hay resultados, se genera una tabla con los vuelos y su información
-		else{
-			if ($("#idaVuelta").prop('checked')){
-				$("#vuelosDisponibles").append("<table id='tablaVuelos' class='table table-striped table-bordered table-sm sd-table'><tbody>");
-				$.each(data, function(index, vuelo){
-					if(vuelo.vueloVuelta != null){
+		$("#vuelosDisponibles").append("<p>No se han encontrado vuelos con esos criterios</p>");
+	} 
+	
+	else{
+	 
+		$.ajax({
+			dataType: "json",
+			url: url,
+			data: {origen: origenIda, destino: destinoIda, fechaSalida: fechaSalida, fechaSalidaVuelta: fechaSalidaVuelta}
+		}).done(function(data){
+			//Vaciamos contenido de resultados antes de añadir nuevos resultados
+			$("#vuelosDisponibles").empty();
+			//Si no hay resultados, se muestra un mensaje notificandolo
+			if(data.length == 0){
+				$("#vuelosDisponibles").append("<p>No se han encontrado vuelos con esos criterios</p>");
+			}
+			//Si hay resultados, se genera una tabla con los vuelos y su información
+			else{
+				//Si el usuario ha elegido vuelo de ida y vuelta
+				if ($("#idaVuelta").prop('checked')){
+					$("#vuelosDisponibles").append("<table id='tablaVuelos' class='table table-striped table-bordered table-sm sd-table'><tbody>");
+					$.each(data, function(index, vuelo){
+						if(vuelo.vueloVuelta != null){
+							$("#tablaVuelos").append("<tr>" +
+									"<td>" + "<p>" + vuelo.vueloIda.codigo + "</p>" + "<p>" + vuelo.vueloVuelta.codigo + "</p>" + "</td>" +
+									"<td><div><a class='sd-row'>" + vuelo.vueloIda.compania.nombre + "</a>" + "</div>" + "<div>" + "<a class='sd-row'>" + vuelo.vueloVuelta.compania.nombre + "</a></div></td>" +
+									"<td><div><a class='sd-row'>" + vuelo.vueloIda.compania.codigo + "</a>" + "</div>" + "<div>" + "<a class='sd-row'>" + vuelo.vueloVuelta.compania.codigo + "</a></div></td>" +
+									"<td>" + "<p>" + vuelo.vueloIda.fechaSalida + "</p>" + "<p>" + vuelo.vueloVuelta.fechaSalida + "</p>" + "</td>" +
+									"<td>" + "<p>" + vuelo.vueloIda.horaSalida + "</p>" + "<p>" + vuelo.vueloVuelta.horaSalida + "</p>" + "</td>" +
+									"<td>" + vuelo.precioTotal + "€</td>" +
+									"<td>" + "<p>" + vuelo.vueloIda.duracion +  " min" + "</p>" + "<p>" + vuelo.vueloVuelta.duracion + "</p>" + " min" + "</td>" +
+							"</tr>");
+							}
+					});
+								
+				}
+				else {
+					$("#vuelosDisponibles").append("<table id='tablaVuelos' class='table table-striped table-bordered table-sm sd-table'><tbody>");
+					$.each(data, function(index, vuelo){
 						$("#tablaVuelos").append("<tr>" +
-								"<td>" + "<p>" + vuelo.vueloIda.codigo + "</p>" + "<p>" + vuelo.vueloVuelta.codigo + "</p>" + "</td>" +
-								"<td><a class='sd-row'>" + "<p>" + vuelo.vueloIda.compania.nombre + "</p>" + "<p>" + vuelo.vueloVuelta.compania.nombre + "</p>" + "</a></td>" +
-								"<td><a class='sd-row'>" + "<p>" + vuelo.vueloIda.compania.codigo + "</p>" + "<p>" + vuelo.vueloVuelta.compania.codigo + "</p>" + "</a></td>" +
-								"<td>" + "<p>" + vuelo.vueloIda.fechaSalida + "</p>" + "<p>" + vuelo.vueloVuelta.fechaSalida + "</p>" + "</td>" +
-								"<td>" + "<p>" + vuelo.vueloIda.horaSalida + "</p>" + "<p>" + vuelo.vueloVuelta.horaSalida + "</p>" + "</td>" +
-								"<td>" + vuelo.precioTotal + "€</td>" +
-								"<td>" + "<p>" + vuelo.vueloIda.duracion +  " min" + "</p>" + "<p>" + vuelo.vueloVuelta.duracion + "</p>" + " min" + "</td>" +
+								"<td>" + vuelo.vueloIda.codigo + "</td>" +
+								"<td><a class='sd-row'>" + vuelo.vueloIda.compania.nombre + "</a></td>" +
+								"<td><a class='sd-row'>" + vuelo.vueloIda.compania.codigo + "</a></td>" +
+								"<td>" + vuelo.vueloIda.fechaSalida + "</td>" +
+								"<td>" + vuelo.vueloIda.horaSalida + "</td>" +
+								"<td>" + vuelo.vueloIda.precio + "€</td>" +
+								"<td>" + vuelo.vueloIda.duracion + " min</td>" +
 						"</tr>");
-						}
-						else {
-							$("#vuelosDisponibles").append("<p>No se han encontrado vuelos con esos criterios</p>");
-						}
-				});
-							
-			}
-			else {
-				$("#vuelosDisponibles").append("<table id='tablaVuelos' class='table table-striped table-bordered table-sm sd-table'><tbody>");
-				$.each(data, function(index, vuelo){
-					$("#tablaVuelos").append("<tr>" +
-							"<td>" + vuelo.vueloIda.codigo + "</td>" +
-							"<td><a class='sd-row'>" + vuelo.vueloIda.compania.nombre + "</a></td>" +
-							"<td><a class='sd-row'>" + vuelo.vueloIda.compania.codigo + "</a></td>" +
-							"<td>" + vuelo.vueloIda.fechaSalida + "</td>" +
-							"<td>" + vuelo.vueloIda.horaSalida + "</td>" +
-							"<td>" + vuelo.vueloIda.precio + "€</td>" +
-							"<td>" + vuelo.vueloIda.duracion + " min</td>" +
-					"</tr>");
-				});
+					});
+				
+				}
 			
+						
 			}
+			
+		});
 		
-					
-		}
-		
-	});
+	}
 });
 
 
