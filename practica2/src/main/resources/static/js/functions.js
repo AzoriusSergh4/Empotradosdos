@@ -54,6 +54,7 @@ $("#submitButton").click(function(){
 					});
 								
 				}
+				//Si el usuario solo ha elegido un vuelo de ida
 				else {
 					$.each(data, function(index, vuelo){
 						$("#tablaVuelos").append("<tr>" +
