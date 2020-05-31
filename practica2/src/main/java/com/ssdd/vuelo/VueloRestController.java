@@ -51,8 +51,14 @@ public class VueloRestController {
 		for(Vuelo v : vuelosIda) {
 			if (vuelosVuelta != null) {
 				for(Vuelo v2 : vuelosVuelta) {
-					lista.add(new VueloResult(v, v2));
+					if ( (v.getFechaSalida().before(v2.getFechaSalida())) || 
+							(v.getFechaSalida().equals(v2.getFechaSalida()) && (v.getHoraSalida().before(v2.getHoraSalida())) && (!v.getHoraSalida().equals(v2.getHoraSalida()))) ) {
+			 
+							lista.add(new VueloResult(v, v2));
+						
+					}
 				}
+					
 			} 
 			else {
 				lista.add(new VueloResult(v, null));
