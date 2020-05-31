@@ -28,9 +28,17 @@ $("#submitButton").click(function(){
 			}
 			//Si hay resultados, se genera una tabla con los vuelos y su información
 			else{
+				$("#vuelosDisponibles").append("<table id='tablaVuelos' class='table table-striped table-bordered table-sm sd-table'><tr>"+
+					 "<td> Código del vuelo </td>"+
+					 "<td> Compañía </td>"+
+					 "<td> Código de la compañía </td>"+
+					 "<td> Fecha de salida </td>"+
+					 "<td> Hora de salida </td>"+
+					 "<td> Precio </td>"+
+					 "<td> Duración </td>"+
+					 "</tr><tbody>");
 				//Si el usuario ha elegido vuelo de ida y vuelta
 				if ($("#idaVuelta").prop('checked')){
-					$("#vuelosDisponibles").append("<table id='tablaVuelos' class='table table-striped table-bordered table-sm sd-table'><tbody>");
 					$.each(data, function(index, vuelo){
 						if(vuelo.vueloVuelta != null){
 							$("#tablaVuelos").append("<tr>" +
@@ -47,7 +55,6 @@ $("#submitButton").click(function(){
 								
 				}
 				else {
-					$("#vuelosDisponibles").append("<table id='tablaVuelos' class='table table-striped table-bordered table-sm sd-table'><tbody>");
 					$.each(data, function(index, vuelo){
 						$("#tablaVuelos").append("<tr>" +
 								"<td>" + vuelo.vueloIda.codigo + "</td>" +
