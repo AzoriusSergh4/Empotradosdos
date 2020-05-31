@@ -50,6 +50,10 @@ body, html {
 	border-color: #5DADE2 !important;  
 }
 
+.mensajeError{
+	color: #C81D11 !important;
+	margin-top: 50px;
+}
 
 .sd-margin {
 	margin-top: 15px;

@@ -10,7 +10,7 @@ $("#submitButton").click(function(){
 	if (($("#idaVuelta").prop('checked')) && (fechaSalidaVuelta == "")){
 		//Vaciamos contenido de resultados antes de escribir
 		$("#vuelosDisponibles").empty();
-		$("#vuelosDisponibles").append("<p>No se han encontrado vuelos con esos criterios</p>");
+		$("#vuelosDisponibles").append("<p class='mensajeError'>No se han encontrado vuelos con esos criterios</p>");
 	} 
 	
 	else{
@@ -24,7 +24,7 @@ $("#submitButton").click(function(){
 			$("#vuelosDisponibles").empty();
 			//Si no hay resultados, se muestra un mensaje notificandolo
 			if(data.length == 0){
-				$("#vuelosDisponibles").append("<p>No se han encontrado vuelos con esos criterios</p>");
+				$("#vuelosDisponibles").append("<p class='mensajeError'>No se han encontrado vuelos con esos criterios</p>");
 			}
 			//Si hay resultados, se genera una tabla con los vuelos y su información
 			else{
