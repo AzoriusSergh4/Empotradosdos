@@ -1,11 +1,13 @@
 body, html {
-    background-image: linear-gradient(to bottom right, rgb(121, 148, 187), rgba(255,0,0,0));
+    background-image: linear-gradient(to bottom right, rgb(14, 89, 186), rgba(255,0,0,0));
     height: 100%;
     background-position: center;
  	background-repeat: no-repeat;
   	background-size: cover;
 	background-attachment: fixed;
+	background-color: #9CE7FE;
 }
+
 
 .sd-card {
 	 width: 100rem;
@@ -13,6 +15,7 @@ body, html {
 	 margin: auto;
 	 min-height: 50rem;
 }
+
 
 .btn-lg{
 	font-size: 2rem;
@@ -38,13 +41,13 @@ body, html {
 }
 
 .btn-primary {
-	background-color: #C15800;
-	border-color: #C15800;
+	background-color: #00D4FF;
+	border-color: #00D4FF;
 }
 
 .btn-primary:active, .btn-primary:checked, .btn-primary:focus, .btn-primary:hover {
-	background-color: #D86200 !important;
-	border-color: #D86200 !important;  
+	background-color: #00D4FF !important;
+	border-color: #00D4FF !important;  
 }
 
 
@@ -66,7 +69,7 @@ body, html {
     background-repeat: no-repeat;
     background-size: 0% 2px;
     transition: background-size .3s;
-    text-color: #080EC8;
+    color: #080EC8 !important;
     cursor: pointer;
 }
 
@@ -78,4 +81,9 @@ body, html {
 
 .sd-table-container {
 	margin-top: 30px;
+}
+
+
+.urlWeb {
+	color: #080EC8 !important;
 }
