@@ -41,13 +41,13 @@ body, html {
 }
 
 .btn-primary {
-	background-color: #00D4FF;
-	border-color: #00D4FF;
+	background-color: #3498DB;
+	border-color: #3498DB;
 }
 
 .btn-primary:active, .btn-primary:checked, .btn-primary:focus, .btn-primary:hover {
-	background-color: #00D4FF !important;
-	border-color: #00D4FF !important;  
+	background-color: #3498DB !important;
+	border-color: #3498DB !important;  
 }
 
 

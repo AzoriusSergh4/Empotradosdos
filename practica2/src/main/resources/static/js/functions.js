@@ -40,7 +40,7 @@ $("#submitButton").click(function(){
 									"<td>" + "<p>" + vuelo.vueloIda.fechaSalida + "</p>" + "<p>" + vuelo.vueloVuelta.fechaSalida + "</p>" + "</td>" +
 									"<td>" + "<p>" + vuelo.vueloIda.horaSalida + "</p>" + "<p>" + vuelo.vueloVuelta.horaSalida + "</p>" + "</td>" +
 									"<td>" + vuelo.precioTotal + "€</td>" +
-									"<td>" + "<p>" + vuelo.vueloIda.duracion +  " min" + "</p>" + "<p>" + vuelo.vueloVuelta.duracion + "</p>" + " min" + "</td>" +
+									"<td>" + "<p>" + vuelo.vueloIda.duracion +  " min" + "</p>" + "<p>" + vuelo.vueloVuelta.duracion + " min</p></td>" +
 							"</tr>");
 							}
 					});
