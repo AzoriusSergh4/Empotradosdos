@@ -10,8 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import com.ssdd.aeropuerto.Aeropuerto;
 import com.ssdd.compania.Compania;
+
 
 @Entity
 public class Vuelo {
@@ -33,17 +33,17 @@ public class Vuelo {
 	@ManyToOne(cascade = CascadeType.MERGE)
 	private Compania compania;
 	
-	@ManyToOne(cascade = CascadeType.MERGE)
-	private Aeropuerto origen;
+	//private String compania;
 	
-	@ManyToOne(cascade = CascadeType.MERGE)
-	private Aeropuerto destino;
+	private String origen;
+	
+	private String destino;
 	
 	public Vuelo() {
 		
 	}
 
-	public Vuelo(String codigo, Date fechaSalida, Time horaSalida, int duracion, int precio, Compania compania, Aeropuerto origen, Aeropuerto destino) {
+	public Vuelo(String codigo, Date fechaSalida, Time horaSalida, int duracion, int precio, Compania compania, String origen, String destino) {
 		super();
 		this.codigo = codigo;
 		this.fechaSalida = fechaSalida;
@@ -91,19 +91,19 @@ public class Vuelo {
 		this.precio = precio;
 	}
 
-	public Aeropuerto getOrigen() {
+	public String getOrigen() {
 		return origen;
 	}
 
-	public void setOrigen(Aeropuerto origen) {
+	public void setOrigen(String origen) {
 		this.origen = origen;
 	}
 
-	public Aeropuerto getDestino() {
+	public String getDestino() {
 		return destino;
 	}
 
-	public void setDestino(Aeropuerto destino) {
+	public void setDestino(String destino) {
 		this.destino = destino;
 	}
 
@@ -122,7 +122,12 @@ public class Vuelo {
 	public void setCompania(Compania compania) {
 		this.compania = compania;
 	}
-	
+
+
+
+
+
+
 	
 	
 	

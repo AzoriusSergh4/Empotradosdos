@@ -35,14 +35,14 @@ public class VueloRestController {
 		List<Vuelo> vuelosVuelta = new ArrayList<>();
 		try {
 			fechaIda = new Date(parser.parse(fechaSalida).getTime());
-			vuelosIda =  vueloRepository.findByOrigenNombreContainingIgnoreCaseAndDestinoNombreContainingIgnoreCaseAndFechaSalida(origen, destino, fechaIda);
+			vuelosIda =  vueloRepository.findByOrigenContainingIgnoreCaseAndDestinoContainingIgnoreCaseAndFechaSalida(origen, destino, fechaIda);
 			
 		} catch (ParseException e) {
-			vuelosIda =  vueloRepository.findByOrigenNombreContainingIgnoreCaseAndDestinoNombreContainingIgnoreCase(origen, destino);
+			vuelosIda =  vueloRepository.findByOrigenContainingIgnoreCaseAndDestinoContainingIgnoreCase(origen, destino);
 		}
 		try {
 			fechaVuelta = new Date(parser.parse(fechaSalidaVuelta).getTime());
-			vuelosVuelta =  vueloRepository.findByOrigenNombreContainingIgnoreCaseAndDestinoNombreContainingIgnoreCaseAndFechaSalida(destino, origen, fechaVuelta);
+			vuelosVuelta =  vueloRepository.findByOrigenContainingIgnoreCaseAndDestinoContainingIgnoreCaseAndFechaSalida(destino, origen, fechaVuelta);
 			
 		} catch (ParseException e) {
 			vuelosVuelta =  null;
