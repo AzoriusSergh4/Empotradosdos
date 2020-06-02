@@ -41,15 +41,30 @@ $("#submitButton").click(function(){
 				if ($("#idaVuelta").prop('checked')){
 					$.each(data, function(index, vuelo){
 						if(vuelo.vueloVuelta != null){
-							$("#tablaVuelos").append("<tr>" +
-									"<td>" + "<p>" + vuelo.vueloIda.codigo + "</p>" + "<p>" + vuelo.vueloVuelta.codigo + "</p>" + "</td>" +
-									"<td><div><a class='sd-row'>" + vuelo.vueloIda.nombreCompania + "</a>" + "</div>" + "<div>" + "<a class='sd-row'>" + vuelo.vueloVuelta.nombreCompania + "</a></div></td>" +
-									"<td><div><a class='sd-row'>" + vuelo.vueloIda.codigoCompania + "</a>" + "</div>" + "<div>" + "<a class='sd-row'>" + vuelo.vueloVuelta.codigoCompania + "</a></div></td>" +
-									"<td>" + "<p>" + vuelo.vueloIda.fechaSalida + "</p>" + "<p>" + vuelo.vueloVuelta.fechaSalida + "</p>" + "</td>" +
-									"<td>" + "<p>" + vuelo.vueloIda.horaSalida + "</p>" + "<p>" + vuelo.vueloVuelta.horaSalida + "</p>" + "</td>" +
-									"<td>" + vuelo.precioTotal + "€</td>" +
-									"<td>" + "<p>" + vuelo.vueloIda.duracion +  " min" + "</p>" + "<p>" + vuelo.vueloVuelta.duracion + " min</p></td>" +
-							"</tr>");
+							//Si tiene descuento
+							if (vuelo.tieneDescuento){
+								$("#tablaVuelos").append("<tr>" +
+											"<td class='celda'>" + "<p>" + vuelo.vueloIda.codigo + "</p>" + "<p>" + vuelo.vueloVuelta.codigo + "</p>" + "</td>" +
+											"<td class='celda'><div><a class='sd-row'>" + vuelo.vueloIda.nombreCompania + "</a>" + "</div>" + "<div>" + "<a class='sd-row'>" + vuelo.vueloVuelta.nombreCompania + "</a></div></td>" +
+											"<td class='celda'><div><a class='sd-row'>" + vuelo.vueloIda.codigoCompania + "</a>" + "</div>" + "<div>" + "<a class='sd-row'>" + vuelo.vueloVuelta.codigoCompania + "</a></div></td>" +
+											"<td class='celda'>" + "<p>" + vuelo.vueloIda.fechaSalida + "</p>" + "<p>" + vuelo.vueloVuelta.fechaSalida + "</p>" + "</td>" +
+											"<td class='celda'>" + "<p>" + vuelo.vueloIda.horaSalida + "</p>" + "<p>" + vuelo.vueloVuelta.horaSalida + "</p>" + "</td>" +
+											"<td class='celda'><p class ='descuento'>" + "¡20% de descuento!" + "</p>" + vuelo.precioTotal + "€</td>" +
+											"<td class='celda'>" + "<p>" + vuelo.vueloIda.duracion +  " min" + "</p>" + "<p>" + vuelo.vueloVuelta.duracion + " min</p></td>" +
+									"</tr>");
+							
+								}
+								else{
+									$("#tablaVuelos").append("<tr>" +
+											"<td class='celda'>" + "<p>" + vuelo.vueloIda.codigo + "</p>" + "<p>" + vuelo.vueloVuelta.codigo + "</p>" + "</td>" +
+											"<td class='celda'><div><a class='sd-row'>" + vuelo.vueloIda.nombreCompania + "</a>" + "</div>" + "<div>" + "<a class='sd-row'>" + vuelo.vueloVuelta.nombreCompania + "</a></div></td>" +
+											"<td class='celda'><div><a class='sd-row'>" + vuelo.vueloIda.codigoCompania + "</a>" + "</div>" + "<div>" + "<a class='sd-row'>" + vuelo.vueloVuelta.codigoCompania + "</a></div></td>" +
+											"<td class='celda'>" + "<p>" + vuelo.vueloIda.fechaSalida + "</p>" + "<p>" + vuelo.vueloVuelta.fechaSalida + "</p>" + "</td>" +
+											"<td class='celda'>" + "<p>" + vuelo.vueloIda.horaSalida + "</p>" + "<p>" + vuelo.vueloVuelta.horaSalida + "</p>" + "</td>" +
+											"<td class='celda'>" + vuelo.precioTotal + "€</td>" +
+											"<td class='celda'>" + "<p>" + vuelo.vueloIda.duracion +  " min" + "</p>" + "<p>" + vuelo.vueloVuelta.duracion + " min</p></td>" +
+									"</tr>");
+								}
 							}
 					});
 								
@@ -58,13 +73,13 @@ $("#submitButton").click(function(){
 				else {
 					$.each(data, function(index, vuelo){
 						$("#tablaVuelos").append("<tr>" +
-								"<td>" + vuelo.vueloIda.codigo + "</td>" +
-								"<td><a class='sd-row'>" + vuelo.vueloIda.nombreCompania + "</a></td>" +
-								"<td><a class='sd-row'>" + vuelo.vueloIda.codigoCompania + "</a></td>" +
-								"<td>" + vuelo.vueloIda.fechaSalida + "</td>" +
-								"<td>" + vuelo.vueloIda.horaSalida + "</td>" +
-								"<td>" + vuelo.vueloIda.precio + "€</td>" +
-								"<td>" + vuelo.vueloIda.duracion + " min</td>" +
+								"<td class='celda'>" + vuelo.vueloIda.codigo + "</td>" +
+								"<td class='celda'><a class='sd-row'>" + vuelo.vueloIda.nombreCompania + "</a></td>" +
+								"<td class='celda'><a class='sd-row'>" + vuelo.vueloIda.codigoCompania + "</a></td>" +
+								"<td class='celda'>" + vuelo.vueloIda.fechaSalida + "</td>" +
+								"<td class='celda'>" + vuelo.vueloIda.horaSalida + "</td>" +
+								"<td class='celda'>" + vuelo.vueloIda.precio + "€</td>" +
+								"<td class='celda'>" + vuelo.vueloIda.duracion + " min</td>" +
 						"</tr>");
 					});
 				
@@ -105,7 +120,7 @@ $(document.body).on("click",".sd-row", function(event){
 				"<p>" + "Código: " + data.codigo + "</p>" +
 				"<p>" + "Teléfono: " + data.telefono + "</p>" +		
 				"<p>" + "Web: " + "<a class= 'urlWeb' href=" + "\"" + data.web + "\"" + "target=" + "\"" + "_blank" + "\""  + ">" + data.web + "</a>" +"</p>" +
-				"<p>" + "Valoración: " + "<div id=" + "\"" + "rateYo" + "\"" + "></div>" + "</p>"
+				"<p>" + "Valoración: " + "<div id='rateYo'></div>" + "</p>"
 				);
 		 $("#rateYo").rateYo({
 		 	numStars: 5,

@@ -9,6 +9,7 @@ public class VueloResult {
 	private Vuelo vueloIda;
 	private Vuelo vueloVuelta;
 	private int precioTotal;
+	private boolean tieneDescuento;
 	
 	
 	
@@ -22,9 +23,11 @@ public class VueloResult {
 			//Descuento
 			if(this.getVueloIda().getNombreCompania().equals(this.getVueloVuelta().getNombreCompania())) {
 				this.precioTotal = (this.precioTotal * 80) / 100;
+				this.tieneDescuento = true;
 			}
 		}else {
 			this.precioTotal = this.vueloIda.getPrecio();
+			this.tieneDescuento = false;
 		}
 		
 	}
@@ -47,6 +50,15 @@ public class VueloResult {
 	public void setPrecioTotal(int precioTotal) {
 		this.precioTotal = precioTotal;
 	}
+
+	public boolean isTieneDescuento() {
+		return tieneDescuento;
+	}
+
+	public void setTieneDescuento(boolean tieneDescuento) {
+		this.tieneDescuento = tieneDescuento;
+	}
+	
 	
 	
 }

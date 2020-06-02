@@ -31,9 +31,9 @@ public class Vuelo {
 	
 	private String codigoCompania;
 	
-	private String origen;
+	private String origen; //Aeropuerto de origen
 	
-	private String destino;
+	private String destino; //Aeropuerto de destino
 	
 	public Vuelo() {
 		
