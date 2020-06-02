@@ -3,14 +3,11 @@ package com.ssdd.vuelo;
 import java.sql.Date;
 import java.sql.Time;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
-import com.ssdd.compania.Compania;
 
 
 @Entity
@@ -30,10 +27,9 @@ public class Vuelo {
 	
 	private int precio;
 	
-	@ManyToOne(cascade = CascadeType.MERGE)
-	private Compania compania;
+	private String nombreCompania;
 	
-	//private String compania;
+	private String codigoCompania;
 	
 	private String origen;
 	
@@ -43,7 +39,7 @@ public class Vuelo {
 		
 	}
 
-	public Vuelo(String codigo, Date fechaSalida, Time horaSalida, int duracion, int precio, Compania compania, String origen, String destino) {
+	public Vuelo(String codigo, Date fechaSalida, Time horaSalida, int duracion, int precio, String nombreCompania, String codigoCompania, String origen, String destino) {
 		super();
 		this.codigo = codigo;
 		this.fechaSalida = fechaSalida;
@@ -52,7 +48,8 @@ public class Vuelo {
 		this.precio = precio;
 		this.origen = origen;
 		this.destino = destino;
-		this.compania = compania;
+		this.codigoCompania = codigoCompania;
+		this.nombreCompania = nombreCompania;
 	}
 
 	public long getId() {
@@ -115,20 +112,21 @@ public class Vuelo {
 		this.horaSalida = horaSalida;
 	}
 
-	public Compania getCompania() {
-		return compania;
+	public String getNombreCompania() {
+		return nombreCompania;
 	}
 
-	public void setCompania(Compania compania) {
-		this.compania = compania;
+	public void setNombreCompania(String nombreCompania) {
+		this.nombreCompania = nombreCompania;
 	}
 
+	public String getCodigoCompania() {
+		return codigoCompania;
+	}
 
+	public void setCodigoCompania(String codigoCompania) {
+		this.codigoCompania = codigoCompania;
+	}
 
-
-
-
-	
-	
 	
 }

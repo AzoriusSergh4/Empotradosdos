@@ -20,7 +20,7 @@ public class VueloResult {
 		if(this.vueloVuelta != null) {
 			this.precioTotal = this.vueloIda.getPrecio() + this.vueloVuelta.getPrecio();
 			//Descuento
-			if(this.getVueloIda().getCompania().equals(this.getVueloVuelta().getCompania())) {
+			if(this.getVueloIda().getNombreCompania().equals(this.getVueloVuelta().getNombreCompania())) {
 				this.precioTotal = (this.precioTotal * 80) / 100;
 			}
 		}else {

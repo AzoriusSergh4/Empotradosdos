@@ -43,8 +43,8 @@ $("#submitButton").click(function(){
 						if(vuelo.vueloVuelta != null){
 							$("#tablaVuelos").append("<tr>" +
 									"<td>" + "<p>" + vuelo.vueloIda.codigo + "</p>" + "<p>" + vuelo.vueloVuelta.codigo + "</p>" + "</td>" +
-									"<td><div><a class='sd-row'>" + vuelo.vueloIda.compania.nombre + "</a>" + "</div>" + "<div>" + "<a class='sd-row'>" + vuelo.vueloVuelta.compania.nombre + "</a></div></td>" +
-									"<td><div><a class='sd-row'>" + vuelo.vueloIda.compania.codigo + "</a>" + "</div>" + "<div>" + "<a class='sd-row'>" + vuelo.vueloVuelta.compania.codigo + "</a></div></td>" +
+									"<td><div><a class='sd-row'>" + vuelo.vueloIda.nombreCompania + "</a>" + "</div>" + "<div>" + "<a class='sd-row'>" + vuelo.vueloVuelta.nombreCompania + "</a></div></td>" +
+									"<td><div><a class='sd-row'>" + vuelo.vueloIda.codigoCompania + "</a>" + "</div>" + "<div>" + "<a class='sd-row'>" + vuelo.vueloVuelta.codigoCompania + "</a></div></td>" +
 									"<td>" + "<p>" + vuelo.vueloIda.fechaSalida + "</p>" + "<p>" + vuelo.vueloVuelta.fechaSalida + "</p>" + "</td>" +
 									"<td>" + "<p>" + vuelo.vueloIda.horaSalida + "</p>" + "<p>" + vuelo.vueloVuelta.horaSalida + "</p>" + "</td>" +
 									"<td>" + vuelo.precioTotal + "€</td>" +
@@ -59,8 +59,8 @@ $("#submitButton").click(function(){
 					$.each(data, function(index, vuelo){
 						$("#tablaVuelos").append("<tr>" +
 								"<td>" + vuelo.vueloIda.codigo + "</td>" +
-								"<td><a class='sd-row'>" + vuelo.vueloIda.compania.nombre + "</a></td>" +
-								"<td><a class='sd-row'>" + vuelo.vueloIda.compania.codigo + "</a></td>" +
+								"<td><a class='sd-row'>" + vuelo.vueloIda.nombreCompania + "</a></td>" +
+								"<td><a class='sd-row'>" + vuelo.vueloIda.codigoCompania + "</a></td>" +
 								"<td>" + vuelo.vueloIda.fechaSalida + "</td>" +
 								"<td>" + vuelo.vueloIda.horaSalida + "</td>" +
 								"<td>" + vuelo.vueloIda.precio + "€</td>" +
