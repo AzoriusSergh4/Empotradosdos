@@ -44,12 +44,12 @@ $("#submitButton").click(function(){
 							//Si tiene descuento
 							if (vuelo.tieneDescuento){
 								$("#tablaVuelos").append("<tr>" +
-											"<td class='celda'>" + "<p>" + vuelo.vueloIda.codigo + "</p>" + "<p>" + vuelo.vueloVuelta.codigo + "</p>" + "</td>" +
+											"<td class='celda'><div>" + "<p>" + vuelo.vueloIda.codigo + "</p>" + "</div>" + "<div><p>" + vuelo.vueloVuelta.codigo + "</p>" + "</div>" + "</td>" +
 											"<td class='celda'><div><a class='sd-row'>" + vuelo.vueloIda.nombreCompania + "</a>" + "</div>" + "<div>" + "<a class='sd-row'>" + vuelo.vueloVuelta.nombreCompania + "</a></div></td>" +
 											"<td class='celda'><div><a class='sd-row'>" + vuelo.vueloIda.codigoCompania + "</a>" + "</div>" + "<div>" + "<a class='sd-row'>" + vuelo.vueloVuelta.codigoCompania + "</a></div></td>" +
 											"<td class='celda'>" + "<p>" + vuelo.vueloIda.fechaSalida + "</p>" + "<p>" + vuelo.vueloVuelta.fechaSalida + "</p>" + "</td>" +
 											"<td class='celda'>" + "<p>" + vuelo.vueloIda.horaSalida + "</p>" + "<p>" + vuelo.vueloVuelta.horaSalida + "</p>" + "</td>" +
-											"<td class='celda'><p class ='descuento'>" + "¡20% de descuento!" + "</p>" + vuelo.precioTotal + "€</td>" +
+											"<td class='celda'><p class ='descuento'>" + "¡20% de descuento!" + "</p>" + "<p>" + vuelo.precioTotal + "€<p>" + "</td>" +
 											"<td class='celda'>" + "<p>" + vuelo.vueloIda.duracion +  " min" + "</p>" + "<p>" + vuelo.vueloVuelta.duracion + " min</p></td>" +
 									"</tr>");
 							
@@ -61,7 +61,7 @@ $("#submitButton").click(function(){
 											"<td class='celda'><div><a class='sd-row'>" + vuelo.vueloIda.codigoCompania + "</a>" + "</div>" + "<div>" + "<a class='sd-row'>" + vuelo.vueloVuelta.codigoCompania + "</a></div></td>" +
 											"<td class='celda'>" + "<p>" + vuelo.vueloIda.fechaSalida + "</p>" + "<p>" + vuelo.vueloVuelta.fechaSalida + "</p>" + "</td>" +
 											"<td class='celda'>" + "<p>" + vuelo.vueloIda.horaSalida + "</p>" + "<p>" + vuelo.vueloVuelta.horaSalida + "</p>" + "</td>" +
-											"<td class='celda'>" + vuelo.precioTotal + "€</td>" +
+											"<td class='celda'>" + "<p>" + vuelo.precioTotal + "€</p>" + "</td>" +
 											"<td class='celda'>" + "<p>" + vuelo.vueloIda.duracion +  " min" + "</p>" + "<p>" + vuelo.vueloVuelta.duracion + " min</p></td>" +
 									"</tr>");
 								}

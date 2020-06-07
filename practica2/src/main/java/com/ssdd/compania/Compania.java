@@ -5,6 +5,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * Entidad Compañia de base de datos. Almacena toda la información de las compañías de vuelos 
+ * @author Sergio Lira Díaz. Sara Rodríguez Alarcón
+ *
+ */
 @Entity
 public class Compania {
 	

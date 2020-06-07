@@ -8,7 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
+/**
+ * Entidad Vuelo de base de datos. Almacena toda la información de los vuelos
+ * @author Sergio Lira Díaz. Sara Rodríguez Alarcón
+ *
+ */
 
 @Entity
 public class Vuelo {

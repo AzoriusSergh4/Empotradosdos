@@ -1,8 +1,8 @@
 package com.ssdd.vuelo;
 
 /**
- * Clase de datos que almacena los vuelos de ida y de vuelta, y el precio total, aplicando descuento si es necesario
- *
+ * 	Clase de datos que almacena los vuelos de ida y de vuelta, y el precio total, aplicando descuento si es necesario
+ *	@author Sergio Lira Díaz, Sara Rodríguez Alarcón
  */
 public class VueloResult {
 
@@ -12,7 +12,7 @@ public class VueloResult {
 	private boolean tieneDescuento;
 	
 	
-	
+	//Constructor
 	public VueloResult(Vuelo vueloIda, Vuelo vueloVuelta) {
 		super();
 		this.vueloIda = vueloIda;
@@ -57,8 +57,5 @@ public class VueloResult {
 
 	public void setTieneDescuento(boolean tieneDescuento) {
 		this.tieneDescuento = tieneDescuento;
-	}
-	
-	
-	
+	}	
 }

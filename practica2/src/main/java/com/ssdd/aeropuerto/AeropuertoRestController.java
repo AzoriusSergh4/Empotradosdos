@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controlador que administra los métodos relacionados con aeropuertos
+ * @author Sergio Lira Díaz, Sara Rodríguez Alarcón
+ *
+ */
 @RequestMapping("/aeropuertos")
 @RestController
 public class AeropuertoRestController {
@@ -29,6 +34,7 @@ public class AeropuertoRestController {
 	
 	/**
 	 * Devuelve los nombres de los aeropuertos, usado para el Autocomplete
+	 * @param nombre el nombre parcial o total del aeropuerto
 	 * @return la listan de nombres
 	 */
 	@CrossOrigin
