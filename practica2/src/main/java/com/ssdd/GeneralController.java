@@ -41,13 +41,13 @@ public class GeneralController {
 	    	SimpleDateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
 	    
 	    	//Creación de aeropuertos
-	    	Aeropuerto barajas = new Aeropuerto("AAAA", "Madrid Barajas Adolfo Suárez");
-	    	Aeropuerto josep = new Aeropuerto("BBBB", "Barcelona Josep Tarradellas");
-	    	Aeropuerto manises = new Aeropuerto("CCCC", "Valencia Manises");
-	    	Aeropuerto josemarti = new Aeropuerto("HHH", "La Habana José Martí");
-	    	Aeropuerto charles = new Aeropuerto("PPP", "París Charles De Gaulle");
-	    	Aeropuerto heathrow = new Aeropuerto("LLL", "Londres Heathrow");
-	    	Aeropuerto kennedy = new Aeropuerto("JJJ", "Nueva York John F. Kennedy");
+	    	Aeropuerto barajas = new Aeropuerto("AAAA", "Madrid (Barajas-Adolfo Suárez)");
+	    	Aeropuerto josep = new Aeropuerto("BBBB", "Barcelona (Josep Tarradellas)");
+	    	Aeropuerto manises = new Aeropuerto("CCCC", "Valencia (Manises)");
+	    	Aeropuerto josemarti = new Aeropuerto("HHH", "La Habana (José Martí)");
+	    	Aeropuerto charles = new Aeropuerto("PPP", "París (Charles De Gaulle)");
+	    	Aeropuerto heathrow = new Aeropuerto("LLL", "Londres (Heathrow)");
+	    	Aeropuerto kennedy = new Aeropuerto("JJJ", "Nueva York (John F. Kennedy)");
 	    	aeropuertoRepository.save(barajas);
 	    	aeropuertoRepository.save(josep);
 	    	aeropuertoRepository.save(manises);
