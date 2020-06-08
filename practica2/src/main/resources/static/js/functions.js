@@ -81,20 +81,15 @@ $("#submitButton").click(function(){
 								"<td class='celda'>" + vuelo.vueloIda.precio + "€</td>" +
 								"<td class='celda'>" + vuelo.vueloIda.duracion + " min</td>" +
 						"</tr>");
-					});
-				
-				}
-			
-						
-			}
-			
-		});
-		
+					});			
+				}				
+			}			
+		});		
 	}
 });
 
 
-
+//inicializacion dialogo de la compañia  a oculto
 $( function() {
     $( "#dialog" ).dialog({
     	autoOpen: false,
@@ -134,7 +129,7 @@ $(document.body).on("click",".sd-row", function(event){
 
 
 
-
+//Autocompletar de aeropuertos
 $( function() {
 		
     $( ".aeropuertosInput" ).autocomplete({
@@ -153,7 +148,7 @@ $( function() {
     });
 });
 
-
+//controla la aparicion de la fecha de veulta
 $("#idaVuelta").change(function() {
     if(this.checked) {
         $('#content').show();
