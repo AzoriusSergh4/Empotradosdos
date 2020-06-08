@@ -10,7 +10,7 @@ $("#submitButton").click(function(){
 	if (($("#idaVuelta").prop('checked')) && (fechaSalidaVuelta == "")){
 		//Vaciamos contenido de resultados antes de escribir
 		$("#vuelosDisponibles").empty();
-		$("#vuelosDisponibles").append("<p class='mensajeError'>No se han encontrado vuelos con esos criterios</p>");
+		$("#vuelosDisponibles").append("<p class='mensajeError'>Si desea contratar un vuelo de ida y vuelta, debe establecer la fecha de regreso.</p>");
 	} 
 	
 	else{
@@ -28,15 +28,15 @@ $("#submitButton").click(function(){
 			}
 			//Si hay resultados, se genera una tabla con los vuelos y su información
 			else{
-				$("#vuelosDisponibles").append("<table id='tablaVuelos' class='table table-striped table-bordered table-sm sd-table'><tr>"+
-					 "<td> Código del vuelo </td>"+
-					 "<td> Compañía </td>"+
-					 "<td> Código de la compañía </td>"+
-					 "<td> Fecha de salida </td>"+
-					 "<td> Hora de salida </td>"+
-					 "<td> Precio </td>"+
-					 "<td> Duración </td>"+
-					 "</tr><tbody>");
+				$("#vuelosDisponibles").append("<table id='tablaVuelos' class='table table-striped table-bordered table-sm sd-table'><thead class='thead-dark'><tr>"+
+					 "<th> Código del vuelo </th>"+
+					 "<th> Compañía </th>"+
+					 "<th> Código de la compañía </th>"+
+					 "<th> Fecha de salida </th>"+
+					 "<th> Hora de salida </th>"+
+					 "<th> Precio </th>"+
+					 "<th> Duración </th>"+
+					 "</tr></thead><tbody>");
 				//Si el usuario ha elegido vuelo de ida y vuelta
 				if ($("#idaVuelta").prop('checked')){
 					$.each(data, function(index, vuelo){
