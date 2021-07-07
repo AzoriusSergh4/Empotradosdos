@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Cuadros</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link href="/styles/styles.css" rel="stylesheet" />
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+	crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+	crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="row h-100">
+		<div class="card text-center my-auto sd-card">
+		<div class="card-header">
+			 <h1 class="card-title">Galería de Cuadros - Cuadros disponibles</h1>
+		</div>
+			<div class="card-body">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm my-auto">
+							<form action="/cuadro/buscarPorTituloODescripcion" method="get">
+								<div class="form-group">
+									<input class="form-control" type='text' id="tituloDescripcion"
+										name='tituloDescripcion'
+										placeholder="Título o descripción del cuadro" />
+								</div>
+							</form>
+						</div>
+						<div class="col-sm form-group my-auto">
+							<form action="/cuadro/buscarPorAutor" method="get">
+								<div class="form-group">
+								<div class="input-group">
+								
+									<select class="form-control" id="entradaAutor" name='autor'>
+										<option value=" " disabled selected hidden>Autor</option>
+										<option th:each="autor : ${autores}" th:value="${autor.id}"
+											th:text="${autor.nombre + ' ' + autor.apellidos}"></option>
+									</select>
+									<button type="submit" class="btn btn-primary material-icons">search</button>
+								</div>
+								</div>
+							</form>
+						</div>
+						<div class="col-sm form-group my-auto">
+							<form action="/cuadro/ordenar">
+								<label for="sort">Ordenar por: </label> <select
+									class="form-control" id="sort" name="sort">
+									<option value="titulo">Titulo</option>
+									<option value="precio">Precio</option>
+									<option value="autor.nombre">Autor</option>
+									<option value="comprador.nombre">Comprador</option>
+								</select>
+								<button class="btn btn-primary sd-margin" type="submit">Ordenar</button>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="text-center sd-table-container">
+					<table class="table table-striped table-bordered table-sm sd-table">
+						<tbody>
+							<tr th:each="cuadro : ${cuadros}">
+								<td  th:text="${cuadro.titulo}"></td>
+								<td>
+									<a class="btn btn-primary btn-sm" th:href="@{'/cuadro/' + ${cuadro.id}}" type="button">
+							        	<span class="align-middle">Visualizar</span>
+							            <i class="material-icons align-middle">visibility</i>
+							        </a>
+								</td>
+								<td>
+									<a class="btn btn-primary btn-sm" th:href="@{'/cuadro/editarCuadro/' + ${cuadro.id}}" type="button">
+							        	<span class="align-middle">Editar</span>
+							            <i class="material-icons align-middle">edit</i>
+							        </a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div>
+					<a class="btn btn-primary btn-sm" href="/cuadro/addCuadro" type="button">
+		        		<span class="align-middle">Añadir</span>
+		            <i class="material-icons align-middle">add</i>
+		        	</a>
+				</div>
+				<div>
+					<a th:href="@{'/'}" type="button" class="btn btn-primary sd-margin">Atrás</a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+</body>
+</html>

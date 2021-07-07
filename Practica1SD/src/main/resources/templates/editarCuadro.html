@@ -1,71 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Editar Cuadro</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="/styles/styles.css" rel="stylesheet" />
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="/styles/styles.css" rel="stylesheet"/>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
 </head>
-<body class="add-edit-body">
-<div class="add-edit-card">
+<body class="color-background">
+<div class="center-info-card">
     <div class="card mx-auto card-width">
         <div class="card-body">
             <h1 class="card-title center-title">Editar cuadro</h1>
-            <form th:action="@{'/cuadro/' + ${cuadro.id}}" method="get">
+            <form th:action="@{'/cuadro/' + ${cuadro.id}}" method="post">
                 <div class="form-group">
                     <label for="entradaTitulo">Titulo:</label>
-                    <input th:value="${cuadro.titulo}" class="form-control" type='text' id="entradaTitulo" name='titulo' placeholder="titulo" required="required"/>
+                    <input th:value="${cuadro.titulo}" class="form-control" type='text' id="entradaTitulo" name='titulo'
+                           placeholder="titulo" required="required"/>
                 </div>
 
                 <div class="form-group">
                     <label for="entradaAutor">Autor:</label>
-                   <select class="form-control" id="entradaAutor" name='autor'>
-                        <option th:each="autor : ${autores}" th:value="${autor.nif}" th:text="${autor.nombre + ' ' + autor.apellidos}" th:selected="${autor.nif == cuadro.autor.nif}"></option>
+                    <select class="form-control" id="entradaAutor" name='autor'>
+                        <option th:each="autor : ${autores}" th:value="${autor.nif}"
+                                th:text="${autor.nombre + ' ' + autor.apellidos}"
+                                th:selected="${autor.nif == cuadro.autor.nif}"></option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="entradaDescripcion">Descripción:</label>
-                    <textarea th:field="${cuadro.descripcion}" class="form-control" id="entradaDescripcion" name='descripcion' placeholder="Descripción" required="required"></textarea>
+                    <textarea th:field="${cuadro.descripcion}" class="form-control" id="entradaDescripcion"
+                              name='descripcion' placeholder="Descripción" required="required"></textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="entradaAnyoFinalizacion">Año Finalización:</label>
-                    <input th:value="${cuadro.anyoFinalizacion}" class="form-control" type='number' id="entradaAnyoFinalizacion" name='anyoFinalizacion' placeholder="Año Finalización" required="required"/>
+                    <input th:value="${cuadro.anyoFinalizacion}" class="form-control" type='number'
+                           id="entradaAnyoFinalizacion" name='anyoFinalizacion' placeholder="Año Finalización"
+                           required="required"/>
                 </div>
 
                 <div class="form-group">
                     <label for="entradaAnchura">Anchura:</label>
-                    <input th:value="${cuadro.anchura}" class="form-control" type='number' step="0.01" id="entradaAnchura" name='anchura' placeholder="Anchura" required="required"/>
+                    <input th:value="${cuadro.anchura}" class="form-control" type='number' step="0.01"
+                           id="entradaAnchura" name='anchura' placeholder="Anchura" required="required"/>
                 </div>
 
-               <div class="form-group">
+                <div class="form-group">
                     <label for="entradaAltura">Altura:</label>
-                    <input th:value="${cuadro.altura}" class="form-control" type='number' step="0.01" id="entradaAltura" name='altura' placeholder="Altura" required="required"/>
+                    <input th:value="${cuadro.altura}" class="form-control" type='number' step="0.01" id="entradaAltura"
+                           name='altura' placeholder="Altura" required="required"/>
                 </div>
 
                 <div class="form-group">
                     <label for="entradaPrecio">Precio:</label>
-                    <input th:value="${cuadro.precio}" class="form-control" type='number' id="entradaPrecio" name='precio' placeholder="Precio" required="required"/>
+                    <input th:value="${cuadro.precio}" class="form-control" type='number' id="entradaPrecio"
+                           name='precio' placeholder="Precio" required="required"/>
                 </div>
 
                 <div class="form-group">
                     <label for="entradaFechaVenta">Fecha de venta:</label>
-                    <input th:value="${cuadro.fechaVenta}" class="form-control" type='date' id="entradaFechaVenta" name='fechaVenta' placeholder="Fecha venta" required="required"/>
+                    <input th:value="${cuadro.fechaVenta}" class="form-control" type='date' id="entradaFechaVenta"
+                           name='fechaVenta' placeholder="Fecha venta"/>
                 </div>
 
                 <div class="form-group">
                     <label for="entradaComprador">Comprador:</label>
                     <select class="form-control" id="entradaComprador" name='comprador'>
                         <option value="null">---</option>
-                        <option th:each="cliente : ${clientes}" th:value="${cliente.nif}" th:text="${cliente.nombre + ' ' + cliente.apellidos}" th:selected="${cliente.nif == cuadro.comprador?.nif}"></option>
+                        <option th:each="cliente : ${clientes}" th:value="${cliente.nif}"
+                                th:text="${cliente.nombre + ' ' + cliente.apellidos}"
+                                th:selected="${cliente.nif == cuadro.comprador?.nif}"></option>
                     </select>
                 </div>
 
 
                 <button type="submit" class="btn btn-primary">Enviar</button>
-                <a th:href="@{'/'}" type="button" class="cancel-button">Cancelar</a>
+                <a th:href="@{'/cuadro/mostrarCuadros'}" type="button" class="btn btn-primary">Cancelar</a>
 
             </form>
         </div>

@@ -20,12 +20,11 @@ public class Cliente {
 	private String telefono;
 	
 	
-	public Cliente() {
-		
-	}
+	public Cliente() {}
+
 	public Cliente(String nombre, String apellidos, String nif, String direccionPostal, String email,
 			String telefono) {
-		super();
+
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.nif = nif;
@@ -35,12 +34,12 @@ public class Cliente {
 	}
 
 	public void actualizarCliente(Cliente nuevoCliente){
-	this.nombre = nuevoCliente.getNombre();
-	this.apellidos = nuevoCliente.getApellidos();
-	this.nif = nuevoCliente.getNif();
-	this.direccionPostal = nuevoCliente.getDireccionPostal();
-	this.email = nuevoCliente.getEmail();
-	this.telefono = nuevoCliente.getTelefono();
+		this.nombre = nuevoCliente.getNombre();
+		this.apellidos = nuevoCliente.getApellidos();
+		this.nif = nuevoCliente.getNif();
+		this.direccionPostal = nuevoCliente.getDireccionPostal();
+		this.email = nuevoCliente.getEmail();
+		this.telefono = nuevoCliente.getTelefono();
 	}
 	
 	public long getId() {

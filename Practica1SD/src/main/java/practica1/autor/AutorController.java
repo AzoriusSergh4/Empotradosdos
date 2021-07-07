@@ -2,6 +2,7 @@ package practica1.autor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,34 +15,39 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/autor")
 public class AutorController extends GaleriaController{
+
     @Autowired
     private AutorRepository autorRepository;
+    
+    @RequestMapping("/mostrarAutores")
+    public String mostrarCuadros(Model model) {
+        model.addAttribute("autores", autorRepository.findAll());
+        return "autores";
+    }
 
     @RequestMapping("/addAutor")
     public String addAutor(Model model) {
         return "nuevoAutor";
     }
 
+    @PostMapping("/")
+    public String addAutor(Model model, @RequestParam Map<String, String> mappedAutor) {
+        Autor autor = this.crearAutorDesdeMap(mappedAutor);
+        this.autorRepository.save(autor);
+        model.addAttribute("autores", autorRepository.findAll());
+
+        return "autores";
+    }
+
     @RequestMapping("/editarAutor/{id}")
     public String editarAutor(Model model, @PathVariable long id) {
         Optional<Autor> opcional = this.autorRepository.findById(id);
-        if(opcional.isPresent()){
-            model.addAttribute("autor", opcional.get());
-        }
+        opcional.ifPresent(autor -> model.addAttribute("autor", autor));
 
         return "editarAutor";
     }
 
-    @PostMapping("/")
-    public String addAutor(Model model, @RequestParam Map<String, String> mappedAutor) {
-        Autor autor = this.crearAutorDesdeMap(mappedAutor);
-
-        this.autorRepository.save(autor);
-        cargaGaleria(model);
-        return "galeria";
-    }
-
-    @GetMapping("/{id}")
+    @PostMapping("/{id}")
     public String editarAutor(Model model, @PathVariable long id,  @RequestParam Map<String, String> mappedAutor) {
         Autor autor = this.crearAutorDesdeMap(mappedAutor);
 
@@ -51,52 +57,45 @@ public class AutorController extends GaleriaController{
             autorAnterior.actualizarAutor(autor);
             this.autorRepository.save(autorAnterior);
         }
-        cargaGaleria(model);
-        return "galeria";
+        model.addAttribute("autores", autorRepository.findAll());
+
+        return "autores";
     }
 
-    @GetMapping("/buscarPorNombre")
-    public String buscarAutorPorNombre(Model model, @RequestParam String nombre) {
-        if (nombre == null || nombre.equals("")) {
-            cargaGaleria(model);
-        } else {
-            cargaGaleria(model);
-            model.addAttribute("autores", autorRepository.findByNombreContainsIgnoreCase(nombre));
-        }
+    @GetMapping("/{id}")
+    public String consultaAutor(Model model, @PathVariable long id) {
+        Optional<Autor> opcional = this.autorRepository.findById(id);
+        opcional.ifPresent(autor -> model.addAttribute("autor", autor));
 
-        return "galeria";
+        return "infoAutor";
     }
-
-    @GetMapping("/buscarPorApellidos")
-    public String buscarAutorPorApellidos(Model model, @RequestParam String apellidos) {
-        if (apellidos == null || apellidos.equals("")) {
-            cargaGaleria(model);
+    
+    @GetMapping("/buscarPorNombreOApellidos")
+    public String buscarAutorPorNombre(Model model, @RequestParam String nombreApellidos) {
+        if (nombreApellidos == null || nombreApellidos.equals("")) {
+            model.addAttribute("autores", autorRepository.findAll());
         } else {
-            cargaGaleria(model);
-            model.addAttribute("autores", autorRepository.findByApellidosContainsIgnoreCase(apellidos));
+            model.addAttribute("autores", autorRepository.findDistinctAutorByNombreContainsIgnoreCaseOrApellidosContainsIgnoreCase(nombreApellidos, nombreApellidos));
         }
 
-        return "galeria";
+        return "autores";
     }
-
-    @GetMapping("/buscarPorEmail")
-    public String buscarAutorPorEmail(Model model, @RequestParam String email) {
-        if (email == null || email.equals("")) {
-            cargaGaleria(model);
+    
+    @GetMapping("/buscarPorDNI")
+    public String buscarAutorPorNif(Model model, @RequestParam String dni) {
+        if (dni == null || dni.equals("")) {
+            model.addAttribute("autores", autorRepository.findAll());
         } else {
-            cargaGaleria(model);
-            model.addAttribute("autores", autorRepository.findByEmailContainsIgnoreCase(email));
+            model.addAttribute("autores", autorRepository.findByNif(dni));
         }
 
-        return "galeria";
+        return "autores";
     }
 
     @GetMapping("/ordenar")
-    public String buscarOrdenado(Model model, @RequestParam Pageable page) {
-        cargaGaleria(model);
-        model.addAttribute("autores", autorRepository.findAll(page.getSort()));
-
-        return "galeria";
+    public String buscarOrdenado(Model model, @RequestParam String sort) {
+        model.addAttribute("autores", autorRepository.findAll(Sort.by(sort)));
+        return "autores";
     }
 
     private Autor crearAutorDesdeMap(Map<String, String> mappedAutor) {

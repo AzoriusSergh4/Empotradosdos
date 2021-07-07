@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cuadro</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="/styles/styles.css" rel="stylesheet"/>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+</head>
+<body class="color-background">
+<div class="center-info-card">
+    <div class="card mx-auto card-width">
+        <div class="card-body">
+            <h1 class="card-title center-title">Ficha de Cuadro</h1>
+            <div class="sd-margin">
+                <span class="font-weight-bold">Título: </span>
+                <span th:text="${cuadro.titulo}"></span>
+            </div>
+            <div class="sd-margin">
+                <span class="font-weight-bold">Autor: </span>
+                <span th:text="${cuadro.autor.nombre}"></span>
+                <span th:text="${cuadro.autor.apellidos}"></span>
+            </div>
+            <div class="sd-margin">
+                <span class="font-weight-bold">Descripción: </span>
+                <span th:text="${cuadro.descripcion}"></span>
+            </div>
+            <div class="sd-margin">
+                <span class="font-weight-bold">Año de finalización: </span>
+                <span th:text="${cuadro.anyoFinalizacion}"></span>
+            </div>
+            <div class="sd-margin">
+                <span class="font-weight-bold">Anchura: </span>
+                <span th:text="${cuadro.anchura}"></span>
+            </div>
+            <div class="sd-margin">
+                <span class="font-weight-bold">Altura: </span>
+                <span th:text="${cuadro.altura}"></span>
+            </div>
+            <div class="sd-margin">
+                <span class="font-weight-bold">Precio: </span>
+                <span th:text="${cuadro.precio}"></span>
+            </div>
+            <div class="sd-margin">
+                <span class="font-weight-bold">Fecha de Venta: </span>
+                <span th:if="${cuadro.fechaVenta != null}" th:text="${cuadro.fechaVenta}"></span>
+                <span th:if="${cuadro.fechaVenta == null}">--</span>
+            </div>
+            <div class="sd-margin">
+                <span class="font-weight-bold">Comprador: </span>
+                <span th:if="${cuadro.comprador != null}" th:text="${cuadro.comprador.nombre}"></span>
+                <span th:if="${cuadro.comprador != null}" th:text="${cuadro.comprador.apellidos}"></span>
+                <span th:if="${cuadro.comprador == null}">--</span>
+            </div>
+
+            <a th:href="@{'/cuadro/mostrarCuadros'}" type="button" class="btn btn-primary sd-margin">Volver</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

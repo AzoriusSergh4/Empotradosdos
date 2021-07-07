@@ -1,76 +1,90 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Nuevo Cuadro</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-	<link href="/styles/styles.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <title>Nuevo Cuadro</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+    <link href="/styles/styles.css" rel="stylesheet"/>
 </head>
-<body class="add-edit-body">
+<body class="color-background">
 
-	<div class="add-edit-card">
-		<div class="card mx-auto card-width">
-		  <div class="card-body">
-			<h1 class="card-title center-title">Nuevo cuadro</h1>
-			<form action="/cuadro/" method="post">
-				<div class="form-group">
-					<label for="entradaTitulo">Título:</label>
-					<input class="form-control" type='text' id="entradaTitulo" name='titulo' placeholder="Título" required="required"/>
-				</div>
+<div class="center-info-card">
+    <div class="card mx-auto card-width">
+        <div class="card-body">
+            <h1 class="card-title center-title">Nuevo cuadro</h1>
+            <form action="/cuadro/" method="post">
+                <div class="form-group">
+                    <label for="entradaTitulo">Título:</label>
+                    <input class="form-control" type='text' id="entradaTitulo" name='titulo' placeholder="Título"
+                           required="required"/>
+                </div>
 
-					<div class="form-group">
-					<label for="entradaAutor">Autor:</label>
-					<select class="form-control" id="entradaAutor" name='autor'>
-						<option th:each="autor : ${autores}" th:value="${autor.nif}" th:text="${autor.nombre + ' ' + autor.apellidos}"></option>
-					</select>
-				</div>
+                <div class="form-group">
+                    <label for="entradaAutor">Autor:</label>
+                    <select class="form-control" id="entradaAutor" name='autor'>
+                        <option th:each="autor : ${autores}" th:value="${autor.nif}"
+                                th:text="${autor.nombre + ' ' + autor.apellidos}"></option>
+                    </select>
+                </div>
 
-				<div class="form-group">
-					<label for="entradaDescripcion">Descripción</label>
-					<textarea class="form-control" id="entradaDescripcion" name="descripcion" rows="5" placeholder="Descripción" required="required"></textarea>
-				</div>
+                <div class="form-group">
+                    <label for="entradaDescripcion">Descripción</label>
+                    <textarea class="form-control" id="entradaDescripcion" name="descripcion" rows="5"
+                              placeholder="Descripción" required="required"></textarea>
+                </div>
 
-				<div class="form-group">
-					<label for="entradaAnyoFinalizacion">Año de finalización:</label>
-					<input class="form-control" type='number' id="entradaAnyoFinalizacion" name='anyoFinalizacion' placeholder="Año de finalización" required="required"/>
-				</div>
+                <div class="form-group">
+                    <label for="entradaAnyoFinalizacion">Año de finalización:</label>
+                    <input class="form-control" type='number' id="entradaAnyoFinalizacion" name='anyoFinalizacion'
+                           placeholder="Año de finalización" required="required"/>
+                </div>
 
-				<div class="form-group">
-					<label for="entradaAnchura">Anchura:</label>
-					<input class="form-control" type='number' step="0.01" id="entradaAnchura" name='anchura' placeholder="Anchura" required="required"/> cm
-				</div>
+                <div class="form-group">
+                    <label for="entradaAnchura">Anchura:</label>
+                    <input class="form-control" type='number' step="0.01" id="entradaAnchura" name='anchura'
+                           placeholder="Anchura" required="required"/> cm
+                </div>
 
-				<div class="form-group">
-					<label for="entradaAltura">Altura:</label>
-					<input class="form-control" type='number' step="0.01" id="entradaAltura" name='altura' placeholder="Altura" required="required"/> cm
-				</div>
+                <div class="form-group">
+                    <label for="entradaAltura">Altura:</label>
+                    <input class="form-control" type='number' step="0.01" id="entradaAltura" name='altura'
+                           placeholder="Altura" required="required"/> cm
+                </div>
 
-				<div class="form-group">
-					<label for="entradaPrecio">Precio:</label>
-					<input class="form-control" type='number' id="entradaPrecio" name='precio' placeholder="Precio" required="required"/> euros
-				</div>
+                <div class="form-group">
+                    <label for="entradaPrecio">Precio:</label>
+                    <input class="form-control" type='number' id="entradaPrecio" name='precio' placeholder="Precio"
+                           required="required"/> euros
+                </div>
 
-				<div class="form-group">
-					<label for="entradaFechaVenta">Fecha Venta:</label>
-					<input class="form-control" type="date" id="entradaFechaVenta" name='fechaVenta' placeholder="Fecha Venta" required="required"/>
-				</div>
+                <div class="form-group">
+                    <label for="entradaFechaVenta">Fecha Venta:</label>
+                    <input class="form-control" type="date" id="entradaFechaVenta" name='fechaVenta'
+                           placeholder="Fecha Venta"/>
+                </div>
 
 
-				<div class="form-group">
-					<label for="entradaComprador">Comprador:</label>
-					<select class="form-control" id="entradaComprador" name='comprador'>
-						<option value="null">---</option>
-						<option th:each="cliente : ${clientes}" th:value="${cliente.nif}" th:text="${cliente.nombre + ' ' + cliente.apellidos}"></option>
-					</select>
-				</div>
+                <div class="form-group">
+                    <label for="entradaComprador">Comprador:</label>
+                    <select class="form-control" id="entradaComprador" name='comprador'>
+                        <option value="null">---</option>
+                        <option th:each="cliente : ${clientes}" th:value="${cliente.nif}"
+                                th:text="${cliente.nombre + ' ' + cliente.apellidos}"></option>
+                    </select>
+                </div>
 
-				<button type="submit" class="btn btn-primary">Enviar</button>
-				<a th:href="@{'/'}" type="button" class="cancel-button">Cancelar</a>
-		   </form>
-		   </div>
-		</div>
-	</div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+                <a th:href="@{'/cuadro/mostrarCuadros'}" type="button" class="btn btn-primary">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>
